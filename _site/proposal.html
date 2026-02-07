@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Team 15">
+<meta name="dcterms.date" content="2026-03-01">
 
-<title>About – ISSS608 Team 15 Project</title>
+<title>Proposal – ISSS608 Team 15 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./proposal.html"> 
+    <a class="nav-link active" href="./proposal.html" aria-current="page"> 
 <span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
@@ -148,22 +150,42 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">1. Motivation</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">2. Objectives</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">3. Data Description</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Proposal</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Team 15 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 1, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -173,7 +195,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<section id="motivation" class="level2 card-style">
+<h2 class="anchored" data-anchor-id="motivation">1. Motivation</h2>
+<p>The fishing industry in Oceanus is critical for the local economy… <em>[Insert your elevator pitch here]</em>… However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.</p>
+<p><strong>Why Visual Analytics?</strong> By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal.</p>
+</section>
+<section id="objectives" class="level2 card-style">
+<h2 class="anchored" data-anchor-id="objectives">2. Objectives</h2>
+<p>Our project aims to build an interactive dashboard to:</p>
+<ol type="1">
+<li><strong>Characterize</strong> the temporal patterns of fishing vessels.</li>
+<li><strong>Detect</strong> anomalies in shipping routes using trajectory analysis.</li>
+<li><strong>Identify</strong> potential collusive networks between companies.</li>
+</ol>
+</section>
+<section id="data-description" class="level2 card-style">
+<h2 class="anchored" data-anchor-id="data-description">3. Data Description</h2>
+<p>We are using the VAST Challenge 2024 Dataset, consisting of:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dataset</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>oceanus_nodes.csv</code></td>
+<td style="text-align: left;">Company ownership details</td>
+<td style="text-align: left;">5MB</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>shipping_logs.csv</code></td>
+<td style="text-align: left;">GPS logs of vessels</td>
+<td style="text-align: left;">1.2GB</td>
+</tr>
+</tbody>
+</table>
+</section>
 
 
 

@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs # Standard for GitHub Pages hosting
+  output-dir: _site # Standard for GitHub Pages hosting
 
 website:
   title: "ISSS608 Team 15 Project"
