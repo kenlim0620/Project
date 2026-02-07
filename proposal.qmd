@@ -1,0 +1,34 @@
+---
+title: "Proposal"
+date: "March 2026"
+author: "Team 15"
+---
+
+::: card-style
+## 1. Motivation
+
+The fishing industry in Oceanus is critical for the local economy... *\[Insert your elevator pitch here\]*... However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.
+
+**Why Visual Analytics?** By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal.
+:::
+
+::: card-style
+## 2. Objectives
+
+Our project aims to build an interactive dashboard to:
+
+1.  **Characterize** the temporal patterns of fishing vessels.
+2.  **Detect** anomalies in shipping routes using trajectory analysis.
+3.  **Identify** potential collusive networks between companies.
+:::
+
+::: card-style
+## 3. Data Description
+
+We are using the VAST Challenge 2024 Dataset, consisting of:
+
+| Dataset             | Description               | Size  |
+|:--------------------|:--------------------------|:------|
+| `oceanus_nodes.csv` | Company ownership details | 5MB   |
+| `shipping_logs.csv` | GPS logs of vessels       | 1.2GB |
+:::

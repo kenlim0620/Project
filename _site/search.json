@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "",
+    "text": "Our project aims to uncover hidden patterns in [Topic] using advanced visual analytics techniques. Built for ISSS608 Visual Analytics, Academic Year 2025-2026.\nView Methodology Launch Dashboard"
+  },
+  {
+    "objectID": "index.html#data-prep",
+    "href": "index.html#data-prep",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "🧹 Data Prep",
+    "text": "🧹 Data Prep\nRigorous cleaning and standardization of over 10,000 records to ensure accuracy."
+  },
+  {
+    "objectID": "index.html#eda",
+    "href": "index.html#eda",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "📊 EDA",
+    "text": "📊 EDA\nInteractive charts and static plots discovering initial trends and outliers."
+  },
+  {
+    "objectID": "index.html#modeling",
+    "href": "index.html#modeling",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "🤖 Modeling",
+    "text": "🤖 Modeling\nAdvanced clustering and time-series forecasting to predict future outcomes."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]

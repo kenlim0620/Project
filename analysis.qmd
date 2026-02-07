@@ -1,0 +1,34 @@
+---
+title: "Exploratory Data Analysis"
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## 1. Overview
+
+We analyzed the distribution of fishing activities across the Oceanus region.
+
+## 2. Temporal Patterns
+
+The code below utilizes `ggplot2` to visualize the frequency of events over time.
+
+```{r}
+#| label: fig-timeline
+#| fig-cap: "Distribution of Events over Time"
+
+library(ggplot2)
+library(tidyverse)
+
+# Dummy Data (Replace with your load logic)
+data <- data.frame(
+  date = seq(as.Date("2024-01-01"), as.Date("2024-12-31"), by="day"),
+  value = rnorm(366, 50, 10)
+)
+
+ggplot(data, aes(x=date, y=value)) +
+  geom_line(color="#2780e3") +
+  theme_minimal() +
+  labs(title = "Daily Activity trends", y = "Frequency")
+```

@@ -1,0 +1,40 @@
+---
+title: ""
+page-layout: full
+---
+
+::::: {.grid .hero-section}
+::: {.g-col-12 .g-col-md-6 .hero-text}
+# Democratising Data through Visual Analytics
+
+### An interactive exploration of \[Topic Name\]
+
+Our project aims to uncover hidden patterns in \[Topic\] using advanced visual analytics techniques. Built for **ISSS608 Visual Analytics**, Academic Year 2025-2026.
+
+[View Methodology](methodology.qmd){.btn .btn-outline-primary .btn-lg role="button"} [Launch Dashboard](https://your-shiny-app.com){.btn .btn-primary .btn-lg role="button"}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+![](images/coast.jpg){fig-alt="Dashboard Preview"}
+:::
+:::::
+
+:::::: {.grid .text-center .py-5}
+::: {.g-col-12 .g-col-md-4}
+## 🧹 Data Prep
+
+Rigorous cleaning and standardization of over 10,000 records to ensure accuracy.
+:::
+
+::: {.g-col-12 .g-col-md-4}
+## 📊 EDA
+
+Interactive charts and static plots discovering initial trends and outliers.
+:::
+
+::: {.g-col-12 .g-col-md-4}
+## 🤖 Modeling
+
+Advanced clustering and time-series forecasting to predict future outcomes.
+:::
+::::::

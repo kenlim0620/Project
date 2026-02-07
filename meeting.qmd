@@ -1,0 +1,49 @@
+---
+title: "Meeting Minutes"
+format: 
+  html:
+    toc: true
+---
+
+::: callout-note
+## Overview
+
+This page logs the weekly progress, decisions, and action items of the project team.
+:::
+
+## Phase 1: Planning
+
+::: card-style
+### 🗓️ Week 1: Project Kick-off
+
+**Date:** 14 January 2026\
+**Attendees:** All Members
+
+**Key Discussions:** 1. Brainstormed 3 potential topics: Illegal Fishing (Oceanus), Weather patterns, and Tourism. 2. Voted to proceed with **\[Your Chosen Topic\]** due to data availability.
+
+**Action Items:** - \[x\] Create GitHub Repository (Assigned to: Member A) - \[x\] Draft Project Proposal (Assigned to: Member B)
+:::
+
+::: card-style
+### 🗓️ Week 2: Proposal Review
+
+**Date:** 21 January 2026\
+**Attendees:** Member A, Member C\
+**Absent:** Member B (Medical Leave)
+
+**Key Discussions:** 1. Refined the "Motivation" section of the proposal. 2. Initial data cleaning revealed missing values in the 2024 dataset.
+
+**Decisions:** - We will focus on the years 2015-2023 to avoid data gaps. - The dashboard will use a "Scrollytelling" layout.
+:::
+
+## Phase 2: Development
+
+::: card-style
+### 🗓️ Week 5: Mid-Term Review
+
+**Date:** 10 February 2026
+
+**Key Discussions:** 1. Prototype of the Shiny App is lagging when loading map data. 2. **Solution:** We will switch from `leaflet` to `tmap` for faster rendering or pre-process the shapefiles.
+
+**Action Items:** - \[ \] Optimize spatial data files (Member C) - \[ \] Draft Methodology Section for website (Member A)
+:::

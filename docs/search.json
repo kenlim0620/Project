@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "Proposal",
+    "section": "",
+    "text": "The fishing industry in Oceanus is critical for the local economy… [Insert your elevator pitch here]… However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.\nWhy Visual Analytics? By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal."
+  },
+  {
+    "objectID": "proposal.html#motivation",
+    "href": "proposal.html#motivation",
+    "title": "Proposal",
+    "section": "",
+    "text": "The fishing industry in Oceanus is critical for the local economy… [Insert your elevator pitch here]… However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.\nWhy Visual Analytics? By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal."
+  },
+  {
+    "objectID": "proposal.html#objectives",
+    "href": "proposal.html#objectives",
+    "title": "Proposal",
+    "section": "2. Objectives",
+    "text": "2. Objectives\nOur project aims to build an interactive dashboard to:\n\nCharacterize the temporal patterns of fishing vessels.\nDetect anomalies in shipping routes using trajectory analysis.\nIdentify potential collusive networks between companies."
+  },
+  {
+    "objectID": "proposal.html#data-description",
+    "href": "proposal.html#data-description",
+    "title": "Proposal",
+    "section": "3. Data Description",
+    "text": "3. Data Description\nWe are using the VAST Challenge 2024 Dataset, consisting of:\n\n\n\nDataset\nDescription\nSize\n\n\n\n\noceanus_nodes.csv\nCompany ownership details\n5MB\n\n\nshipping_logs.csv\nGPS logs of vessels\n1.2GB"
+  },
+  {
+    "objectID": "meeting.html",
+    "href": "meeting.html",
+    "title": "Meeting Minutes",
+    "section": "",
+    "text": "NoteOverview\n\n\n\nThis page logs the weekly progress, decisions, and action items of the project team."
+  },
+  {
+    "objectID": "meeting.html#phase-1-planning",
+    "href": "meeting.html#phase-1-planning",
+    "title": "Meeting Minutes",
+    "section": "Phase 1: Planning",
+    "text": "Phase 1: Planning\n\n🗓️ Week 1: Project Kick-off\nDate: 14 January 2026\nAttendees: All Members\nKey Discussions: 1. Brainstormed 3 potential topics: Illegal Fishing (Oceanus), Weather patterns, and Tourism. 2. Voted to proceed with [Your Chosen Topic] due to data availability.\nAction Items: - [x] Create GitHub Repository (Assigned to: Member A) - [x] Draft Project Proposal (Assigned to: Member B)\n\n\n🗓️ Week 2: Proposal Review\nDate: 21 January 2026\nAttendees: Member A, Member C\nAbsent: Member B (Medical Leave)\nKey Discussions: 1. Refined the “Motivation” section of the proposal. 2. Initial data cleaning revealed missing values in the 2024 dataset.\nDecisions: - We will focus on the years 2015-2023 to avoid data gaps. - The dashboard will use a “Scrollytelling” layout."
+  },
+  {
+    "objectID": "meeting.html#phase-2-development",
+    "href": "meeting.html#phase-2-development",
+    "title": "Meeting Minutes",
+    "section": "Phase 2: Development",
+    "text": "Phase 2: Development\n\n🗓️ Week 5: Mid-Term Review\nDate: 10 February 2026\nKey Discussions: 1. Prototype of the Shiny App is lagging when loading map data. 2. Solution: We will switch from leaflet to tmap for faster rendering or pre-process the shapefiles.\nAction Items: - [ ] Optimize spatial data files (Member C) - [ ] Draft Methodology Section for website (Member A)"
+  },
+  {
+    "objectID": "analysis.html",
+    "href": "analysis.html",
+    "title": "Exploratory Data Analysis",
+    "section": "",
+    "text": "We analyzed the distribution of fishing activities across the Oceanus region."
+  },
+  {
+    "objectID": "analysis.html#overview",
+    "href": "analysis.html#overview",
+    "title": "Exploratory Data Analysis",
+    "section": "",
+    "text": "We analyzed the distribution of fishing activities across the Oceanus region."
+  },
+  {
+    "objectID": "analysis.html#temporal-patterns",
+    "href": "analysis.html#temporal-patterns",
+    "title": "Exploratory Data Analysis",
+    "section": "2. Temporal Patterns",
+    "text": "2. Temporal Patterns\nThe code below utilizes ggplot2 to visualize the frequency of events over time.\n\nlibrary(ggplot2)\nlibrary(tidyverse)\n\n# Dummy Data (Replace with your load logic)\ndata &lt;- data.frame(\n  date = seq(as.Date(\"2024-01-01\"), as.Date(\"2024-12-31\"), by=\"day\"),\n  value = rnorm(366, 50, 10)\n)\n\nggplot(data, aes(x=date, y=value)) +\n  geom_line(color=\"#2780e3\") +\n  theme_minimal() +\n  labs(title = \"Daily Activity trends\", y = \"Frequency\")\n\n\n\n\n\n\n\nFigure 1: Distribution of Events over Time"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "",
+    "text": "Our project aims to uncover hidden patterns in [Topic] using advanced visual analytics techniques. Built for ISSS608 Visual Analytics, Academic Year 2025-2026.\nView Methodology Launch Dashboard"
+  },
+  {
+    "objectID": "index.html#data-prep",
+    "href": "index.html#data-prep",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "🧹 Data Prep",
+    "text": "🧹 Data Prep\nRigorous cleaning and standardization of over 10,000 records to ensure accuracy."
+  },
+  {
+    "objectID": "index.html#eda",
+    "href": "index.html#eda",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "📊 EDA",
+    "text": "📊 EDA\nInteractive charts and static plots discovering initial trends and outliers."
+  },
+  {
+    "objectID": "index.html#modeling",
+    "href": "index.html#modeling",
+    "title": "Democratising Data through Visual Analytics",
+    "section": "🤖 Modeling",
+    "text": "🤖 Modeling\nAdvanced clustering and time-series forecasting to predict future outcomes."
+  },
+  {
+    "objectID": "poster.html#meeting-minutes",
+    "href": "poster.html#meeting-minutes",
+    "title": "Project Deliverables - Poster",
+    "section": "Meeting Minutes",
+    "text": "Meeting Minutes\n\nWeek 1: Brainstorming and Topic Selection (View PDF)\nWeek 4: Data Cleaning Validation (View PDF)"
+  }
+]

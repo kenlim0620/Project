@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: docs # Standard for GitHub Pages hosting
+
+website:
+  title: "ISSS608 Team 15 Project"
+  navbar:
+    background: "#ffffff" # White navbar for clean look
+    foreground: "#333333"
+    left:
+      - href: index.qmd
+        text: "Home"
+      - href: proposal.qmd
+        text: "Proposal"
+      - href: meeting.qmd
+        text: "Minutes of Meeting"
+      - text: "Methodology"
+        menu:
+          - href: data_prep.qmd
+            text: "Data Preparation"
+          - href: analysis.qmd
+            text: "Exploratory Analysis"
+      - href: results.qmd
+        text: "Findings & Discussion"
+      - href: poster.qmd
+        text: "Poster"
+    right:
+      - icon: github
+        href: https://github.com/kenlim0620/ISSS608-Team-15-Project
+      - text: "Launch App 🚀"
+        href: https://your-name.shinyapps.io/your-app/ # Link to your separate Shiny App
+
+format:
+  html:
+    theme: cosmo # Clean, professional, modern
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    smooth-scroll: true
+    highlight-style: github

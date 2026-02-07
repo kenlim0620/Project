@@ -1,0 +1,48 @@
+/* css styles */
+/* Import modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1d1d1f; /* Soft Black */
+  background-color: #fbfbfd; /* Very light grey */
+}
+
+/* Navbar Customization */
+.navbar {
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Card Styling for Minutes and Sections */
+.card-style {
+  background: white;
+  border-radius: 18px; /* Smooth corners */
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0,0,0,0.02);
+  transition: transform 0.2s ease;
+}
+
+.card-style:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+/* Hero Section Typography */
+h1.title {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Meeting Minutes Badges */
+.badge-role {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
