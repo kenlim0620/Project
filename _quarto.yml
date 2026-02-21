@@ -28,7 +28,7 @@ website:
       - icon: github
         href: https://github.com/kenlim0620/ISSS608-Team-15-Project
       - text: "Launch App 🚀"
-        href: https://your-name.shinyapps.io/your-app/ # Link to your separate Shiny App
+        href: https://lin-xianwei.shinyapps.io/New-Shiny/ # Link to your separate Shiny App
 
 format:
   html:
