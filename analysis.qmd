@@ -1,34 +1,105 @@
 ---
-title: "Exploratory Data Analysis"
-editor: visual
+title: "Exploratory & Confirmatory Analysis"
+author: "Team 15"
+date: today
+format: 
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 2
+    code-fold: true
 execute:
   warning: false
   message: false
 ---
 
-## 1. Overview
+# Uncovering the Baseline Story
 
-We analyzed the distribution of fishing activities across the Oceanus region.
+Before building predictive models and advanced macro-visualizations, it is crucial to understand the fundamental distributions and behavioral correlations within our customer base. This phase is divided into Exploratory Data Analysis (EDA) and Confirmatory Data Analysis (CDA).
 
-## 2. Temporal Patterns
-
-The code below utilizes `ggplot2` to visualize the frequency of events over time.
+------------------------------------------------------------------------
 
 ```{r}
-#| label: fig-timeline
-#| fig-cap: "Distribution of Events over Time"
-
 library(ggplot2)
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 
-# Dummy Data (Replace with your load logic)
-data <- data.frame(
-  date = seq(as.Date("2024-01-01"), as.Date("2024-12-31"), by="day"),
-  value = rnorm(366, 50, 10)
-)
-
-ggplot(data, aes(x=date, y=value)) +
-  geom_line(color="#2780e3") +
-  theme_minimal() +
-  labs(title = "Daily Activity trends", y = "Frequency")
+# Ensure app_data.rds is in the exact same folder as this .qmd file
+df <- readRDS("app_data.rds")
 ```
+
+## 1. Demographics (EDA)
+
+Our EDA phase focuses on understanding *who* our customers are. Using `ggplot2` and `plotly` in our application, stakeholders can dynamically filter these demographic distributions by gender and customer segment.
+
+### Income and Education Distributions
+
+We visualized the distribution of customers across our four predefined income brackets.
+
+```{r}
+#| fig-align: "center"
+
+ggplot(df, aes(x = education_level, y = age, fill = education_level)) +
+  geom_boxplot(alpha = 0.7) +
+  theme_minimal() +
+  labs(title = "Age Distribution by Education Level", 
+       x = "Education Level", 
+       y = "Age") +
+  theme(legend.position = "none", 
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## 2. Behavioral Analyst (CDA)
+
+The CDA phase seeks to test hypotheses regarding how customer *behavior* impacts overall business metrics like Customer Lifetime Value (CLV) and Net Promoter Score (NPS).
+
+### 2.1 Interactive Correlation Analysis
+
+We deployed interactive scatter plots that allow users to map specific X and Y variables against each other (e.g., *Total Transactions vs. Satisfaction Score*).
+
+By overlaying a statistical trendline (using the `lm` method), stakeholders can immediately confirm or reject suspected correlations.
+
+```{r}
+#| fig-align: "center"
+
+ggplot(df, aes(x = tx_count, y = satisfaction_score)) +
+  geom_point(alpha = 0.5, color = "#2c3e50") +
+  geom_smooth(method = "lm", color = "#e74c3c", se = FALSE) +
+  theme_minimal() +
+  labs(title = "Total Transactions vs Satisfaction Score",
+       x = "Total Transaction Count",
+       y = "Satisfaction Score (1-5)")
+```
+
+### 2.2 Transaction Volume Breakdown
+
+We aggregated the total dollar volume flowing through four distinct transactional categories:
+
+1.  **Payments**
+
+2.  **Transfers**
+
+3.  **Withdrawals**
+
+4.  **Deposits**
+
+This breakdown acts as the foundational baseline that later informs the proportional weights used in our **Macro Cash Flow Sankey Diagram**.
+
+```{r}
+# Calculate the summaries using the actual columns in the dataset!
+library(dplyr)
+
+tx_sums <- df %>%
+  group_by(preferred_transaction_type) %>%
+  summarise(
+    Total_Volume = sum(total_tx_volume, na.rm = TRUE)
+  ) %>%
+  arrange(desc(Total_Volume)) # Sorts it from highest to lowest volume
+
+# Print the final data table to the webpage
+tx_sums
+```
+
+## Transition to Advanced Analytics
+
+With a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our Linear Regression Risk Simulator and Kaplan-Meier Survival curves.

@@ -5,36 +5,38 @@ page-layout: full
 
 ::::: {.grid .hero-section}
 ::: {.g-col-12 .g-col-md-6 .hero-text}
-# Democratising Data through Visual Analytics
+# Democratising FinTech Data through Visual Analytics
 
-### An interactive exploration of \[Topic Name\]
+### An interactive exploration of Customer Retention & Ecosystem Cash Flow
 
-Our project aims to uncover hidden patterns in \[Topic\] using advanced visual analytics techniques. Built for **ISSS608 Visual Analytics**, Academic Year 2025-2026.
+Our project application, **FinRetain**, aims to uncover hidden behavioral patterns, predict churn risk, and map macroeconomic fund flows using advanced visual analytics techniques. Built for **ISSS608 Visual Analytics**, Academic Year 2025-2026.
 
-[View Methodology](methodology.qmd){.btn .btn-outline-primary .btn-lg role="button"} [Launch Dashboard](https://your-shiny-app.com){.btn .btn-primary .btn-lg role="button"}
+[View Project Proposal](proposal.qmd){.btn .btn-outline-primary .btn-lg role="button"}
+
+[Launch FinRetain Dashboard](https://lin-xianwei.shinyapps.io/New-Shiny/){.btn .btn-primary .btn-lg role="button" target="_blank"}
 :::
 
 ::: {.g-col-12 .g-col-md-6}
-![](images/coast.jpg){fig-alt="Dashboard Preview"}
+![](images/Gemini_Generated_Image_ulmcemulmcemulmc.png)
 :::
 :::::
 
 :::::: {.grid .text-center .py-5}
 ::: {.g-col-12 .g-col-md-4}
-## 🧹 Data Prep
+## 🧹 Data & Demographics
 
-Rigorous cleaning and standardization of over 10,000 records to ensure accuracy.
+Rigorous cleaning and feature engineering of complex transactional records to establish baseline demographic and behavioral trends using interactive EDA.
 :::
 
 ::: {.g-col-12 .g-col-md-4}
-## 📊 EDA
+## 📈 Advanced Analytics
 
-Interactive charts and static plots discovering initial trends and outliers.
+Implementing Kaplan-Meier Survival Curves, dynamic RFM Treemaps, and massive Sankey diagrams to identify exactly when and why customers abandon the platform.
 :::
 
 ::: {.g-col-12 .g-col-md-4}
-## 🤖 Modeling
+## 🤖 Risk Simulation
 
-Advanced clustering and time-series forecasting to predict future outcomes.
+Deploying responsive linear regression models that allow stakeholders to simulate future Churn Probability and estimate Customer Lifetime Value (CLV) on the fly.
 :::
 ::::::

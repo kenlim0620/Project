@@ -1,34 +1,93 @@
 ---
-title: "Proposal"
-date: "March 2026"
+title: "Project Proposal: FinRetain Customer Visual Analytics"
 author: "Team 15"
+date: today
+format: 
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    smooth-scroll: true
+    code-fold: true
+execute: 
+  warning: false
+  message: false
 ---
 
-::: card-style
-## 1. Motivation
+## 1. Introduction and Motivation
 
-The fishing industry in Oceanus is critical for the local economy... *\[Insert your elevator pitch here\]*... However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.
+In the highly competitive financial technology (FinTech) and banking sector, customer retention is a critical driver of profitability. Acquiring a new customer is significantly more expensive than retaining an existing one. However, identifying exactly *when* and *why* a customer might abandon a financial platform (churn) remains a complex challenge.
 
-**Why Visual Analytics?** By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal.
-:::
+**FinRetain** is designed to address this challenge. It is an interactive visual analytics platform built to help financial analysts and stakeholders dynamically explore customer demographics, track financial behaviors, and proactively predict churn and Customer Lifetime Value (CLV).
 
-::: card-style
-## 2. Objectives
+## 2. Project Objectives
 
-Our project aims to build an interactive dashboard to:
+Our primary goal is to build an interactive R Shiny application that transforms raw transactional and demographic data into actionable business intelligence. Specifically, this project aims to:
 
-1.  **Characterize** the temporal patterns of fishing vessels.
-2.  **Detect** anomalies in shipping routes using trajectory analysis.
-3.  **Identify** potential collusive networks between companies.
-:::
+1\. **Explore Demographics & Behavior:** Provide interactive visual tools to understand user profiles and transactional patterns.
 
-::: card-style
+2\. **Predictive Risk Assessment:** Implement statistical models to forecast churn probability and estimate CLV for individual customers based on dynamic inputs.
+
+3\. **Advanced Segmentation (RFM):** Classify the customer base into actionable segments based on Recency, Frequency, and Monetary value.
+
+4\. **Time-to-Event Analysis:** Utilize Survival Analysis (Kaplan-Meier) to determine the exact tenure months where specific customer groups are at the highest risk of churning.
+
+5\. **Macro Cash Flow Mapping:** Visualize the holistic ecosystem of funds entering and exiting the platform using Sankey network diagrams.
+
 ## 3. Data Description
 
-We are using the VAST Challenge 2024 Dataset, consisting of:
+The dataset powering FinRetain contains simulated/historical records of customer accounts, including:
 
-| Dataset             | Description               | Size  |
-|:--------------------|:--------------------------|:------|
-| `oceanus_nodes.csv` | Company ownership details | 5MB   |
-| `shipping_logs.csv` | GPS logs of vessels       | 1.2GB |
-:::
+**Demographics:** Age, Gender, Education Level, Income Bracket.
+
+**Engagement Metrics:** App Logins, Support Tickets Logged, Satisfaction Score (1-5), Net Promoter Score (NPS).
+
+**Transactional Data:** Transaction counts, average transaction values, and aggregated volumes across various types (Deposits, Payments, Transfers, Withdrawals).
+
+**Target Variables:** Customer Tenure (months), Churn Probability, and Customer Lifetime Value (CLV).
+
+## 4. Proposed Methodology & Analytical Approach
+
+To achieve our objectives, the FinRetain platform will be segmented into six distinct analytical modules:
+
+### 4.1 Exploratory Data Analysis (EDA)
+
+Using `ggplot2` and `plotly`, we will analyze the demographic distribution of our user base, allowing filtering by Gender and Customer Segments to uncover baseline trends in Income and Education.
+
+### 4.2 Confirmatory Data Analysis (CDA)
+
+We will implement interactive scatter plots with statistical trendlines to investigate correlations between behavioral variables (e.g., App Logins vs. Satisfaction Scores) and assess the volume breakdown of transaction types.
+
+### 4.3 Churn & CLV Risk Simulator
+
+We will train multiple Linear Regression (`lm`) models to predict the probability of churn and estimate CLV. A dynamic UI simulator will allow users to adjust hypothetical customer parameters (Age, Transactions, Support Tickets) to see real-time shifts in risk metrics, alongside a `DT` datatable highlighting similar at-risk customers in the database.
+
+### 4.4 Survival Analysis
+
+Using the `survival` and `survminer` packages, we will plot Kaplan-Meier Churn Probability Curves. This time-to-event analysis will allow stakeholders to compare the survival rates of different acquisition channels and income brackets over time.
+
+### 4.5 RFM Segmentation
+
+Customers will be scored and categorized into segments (e.g., "Champions", "Loyal Customers", "Lost Risks") based on Recency, Frequency, and Monetary metrics. A `plotly` Treemap will visualize the size and average CLV of each segment.
+
+### 4.6 Macro Cash Flow (Sankey Diagram)
+
+Using the `networkD3` library, we will map the directional flow of capital. The Sankey diagram will visualize how external funds (Incoming Transfers, Direct Deposits) pool into the app wallet and disperse into out-flows (Payments, Withdrawals).
+
+## 5. Proposed Deliverables
+
+1.  **R Shiny Application:** A fully deployed, interactive web application hosted on shinyapps.io.
+2.  **Project Report/Website:** A comprehensive Quarto document detailing the technical architecture, insights discovered, and user guide.
+3.  **Source Code Repository:** A clean, well-commented GitHub repository containing the data pipeline (`app_data.rds`) and application logic (`app.R`).
+
+## 6. Project Timeline
+
+| Phase | Task | Expected Completion |
+|----------------|----------------|-----------------------------------------|
+| 1 | Data Cleaning & Pre-processing (`dplyr`, `tidyr`) | 21/02/2026 |
+| 2 | Core UI/UX Design (`bslib`) | 25/02/2026 |
+| 3 | Implementation of EDA & CDA Modules | 01/03/2026 |
+| 4 | Advanced Analytics (Survival, RFM, Sankey) | 15/03/2026 |
+| 5 | Final Testing & ShinyApps Deployment | 29/03/2026 |
+| 6 | Final Quarto Report Submission | 04/04/2026 |

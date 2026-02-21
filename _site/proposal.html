@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Team 15">
-<meta name="dcterms.date" content="2026-03-01">
+<meta name="dcterms.date" content="2026-02-21">
 
-<title>Proposal – ISSS608 Team 15 Project</title>
+<title>Project Proposal: FinRetain Customer Visual Analytics – Team 15 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9b6caadcea23633308062a900e899928.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7c8793e99a21e081e2bb8d69993efb75.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">ISSS608 Team 15 Project</span>
+    <span class="navbar-title">Team 15 Project</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-methodology">    
         <li>
-    <a class="dropdown-item" href="./data_prep.qmd">
+    <a class="dropdown-item" href="./data_prep.html">
  <span class="dropdown-text">Data Preparation</span></a>
   </li>  
         <li>
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./results.qmd"> 
+    <a class="nav-link" href="./findings.html"> 
 <span class="menu-text">Findings &amp; Discussion</span></a>
   </li>  
   <li class="nav-item">
@@ -155,9 +155,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">1. Motivation</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">2. Objectives</a></li>
-  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">3. Data Description</a></li>
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation"><span class="header-section-number">1</span> 1. Introduction and Motivation</a></li>
+  <li><a href="#project-objectives" id="toc-project-objectives" class="nav-link" data-scroll-target="#project-objectives"><span class="header-section-number">2</span> 2. Project Objectives</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="header-section-number">3</span> 3. Data Description</a></li>
+  <li><a href="#proposed-methodology-analytical-approach" id="toc-proposed-methodology-analytical-approach" class="nav-link" data-scroll-target="#proposed-methodology-analytical-approach"><span class="header-section-number">4</span> 4. Proposed Methodology &amp; Analytical Approach</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda"><span class="header-section-number">4.1</span> 4.1 Exploratory Data Analysis (EDA)</a></li>
+  <li><a href="#confirmatory-data-analysis-cda" id="toc-confirmatory-data-analysis-cda" class="nav-link" data-scroll-target="#confirmatory-data-analysis-cda"><span class="header-section-number">4.2</span> 4.2 Confirmatory Data Analysis (CDA)</a></li>
+  <li><a href="#churn-clv-risk-simulator" id="toc-churn-clv-risk-simulator" class="nav-link" data-scroll-target="#churn-clv-risk-simulator"><span class="header-section-number">4.3</span> 4.3 Churn &amp; CLV Risk Simulator</a></li>
+  <li><a href="#survival-analysis" id="toc-survival-analysis" class="nav-link" data-scroll-target="#survival-analysis"><span class="header-section-number">4.4</span> 4.4 Survival Analysis</a></li>
+  <li><a href="#rfm-segmentation" id="toc-rfm-segmentation" class="nav-link" data-scroll-target="#rfm-segmentation"><span class="header-section-number">4.5</span> 4.5 RFM Segmentation</a></li>
+  <li><a href="#macro-cash-flow-sankey-diagram" id="toc-macro-cash-flow-sankey-diagram" class="nav-link" data-scroll-target="#macro-cash-flow-sankey-diagram"><span class="header-section-number">4.6</span> 4.6 Macro Cash Flow (Sankey Diagram)</a></li>
+  </ul></li>
+  <li><a href="#proposed-deliverables" id="toc-proposed-deliverables" class="nav-link" data-scroll-target="#proposed-deliverables"><span class="header-section-number">5</span> 5. Proposed Deliverables</a></li>
+  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline"><span class="header-section-number">6</span> 6. Project Timeline</a></li>
   </ul>
 </nav>
     </div>
@@ -166,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Proposal</h1>
+<h1 class="title">Project Proposal: FinRetain Customer Visual Analytics</h1>
 </div>
 
 
@@ -183,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 1, 2026</p>
+      <p class="date">February 21, 2026</p>
     </div>
   </div>
   
@@ -195,47 +206,115 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="motivation" class="level2 card-style">
-<h2 class="anchored" data-anchor-id="motivation">1. Motivation</h2>
-<p>The fishing industry in Oceanus is critical for the local economy… <em>[Insert your elevator pitch here]</em>… However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.</p>
-<p><strong>Why Visual Analytics?</strong> By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal.</p>
+<section id="introduction-and-motivation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction-and-motivation"><span class="header-section-number">1</span> 1. Introduction and Motivation</h2>
+<p>In the highly competitive financial technology (FinTech) and banking sector, customer retention is a critical driver of profitability. Acquiring a new customer is significantly more expensive than retaining an existing one. However, identifying exactly <em>when</em> and <em>why</em> a customer might abandon a financial platform (churn) remains a complex challenge.</p>
+<p><strong>FinRetain</strong> is designed to address this challenge. It is an interactive visual analytics platform built to help financial analysts and stakeholders dynamically explore customer demographics, track financial behaviors, and proactively predict churn and Customer Lifetime Value (CLV).</p>
 </section>
-<section id="objectives" class="level2 card-style">
-<h2 class="anchored" data-anchor-id="objectives">2. Objectives</h2>
-<p>Our project aims to build an interactive dashboard to:</p>
+<section id="project-objectives" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="project-objectives"><span class="header-section-number">2</span> 2. Project Objectives</h2>
+<p>Our primary goal is to build an interactive R Shiny application that transforms raw transactional and demographic data into actionable business intelligence. Specifically, this project aims to:</p>
+<p>1. <strong>Explore Demographics &amp; Behavior:</strong> Provide interactive visual tools to understand user profiles and transactional patterns.</p>
+<p>2. <strong>Predictive Risk Assessment:</strong> Implement statistical models to forecast churn probability and estimate CLV for individual customers based on dynamic inputs.</p>
+<p>3. <strong>Advanced Segmentation (RFM):</strong> Classify the customer base into actionable segments based on Recency, Frequency, and Monetary value.</p>
+<p>4. <strong>Time-to-Event Analysis:</strong> Utilize Survival Analysis (Kaplan-Meier) to determine the exact tenure months where specific customer groups are at the highest risk of churning.</p>
+<p>5. <strong>Macro Cash Flow Mapping:</strong> Visualize the holistic ecosystem of funds entering and exiting the platform using Sankey network diagrams.</p>
+</section>
+<section id="data-description" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="data-description"><span class="header-section-number">3</span> 3. Data Description</h2>
+<p>The dataset powering FinRetain contains simulated/historical records of customer accounts, including:</p>
+<p><strong>Demographics:</strong> Age, Gender, Education Level, Income Bracket.</p>
+<p><strong>Engagement Metrics:</strong> App Logins, Support Tickets Logged, Satisfaction Score (1-5), Net Promoter Score (NPS).</p>
+<p><strong>Transactional Data:</strong> Transaction counts, average transaction values, and aggregated volumes across various types (Deposits, Payments, Transfers, Withdrawals).</p>
+<p><strong>Target Variables:</strong> Customer Tenure (months), Churn Probability, and Customer Lifetime Value (CLV).</p>
+</section>
+<section id="proposed-methodology-analytical-approach" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="proposed-methodology-analytical-approach"><span class="header-section-number">4</span> 4. Proposed Methodology &amp; Analytical Approach</h2>
+<p>To achieve our objectives, the FinRetain platform will be segmented into six distinct analytical modules:</p>
+<section id="exploratory-data-analysis-eda" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="exploratory-data-analysis-eda"><span class="header-section-number">4.1</span> 4.1 Exploratory Data Analysis (EDA)</h3>
+<p>Using <code>ggplot2</code> and <code>plotly</code>, we will analyze the demographic distribution of our user base, allowing filtering by Gender and Customer Segments to uncover baseline trends in Income and Education.</p>
+</section>
+<section id="confirmatory-data-analysis-cda" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="confirmatory-data-analysis-cda"><span class="header-section-number">4.2</span> 4.2 Confirmatory Data Analysis (CDA)</h3>
+<p>We will implement interactive scatter plots with statistical trendlines to investigate correlations between behavioral variables (e.g., App Logins vs.&nbsp;Satisfaction Scores) and assess the volume breakdown of transaction types.</p>
+</section>
+<section id="churn-clv-risk-simulator" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="churn-clv-risk-simulator"><span class="header-section-number">4.3</span> 4.3 Churn &amp; CLV Risk Simulator</h3>
+<p>We will train multiple Linear Regression (<code>lm</code>) models to predict the probability of churn and estimate CLV. A dynamic UI simulator will allow users to adjust hypothetical customer parameters (Age, Transactions, Support Tickets) to see real-time shifts in risk metrics, alongside a <code>DT</code> datatable highlighting similar at-risk customers in the database.</p>
+</section>
+<section id="survival-analysis" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="survival-analysis"><span class="header-section-number">4.4</span> 4.4 Survival Analysis</h3>
+<p>Using the <code>survival</code> and <code>survminer</code> packages, we will plot Kaplan-Meier Churn Probability Curves. This time-to-event analysis will allow stakeholders to compare the survival rates of different acquisition channels and income brackets over time.</p>
+</section>
+<section id="rfm-segmentation" class="level3" data-number="4.5">
+<h3 data-number="4.5" class="anchored" data-anchor-id="rfm-segmentation"><span class="header-section-number">4.5</span> 4.5 RFM Segmentation</h3>
+<p>Customers will be scored and categorized into segments (e.g., “Champions”, “Loyal Customers”, “Lost Risks”) based on Recency, Frequency, and Monetary metrics. A <code>plotly</code> Treemap will visualize the size and average CLV of each segment.</p>
+</section>
+<section id="macro-cash-flow-sankey-diagram" class="level3" data-number="4.6">
+<h3 data-number="4.6" class="anchored" data-anchor-id="macro-cash-flow-sankey-diagram"><span class="header-section-number">4.6</span> 4.6 Macro Cash Flow (Sankey Diagram)</h3>
+<p>Using the <code>networkD3</code> library, we will map the directional flow of capital. The Sankey diagram will visualize how external funds (Incoming Transfers, Direct Deposits) pool into the app wallet and disperse into out-flows (Payments, Withdrawals).</p>
+</section>
+</section>
+<section id="proposed-deliverables" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="proposed-deliverables"><span class="header-section-number">5</span> 5. Proposed Deliverables</h2>
 <ol type="1">
-<li><strong>Characterize</strong> the temporal patterns of fishing vessels.</li>
-<li><strong>Detect</strong> anomalies in shipping routes using trajectory analysis.</li>
-<li><strong>Identify</strong> potential collusive networks between companies.</li>
+<li><strong>R Shiny Application:</strong> A fully deployed, interactive web application hosted on shinyapps.io.</li>
+<li><strong>Project Report/Website:</strong> A comprehensive Quarto document detailing the technical architecture, insights discovered, and user guide.</li>
+<li><strong>Source Code Repository:</strong> A clean, well-commented GitHub repository containing the data pipeline (<code>app_data.rds</code>) and application logic (<code>app.R</code>).</li>
 </ol>
 </section>
-<section id="data-description" class="level2 card-style">
-<h2 class="anchored" data-anchor-id="data-description">3. Data Description</h2>
-<p>We are using the VAST Challenge 2024 Dataset, consisting of:</p>
+<section id="project-timeline" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="project-timeline"><span class="header-section-number">6</span> 6. Project Timeline</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 56%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Dataset</th>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Size</th>
+<th>Phase</th>
+<th>Task</th>
+<th>Expected Completion</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><code>oceanus_nodes.csv</code></td>
-<td style="text-align: left;">Company ownership details</td>
-<td style="text-align: left;">5MB</td>
+<td>1</td>
+<td>Data Cleaning &amp; Pre-processing (<code>dplyr</code>, <code>tidyr</code>)</td>
+<td>21/02/2026</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>shipping_logs.csv</code></td>
-<td style="text-align: left;">GPS logs of vessels</td>
-<td style="text-align: left;">1.2GB</td>
+<td>2</td>
+<td>Core UI/UX Design (<code>bslib</code>)</td>
+<td>25/02/2026</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Implementation of EDA &amp; CDA Modules</td>
+<td>01/03/2026</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Advanced Analytics (Survival, RFM, Sankey)</td>
+<td>15/03/2026</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Final Testing &amp; ShinyApps Deployment</td>
+<td>29/03/2026</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Final Quarto Report Submission</td>
+<td>04/04/2026</td>
 </tr>
 </tbody>
 </table>
+
+
 </section>
-
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

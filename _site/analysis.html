@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Team 15">
+<meta name="dcterms.date" content="2026-02-21">
 
-<title>Exploratory Data Analysis – ISSS608 Team 15 Project</title>
+<title>Exploratory &amp; Confirmatory Analysis – Team 15 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9b6caadcea23633308062a900e899928.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7c8793e99a21e081e2bb8d69993efb75.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">ISSS608 Team 15 Project</span>
+    <span class="navbar-title">Team 15 Project</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -144,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-methodology">    
         <li>
-    <a class="dropdown-item" href="./data_prep.qmd">
+    <a class="dropdown-item" href="./data_prep.html">
  <span class="dropdown-text">Data Preparation</span></a>
   </li>  
         <li>
@@ -154,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./results.qmd"> 
+    <a class="nav-link" href="./findings.html"> 
 <span class="menu-text">Findings &amp; Discussion</span></a>
   </li>  
   <li class="nav-item">
@@ -187,9 +189,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">1. Overview</a></li>
-  <li><a href="#temporal-patterns" id="toc-temporal-patterns" class="nav-link" data-scroll-target="#temporal-patterns">2. Temporal Patterns</a></li>
+  <ul class="collapse">
+  <li><a href="#uncovering-the-baseline-story" id="toc-uncovering-the-baseline-story" class="nav-link active" data-scroll-target="#uncovering-the-baseline-story">Uncovering the Baseline Story</a>
+  <ul class="collapse">
+  <li><a href="#demographics-eda" id="toc-demographics-eda" class="nav-link" data-scroll-target="#demographics-eda">1. Demographics (EDA)</a></li>
+  <li><a href="#behavioral-analyst-cda" id="toc-behavioral-analyst-cda" class="nav-link" data-scroll-target="#behavioral-analyst-cda">2. Behavioral Analyst (CDA)</a></li>
+  <li><a href="#transition-to-advanced-analytics" id="toc-transition-to-advanced-analytics" class="nav-link" data-scroll-target="#transition-to-advanced-analytics">Transition to Advanced Analytics</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -198,14 +204,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exploratory Data Analysis</h1>
+<h1 class="title">Exploratory &amp; Confirmatory Analysis</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Team 15 </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 21, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -215,42 +233,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">1. Overview</h2>
-<p>We analyzed the distribution of fishing activities across the Oceanus region.</p>
-</section>
-<section id="temporal-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="temporal-patterns">2. Temporal Patterns</h2>
-<p>The code below utilizes <code>ggplot2</code> to visualize the frequency of events over time.</p>
+<section id="uncovering-the-baseline-story" class="level1">
+<h1>Uncovering the Baseline Story</h1>
+<p>Before building predictive models and advanced macro-visualizations, it is crucial to understand the fundamental distributions and behavioral correlations within our customer base. This phase is divided into Exploratory Data Analysis (EDA) and Confirmatory Data Analysis (CDA).</p>
+<hr>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy Data (Replace with your load logic)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">date =</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2024-01-01"</span>), <span class="fu">as.Date</span>(<span class="st">"2024-12-31"</span>), <span class="at">by=</span><span class="st">"day"</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="dv">366</span>, <span class="dv">50</span>, <span class="dv">10</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>value)) <span class="sc">+</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">"#2780e3"</span>) <span class="sc">+</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Daily Activity trends"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-timeline" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="analysis_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" width="672">
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure app_data.rds is in the exact same folder as this .qmd file</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"app_data.rds"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Distribution of Events over Time
-</figcaption>
+<section id="demographics-eda" class="level2">
+<h2 class="anchored" data-anchor-id="demographics-eda">1. Demographics (EDA)</h2>
+<p>Our EDA phase focuses on understanding <em>who</em> our customers are. Using <code>ggplot2</code> and <code>plotly</code> in our application, stakeholders can dynamically filter these demographic distributions by gender and customer segment.</p>
+<section id="income-and-education-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="income-and-education-distributions">Income and Education Distributions</h3>
+<p>We visualized the distribution of customers across our four predefined income brackets.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> education_level, <span class="at">y =</span> age, <span class="at">fill =</span> education_level)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Age Distribution by Education Level"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Education Level"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Age"</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="behavioral-analyst-cda" class="level2">
+<h2 class="anchored" data-anchor-id="behavioral-analyst-cda">2. Behavioral Analyst (CDA)</h2>
+<p>The CDA phase seeks to test hypotheses regarding how customer <em>behavior</em> impacts overall business metrics like Customer Lifetime Value (CLV) and Net Promoter Score (NPS).</p>
+<section id="interactive-correlation-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-correlation-analysis">2.1 Interactive Correlation Analysis</h3>
+<p>We deployed interactive scatter plots that allow users to map specific X and Y variables against each other (e.g., <em>Total Transactions vs.&nbsp;Satisfaction Score</em>).</p>
+<p>By overlaying a statistical trendline (using the <code>lm</code> method), stakeholders can immediately confirm or reject suspected correlations.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> tx_count, <span class="at">y =</span> satisfaction_score)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"#2c3e50"</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"#e74c3c"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Total Transactions vs Satisfaction Score"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Total Transaction Count"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Satisfaction Score (1-5)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="transaction-volume-breakdown" class="level3">
+<h3 class="anchored" data-anchor-id="transaction-volume-breakdown">2.2 Transaction Volume Breakdown</h3>
+<p>We aggregated the total dollar volume flowing through four distinct transactional categories:</p>
+<ol type="1">
+<li><p><strong>Payments</strong></p></li>
+<li><p><strong>Transfers</strong></p></li>
+<li><p><strong>Withdrawals</strong></p></li>
+<li><p><strong>Deposits</strong></p></li>
+</ol>
+<p>This breakdown acts as the foundational baseline that later informs the proportional weights used in our <strong>Macro Cash Flow Sankey Diagram</strong>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the summaries using the actual columns in the dataset!</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tx_sums <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(preferred_transaction_type) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total_Volume =</span> <span class="fu">sum</span>(total_tx_volume, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Total_Volume)) <span class="co"># Sorts it from highest to lowest volume</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the final data table to the webpage</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>tx_sums</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  preferred_transaction_type Total_Volume
+  &lt;chr&gt;                             &lt;dbl&gt;
+1 Transfer                        1.01e13
+2 Payment                         2.04e12
+3 Withdrawal                      3.34e11
+4 Deposit                         6.76e10</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="transition-to-advanced-analytics" class="level2">
+<h2 class="anchored" data-anchor-id="transition-to-advanced-analytics">Transition to Advanced Analytics</h2>
+<p>With a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our Linear Regression Risk Simulator and Kaplan-Meier Survival curves.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

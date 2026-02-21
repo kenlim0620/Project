@@ -3,10 +3,8 @@ project:
   output-dir: _site # Standard for GitHub Pages hosting
 
 website:
-  title: "ISSS608 Team 15 Project"
+  title: "Team 15 Project"
   navbar:
-    background: "#ffffff" # White navbar for clean look
-    foreground: "#333333"
     left:
       - href: index.qmd
         text: "Home"
@@ -20,7 +18,7 @@ website:
             text: "Data Preparation"
           - href: analysis.qmd
             text: "Exploratory Analysis"
-      - href: results.qmd
+      - href: findings.qmd
         text: "Findings & Discussion"
       - href: poster.qmd
         text: "Poster"

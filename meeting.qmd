@@ -1,49 +1,107 @@
 ---
-title: "Meeting Minutes"
+title: "Project Minutes of Meeting"
+author: "Team 15"
+date: today
 format: 
   html:
+    theme: flatly
     toc: true
+    toc-depth: 2
 ---
 
-::: callout-note
-## Overview
+# Project: FinRetain Customer Visual Analytics
 
-This page logs the weekly progress, decisions, and action items of the project team.
-:::
+Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.
 
-## Phase 1: Planning
+------------------------------------------------------------------------
 
-::: card-style
-### 🗓️ Week 1: Project Kick-off
+## Meeting 1: Project Kickoff & Data Strategy
 
-**Date:** 14 January 2026\
-**Attendees:** All Members
+**Date:** \[21/02/2026\]\
+**Time:** 16:00 - 18:00\
+**Location:** Campus Library\
+**Attendees:** LIN XIANWEI, SU HUI
 
-**Key Discussions:** 1. Brainstormed 3 potential topics: Illegal Fishing (Oceanus), Weather patterns, and Tourism. 2. Voted to proceed with **\[Your Chosen Topic\]** due to data availability.
+### 🎯 Agenda
 
-**Action Items:** - \[x\] Create GitHub Repository (Assigned to: Member A) - \[x\] Draft Project Proposal (Assigned to: Member B)
-:::
+1.  Define project scope and core analytical modules.
+2.  Discuss data handling for the large `transactions_data` file.
+3.  Assign initial roles.
 
-::: card-style
-### 🗓️ Week 2: Proposal Review
+### 🗣️ Key Discussions & Decisions
 
-**Date:** 21 January 2026\
-**Attendees:** Member A, Member C\
-**Absent:** Member B (Medical Leave)
+-   **Data Pipeline:** The team identified that the transaction dataset is too large to process live on a free `shinyapps.io` server.
+-   ***Decision:*** We will build an offline data pipeline to aggregate the transaction types and join them with the customer demographics, saving the output as a highly compressed `app_data.rds` file for lightning-fast app loading.
+-   **Core Modules:** Agreed to build an EDA Demographic tab, a CDA Behavioral tab, and a Churn/CLV Risk Simulator using Linear Regression models.
 
-**Key Discussions:** 1. Refined the "Motivation" section of the proposal. 2. Initial data cleaning revealed missing values in the 2024 dataset.
+### ✅ Action Items
 
-**Decisions:** - We will focus on the years 2015-2023 to avoid data gaps. - The dashboard will use a "Scrollytelling" layout.
-:::
+| Task | Assignee | Deadline | Status |
+|-----------------|--------------------|--------------------|-----------------|
+| Create offline data wrangling script (`dplyr`, `tidyr`) | LIN XIANWEI | 21/02/2026 | Completed |
+| Build base UI shell using `bslib` | LIN XIANWEI, SU HUI | 25/02/2026 | Completed |
+| Train `lm` predictive models for Simulator | LIN XIANWEI, SU HUI | 27/02/2026 | Completed |
 
-## Phase 2: Development
+------------------------------------------------------------------------
 
-::: card-style
-### 🗓️ Week 5: Mid-Term Review
+## Meeting 2: Advanced Analytics Integration
 
-**Date:** 10 February 2026
+**Date:** 01/03/2026\
+**Time:** 15:00 - 18:00\
+**Location:** Via Zoom\
+**Attendees:** LIN XIANWEI, SU HUI
 
-**Key Discussions:** 1. Prototype of the Shiny App is lagging when loading map data. 2. **Solution:** We will switch from `leaflet` to `tmap` for faster rendering or pre-process the shapefiles.
+### 🎯 Agenda
 
-**Action Items:** - \[ \] Optimize spatial data files (Member C) - \[ \] Draft Methodology Section for website (Member A)
-:::
+1.  Review the base Shiny app.
+2.  Brainstorm unique insights to secure high marks for novelty and methodology.
+
+### 🗣️ Key Discussions & Decisions
+
+-   **Novelty Requirement:** Standard bar charts are insufficient for top marks. We need advanced financial analytics.
+-   ***Decision 1 (Survival Analysis):*** We will implement Kaplan-Meier survival curves using the `survival` package to predict the exact tenure month customers are most likely to churn.
+-   ***Decision 2 (RFM Segmentation):*** We will calculate Recency, Frequency, and Monetary scores on the fly and visualize them using a `plotly` Treemap.
+-   ***Decision 3 (Cash Flow):*** We will implement a `networkD3` Sankey diagram to visualize macro fund flows.
+
+### ✅ Action Items
+
+| Task | Assignee | Deadline | Status |
+|-----------------|--------------------|--------------------|-----------------|
+| Write dynamic RFM calculation code in `app.R` | LIN XIANWEI, SU HUI | 03/03/2026 | Completed |
+| Build Sankey Diagram logic | LIN XIANWEI, SU HUI | 09/03/2026 | Completed |
+| Implement Kaplan-Meier plots | LIN XIANWEI, SU HUI | 14/03/2026 | Completed |
+
+------------------------------------------------------------------------
+
+## Meeting 3: Deployment & Bug Squashing
+
+**Date:** 15/03/2026\
+**Time:** \[Insert Time\]\
+**Location:** Via Zoom\
+**Attendees:** LIN XIANWEI, SU HUI
+
+### 🎯 Agenda
+
+1.  Deploy the unified `app.R` to shinyapps.io.
+2.  Troubleshoot server crashes and UI bugs.
+
+### 🗣️ Key Discussions & Decisions
+
+-   **Issue 1: Server Crash on Deployment (Exit Status 1).** The server crashed because it was looking for the raw CSV files which were excluded from the deployment folder.
+    -   ***Fix:*** Stripped the offline data pipeline from the deployment version of `app.R` and loaded `app_data.rds` directly.
+-   **Issue 2: Survival Plot Error (`object of type 'symbol' is not subsettable`).** The `ggsurvplot` function failed in the reactive Shiny environment.
+    -   ***Fix:*** Replaced `survfit()` with `surv_fit()` and explicitly wrapped the plot in a `print()` command.
+-   **Issue 3: Sankey Diagram Visual Imbalance.** The left side of the Sankey diagram was visually squashed because incoming funds were much smaller than outgoing volume.
+    -   ***Fix:*** Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts (`$X,XXX,XXX`).
+
+### ✅ Action Items
+
+| Task | Assignee | Deadline | Status |
+|----|----|----|----|
+| Final code cleanup and commenting | LIN XIANWEI, SU HUI | 29/03/2026 | Completed |
+| Deploy stable version to Shinyapps.io | LIN XIANWEI, SU HUI | 20/03/2026 | Completed |
+| Write project proposal and Quarto site | LIN XIANWEI, SU HUI | 15/03/2026 | Completed |
+
+------------------------------------------------------------------------
+
+*Minutes prepared by: TEAM 15 - LIN XIANWEI, SU HUI*

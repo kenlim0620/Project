@@ -2,72 +2,135 @@
   {
     "objectID": "proposal.html",
     "href": "proposal.html",
-    "title": "Proposal",
+    "title": "Project Proposal: FinRetain Customer Visual Analytics",
     "section": "",
-    "text": "The fishing industry in Oceanus is critical for the local economy… [Insert your elevator pitch here]… However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.\nWhy Visual Analytics? By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal."
+    "text": "In the highly competitive financial technology (FinTech) and banking sector, customer retention is a critical driver of profitability. Acquiring a new customer is significantly more expensive than retaining an existing one. However, identifying exactly when and why a customer might abandon a financial platform (churn) remains a complex challenge.\nFinRetain is designed to address this challenge. It is an interactive visual analytics platform built to help financial analysts and stakeholders dynamically explore customer demographics, track financial behaviors, and proactively predict churn and Customer Lifetime Value (CLV)."
   },
   {
-    "objectID": "proposal.html#motivation",
-    "href": "proposal.html#motivation",
-    "title": "Proposal",
+    "objectID": "proposal.html#introduction-and-motivation",
+    "href": "proposal.html#introduction-and-motivation",
+    "title": "Project Proposal: FinRetain Customer Visual Analytics",
     "section": "",
-    "text": "The fishing industry in Oceanus is critical for the local economy… [Insert your elevator pitch here]… However, illegal fishing threatens this ecosystem. Current methods of detection are manual and slow.\nWhy Visual Analytics? By visualizing shipping networks and proximity data, we can detect anomalies that raw spreadsheets cannot reveal."
+    "text": "In the highly competitive financial technology (FinTech) and banking sector, customer retention is a critical driver of profitability. Acquiring a new customer is significantly more expensive than retaining an existing one. However, identifying exactly when and why a customer might abandon a financial platform (churn) remains a complex challenge.\nFinRetain is designed to address this challenge. It is an interactive visual analytics platform built to help financial analysts and stakeholders dynamically explore customer demographics, track financial behaviors, and proactively predict churn and Customer Lifetime Value (CLV)."
   },
   {
-    "objectID": "proposal.html#objectives",
-    "href": "proposal.html#objectives",
-    "title": "Proposal",
-    "section": "2. Objectives",
-    "text": "2. Objectives\nOur project aims to build an interactive dashboard to:\n\nCharacterize the temporal patterns of fishing vessels.\nDetect anomalies in shipping routes using trajectory analysis.\nIdentify potential collusive networks between companies."
+    "objectID": "proposal.html#project-objectives",
+    "href": "proposal.html#project-objectives",
+    "title": "Project Proposal: FinRetain Customer Visual Analytics",
+    "section": "2 2. Project Objectives",
+    "text": "2 2. Project Objectives\nOur primary goal is to build an interactive R Shiny application that transforms raw transactional and demographic data into actionable business intelligence. Specifically, this project aims to:\n1. Explore Demographics & Behavior: Provide interactive visual tools to understand user profiles and transactional patterns.\n2. Predictive Risk Assessment: Implement statistical models to forecast churn probability and estimate CLV for individual customers based on dynamic inputs.\n3. Advanced Segmentation (RFM): Classify the customer base into actionable segments based on Recency, Frequency, and Monetary value.\n4. Time-to-Event Analysis: Utilize Survival Analysis (Kaplan-Meier) to determine the exact tenure months where specific customer groups are at the highest risk of churning.\n5. Macro Cash Flow Mapping: Visualize the holistic ecosystem of funds entering and exiting the platform using Sankey network diagrams."
   },
   {
     "objectID": "proposal.html#data-description",
     "href": "proposal.html#data-description",
-    "title": "Proposal",
-    "section": "3. Data Description",
-    "text": "3. Data Description\nWe are using the VAST Challenge 2024 Dataset, consisting of:\n\n\n\nDataset\nDescription\nSize\n\n\n\n\noceanus_nodes.csv\nCompany ownership details\n5MB\n\n\nshipping_logs.csv\nGPS logs of vessels\n1.2GB"
+    "title": "Project Proposal: FinRetain Customer Visual Analytics",
+    "section": "3 3. Data Description",
+    "text": "3 3. Data Description\nThe dataset powering FinRetain contains simulated/historical records of customer accounts, including:\nDemographics: Age, Gender, Education Level, Income Bracket.\nEngagement Metrics: App Logins, Support Tickets Logged, Satisfaction Score (1-5), Net Promoter Score (NPS).\nTransactional Data: Transaction counts, average transaction values, and aggregated volumes across various types (Deposits, Payments, Transfers, Withdrawals).\nTarget Variables: Customer Tenure (months), Churn Probability, and Customer Lifetime Value (CLV)."
+  },
+  {
+    "objectID": "proposal.html#proposed-methodology-analytical-approach",
+    "href": "proposal.html#proposed-methodology-analytical-approach",
+    "title": "Project Proposal: FinRetain Customer Visual Analytics",
+    "section": "4 4. Proposed Methodology & Analytical Approach",
+    "text": "4 4. Proposed Methodology & Analytical Approach\nTo achieve our objectives, the FinRetain platform will be segmented into six distinct analytical modules:\n\n4.1 4.1 Exploratory Data Analysis (EDA)\nUsing ggplot2 and plotly, we will analyze the demographic distribution of our user base, allowing filtering by Gender and Customer Segments to uncover baseline trends in Income and Education.\n\n\n4.2 4.2 Confirmatory Data Analysis (CDA)\nWe will implement interactive scatter plots with statistical trendlines to investigate correlations between behavioral variables (e.g., App Logins vs. Satisfaction Scores) and assess the volume breakdown of transaction types.\n\n\n4.3 4.3 Churn & CLV Risk Simulator\nWe will train multiple Linear Regression (lm) models to predict the probability of churn and estimate CLV. A dynamic UI simulator will allow users to adjust hypothetical customer parameters (Age, Transactions, Support Tickets) to see real-time shifts in risk metrics, alongside a DT datatable highlighting similar at-risk customers in the database.\n\n\n4.4 4.4 Survival Analysis\nUsing the survival and survminer packages, we will plot Kaplan-Meier Churn Probability Curves. This time-to-event analysis will allow stakeholders to compare the survival rates of different acquisition channels and income brackets over time.\n\n\n4.5 4.5 RFM Segmentation\nCustomers will be scored and categorized into segments (e.g., “Champions”, “Loyal Customers”, “Lost Risks”) based on Recency, Frequency, and Monetary metrics. A plotly Treemap will visualize the size and average CLV of each segment.\n\n\n4.6 4.6 Macro Cash Flow (Sankey Diagram)\nUsing the networkD3 library, we will map the directional flow of capital. The Sankey diagram will visualize how external funds (Incoming Transfers, Direct Deposits) pool into the app wallet and disperse into out-flows (Payments, Withdrawals)."
+  },
+  {
+    "objectID": "proposal.html#proposed-deliverables",
+    "href": "proposal.html#proposed-deliverables",
+    "title": "Project Proposal: FinRetain Customer Visual Analytics",
+    "section": "5 5. Proposed Deliverables",
+    "text": "5 5. Proposed Deliverables\n\nR Shiny Application: A fully deployed, interactive web application hosted on shinyapps.io.\nProject Report/Website: A comprehensive Quarto document detailing the technical architecture, insights discovered, and user guide.\nSource Code Repository: A clean, well-commented GitHub repository containing the data pipeline (app_data.rds) and application logic (app.R)."
+  },
+  {
+    "objectID": "proposal.html#project-timeline",
+    "href": "proposal.html#project-timeline",
+    "title": "Project Proposal: FinRetain Customer Visual Analytics",
+    "section": "6 6. Project Timeline",
+    "text": "6 6. Project Timeline\n\n\n\n\n\n\n\n\nPhase\nTask\nExpected Completion\n\n\n\n\n1\nData Cleaning & Pre-processing (dplyr, tidyr)\n21/02/2026\n\n\n2\nCore UI/UX Design (bslib)\n25/02/2026\n\n\n3\nImplementation of EDA & CDA Modules\n01/03/2026\n\n\n4\nAdvanced Analytics (Survival, RFM, Sankey)\n15/03/2026\n\n\n5\nFinal Testing & ShinyApps Deployment\n29/03/2026\n\n\n6\nFinal Quarto Report Submission\n04/04/2026"
   },
   {
     "objectID": "meeting.html",
     "href": "meeting.html",
-    "title": "Meeting Minutes",
+    "title": "Project Minutes of Meeting",
     "section": "",
-    "text": "NoteOverview\n\n\n\nThis page logs the weekly progress, decisions, and action items of the project team."
+    "text": "Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.\n\n\n\nDate: [21/02/2026]\nTime: 16:00 - 18:00\nLocation: Campus Library\nAttendees: LIN XIANWEI, SU HUI\n\n\n\nDefine project scope and core analytical modules.\nDiscuss data handling for the large transactions_data file.\nAssign initial roles.\n\n\n\n\n\nData Pipeline: The team identified that the transaction dataset is too large to process live on a free shinyapps.io server.\nDecision: We will build an offline data pipeline to aggregate the transaction types and join them with the customer demographics, saving the output as a highly compressed app_data.rds file for lightning-fast app loading.\nCore Modules: Agreed to build an EDA Demographic tab, a CDA Behavioral tab, and a Churn/CLV Risk Simulator using Linear Regression models.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTask\nAssignee\nDeadline\nStatus\n\n\n\n\nCreate offline data wrangling script (dplyr, tidyr)\nLIN XIANWEI\n21/02/2026\nCompleted\n\n\nBuild base UI shell using bslib\nLIN XIANWEI, SU HUI\n25/02/2026\nCompleted\n\n\nTrain lm predictive models for Simulator\nLIN XIANWEI, SU HUI\n27/02/2026\nCompleted\n\n\n\n\n\n\n\n\nDate: 01/03/2026\nTime: 15:00 - 18:00\nLocation: Via Zoom\nAttendees: LIN XIANWEI, SU HUI\n\n\n\nReview the base Shiny app.\nBrainstorm unique insights to secure high marks for novelty and methodology.\n\n\n\n\n\nNovelty Requirement: Standard bar charts are insufficient for top marks. We need advanced financial analytics.\nDecision 1 (Survival Analysis): We will implement Kaplan-Meier survival curves using the survival package to predict the exact tenure month customers are most likely to churn.\nDecision 2 (RFM Segmentation): We will calculate Recency, Frequency, and Monetary scores on the fly and visualize them using a plotly Treemap.\nDecision 3 (Cash Flow): We will implement a networkD3 Sankey diagram to visualize macro fund flows.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTask\nAssignee\nDeadline\nStatus\n\n\n\n\nWrite dynamic RFM calculation code in app.R\nLIN XIANWEI, SU HUI\n03/03/2026\nCompleted\n\n\nBuild Sankey Diagram logic\nLIN XIANWEI, SU HUI\n09/03/2026\nCompleted\n\n\nImplement Kaplan-Meier plots\nLIN XIANWEI, SU HUI\n14/03/2026\nCompleted\n\n\n\n\n\n\n\n\nDate: 15/03/2026\nTime: [Insert Time]\nLocation: Via Zoom\nAttendees: LIN XIANWEI, SU HUI\n\n\n\nDeploy the unified app.R to shinyapps.io.\nTroubleshoot server crashes and UI bugs.\n\n\n\n\n\nIssue 1: Server Crash on Deployment (Exit Status 1). The server crashed because it was looking for the raw CSV files which were excluded from the deployment folder.\n\nFix: Stripped the offline data pipeline from the deployment version of app.R and loaded app_data.rds directly.\n\nIssue 2: Survival Plot Error (object of type 'symbol' is not subsettable). The ggsurvplot function failed in the reactive Shiny environment.\n\nFix: Replaced survfit() with surv_fit() and explicitly wrapped the plot in a print() command.\n\nIssue 3: Sankey Diagram Visual Imbalance. The left side of the Sankey diagram was visually squashed because incoming funds were much smaller than outgoing volume.\n\nFix: Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts ($X,XXX,XXX).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTask\nAssignee\nDeadline\nStatus\n\n\n\n\nFinal code cleanup and commenting\nLIN XIANWEI, SU HUI\n29/03/2026\nCompleted\n\n\nDeploy stable version to Shinyapps.io\nLIN XIANWEI, SU HUI\n20/03/2026\nCompleted\n\n\nWrite project proposal and Quarto site\nLIN XIANWEI, SU HUI\n15/03/2026\nCompleted\n\n\n\n\nMinutes prepared by: TEAM 15 - LIN XIANWEI, SU HUI"
   },
   {
-    "objectID": "meeting.html#phase-1-planning",
-    "href": "meeting.html#phase-1-planning",
-    "title": "Meeting Minutes",
-    "section": "Phase 1: Planning",
-    "text": "Phase 1: Planning\n\n🗓️ Week 1: Project Kick-off\nDate: 14 January 2026\nAttendees: All Members\nKey Discussions: 1. Brainstormed 3 potential topics: Illegal Fishing (Oceanus), Weather patterns, and Tourism. 2. Voted to proceed with [Your Chosen Topic] due to data availability.\nAction Items: - [x] Create GitHub Repository (Assigned to: Member A) - [x] Draft Project Proposal (Assigned to: Member B)\n\n\n🗓️ Week 2: Proposal Review\nDate: 21 January 2026\nAttendees: Member A, Member C\nAbsent: Member B (Medical Leave)\nKey Discussions: 1. Refined the “Motivation” section of the proposal. 2. Initial data cleaning revealed missing values in the 2024 dataset.\nDecisions: - We will focus on the years 2015-2023 to avoid data gaps. - The dashboard will use a “Scrollytelling” layout."
+    "objectID": "meeting.html#meeting-1-project-kickoff-data-strategy",
+    "href": "meeting.html#meeting-1-project-kickoff-data-strategy",
+    "title": "Project Minutes of Meeting",
+    "section": "",
+    "text": "Date: [21/02/2026]\nTime: 16:00 - 18:00\nLocation: Campus Library\nAttendees: LIN XIANWEI, SU HUI\n\n\n\nDefine project scope and core analytical modules.\nDiscuss data handling for the large transactions_data file.\nAssign initial roles.\n\n\n\n\n\nData Pipeline: The team identified that the transaction dataset is too large to process live on a free shinyapps.io server.\nDecision: We will build an offline data pipeline to aggregate the transaction types and join them with the customer demographics, saving the output as a highly compressed app_data.rds file for lightning-fast app loading.\nCore Modules: Agreed to build an EDA Demographic tab, a CDA Behavioral tab, and a Churn/CLV Risk Simulator using Linear Regression models.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTask\nAssignee\nDeadline\nStatus\n\n\n\n\nCreate offline data wrangling script (dplyr, tidyr)\nLIN XIANWEI\n21/02/2026\nCompleted\n\n\nBuild base UI shell using bslib\nLIN XIANWEI, SU HUI\n25/02/2026\nCompleted\n\n\nTrain lm predictive models for Simulator\nLIN XIANWEI, SU HUI\n27/02/2026\nCompleted"
   },
   {
-    "objectID": "meeting.html#phase-2-development",
-    "href": "meeting.html#phase-2-development",
-    "title": "Meeting Minutes",
-    "section": "Phase 2: Development",
-    "text": "Phase 2: Development\n\n🗓️ Week 5: Mid-Term Review\nDate: 10 February 2026\nKey Discussions: 1. Prototype of the Shiny App is lagging when loading map data. 2. Solution: We will switch from leaflet to tmap for faster rendering or pre-process the shapefiles.\nAction Items: - [ ] Optimize spatial data files (Member C) - [ ] Draft Methodology Section for website (Member A)"
+    "objectID": "meeting.html#meeting-2-advanced-analytics-integration",
+    "href": "meeting.html#meeting-2-advanced-analytics-integration",
+    "title": "Project Minutes of Meeting",
+    "section": "",
+    "text": "Date: 01/03/2026\nTime: 15:00 - 18:00\nLocation: Via Zoom\nAttendees: LIN XIANWEI, SU HUI\n\n\n\nReview the base Shiny app.\nBrainstorm unique insights to secure high marks for novelty and methodology.\n\n\n\n\n\nNovelty Requirement: Standard bar charts are insufficient for top marks. We need advanced financial analytics.\nDecision 1 (Survival Analysis): We will implement Kaplan-Meier survival curves using the survival package to predict the exact tenure month customers are most likely to churn.\nDecision 2 (RFM Segmentation): We will calculate Recency, Frequency, and Monetary scores on the fly and visualize them using a plotly Treemap.\nDecision 3 (Cash Flow): We will implement a networkD3 Sankey diagram to visualize macro fund flows.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTask\nAssignee\nDeadline\nStatus\n\n\n\n\nWrite dynamic RFM calculation code in app.R\nLIN XIANWEI, SU HUI\n03/03/2026\nCompleted\n\n\nBuild Sankey Diagram logic\nLIN XIANWEI, SU HUI\n09/03/2026\nCompleted\n\n\nImplement Kaplan-Meier plots\nLIN XIANWEI, SU HUI\n14/03/2026\nCompleted"
+  },
+  {
+    "objectID": "meeting.html#meeting-3-deployment-bug-squashing",
+    "href": "meeting.html#meeting-3-deployment-bug-squashing",
+    "title": "Project Minutes of Meeting",
+    "section": "",
+    "text": "Date: 15/03/2026\nTime: [Insert Time]\nLocation: Via Zoom\nAttendees: LIN XIANWEI, SU HUI\n\n\n\nDeploy the unified app.R to shinyapps.io.\nTroubleshoot server crashes and UI bugs.\n\n\n\n\n\nIssue 1: Server Crash on Deployment (Exit Status 1). The server crashed because it was looking for the raw CSV files which were excluded from the deployment folder.\n\nFix: Stripped the offline data pipeline from the deployment version of app.R and loaded app_data.rds directly.\n\nIssue 2: Survival Plot Error (object of type 'symbol' is not subsettable). The ggsurvplot function failed in the reactive Shiny environment.\n\nFix: Replaced survfit() with surv_fit() and explicitly wrapped the plot in a print() command.\n\nIssue 3: Sankey Diagram Visual Imbalance. The left side of the Sankey diagram was visually squashed because incoming funds were much smaller than outgoing volume.\n\nFix: Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts ($X,XXX,XXX).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTask\nAssignee\nDeadline\nStatus\n\n\n\n\nFinal code cleanup and commenting\nLIN XIANWEI, SU HUI\n29/03/2026\nCompleted\n\n\nDeploy stable version to Shinyapps.io\nLIN XIANWEI, SU HUI\n20/03/2026\nCompleted\n\n\nWrite project proposal and Quarto site\nLIN XIANWEI, SU HUI\n15/03/2026\nCompleted\n\n\n\n\nMinutes prepared by: TEAM 15 - LIN XIANWEI, SU HUI"
+  },
+  {
+    "objectID": "findings.html",
+    "href": "findings.html",
+    "title": "Findings, Results & Discussion",
+    "section": "",
+    "text": "The FinRetain interactive application has enabled us to move beyond static data and dynamically explore the lifecycle of our financial user base. By integrating exploratory visualizations with advanced predictive analytics, we uncovered critical insights into customer behavior, retention bottlenecks, and macroeconomic flow within the platform.\n\n\n\n\n\nOur initial exploration using the demographic and behavioral modules revealed several foundational truths about our user base:\n\nIncome vs. App Engagement: Customers in the “High” and “Very High” income brackets exhibit significantly higher transaction frequencies, but they are also more sensitive to friction, showing a steep drop in Satisfaction Score when Support Tickets exceed a certain threshold.\nVolume Distribution: The transaction breakdown indicates that Direct Deposits are the primary driver of incoming liquidity, while Payments (rather than Cash Withdrawals) constitute the highest volume of outgoing capital.\n\n\n\n\nUsing the Kaplan-Meier Churn Probability Curve, we plotted the exact tenure months where different customer segments are statistically most likely to abandon the app.\n\nThe Critical Drop-Off Window: We observed a steep drop in the survival probability curve between Month 3 and Month 6 across all acquisition channels. If a customer survives past Month 6, their probability of long-term retention increases exponentially.\nChannel Variance: Customers acquired via specific marketing channels showed inherently different survival trajectories, suggesting that the quality of onboarding greatly impacts long-term loyalty.\n\n\n\n\nThe dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:\n\nChampions & Loyalists: While making up a smaller physical percentage of the user base, the dark color mapping (indicating high Customer Lifetime Value) confirmed that this group drives the vast majority of future projected revenue.\nAt-Risk Segments: A surprisingly large block of users fell into the “Recent Users” with low Frequency scores. These users are at immediate risk of churning if not engaged quickly.\n\n\n\n\nThe network analysis of capital flow mapped exactly how money enters and leaves the FinRetain ecosystem.\n\nCapital Retention: By balancing the visual nodes (100% Inflow vs. 100% Outflow), we identified the exact proportion of incoming funds that are immediately drained via “Cash Withdrawals” versus funds that are kept within the ecosystem for “App Payments.”\nLiquidity Insights: The thickest flow lines originate from Direct Deposits, proving that convincing a user to set up direct payroll deposit is the single most valuable action the app can incentivize.\n\n\n\n\n\n\nBased on the quantitative results derived from the FinRetain platform, our team proposes the following strategic business interventions:\n\n\nSince the Survival Analysis proved that Months 3 through 6 are the most dangerous for customer churn, the marketing team should automate targeted retention campaigns (e.g., fee waivers, premium feature trials) specifically triggered at the 90-day tenure mark.\n\n\n\nThe RFM Treemap highlighted a massive block of low-frequency “Recent Users.” We recommend using the Risk Simulator module to test how artificially increasing their app logins or transaction counts (via gamification or rewards) impacts their projected Customer Lifetime Value (CLV).\n\n\n\nThe Sankey Cash Flow diagram proved that Direct Deposits feed the most capital into the app ecosystem. Business development should focus on campaigns that reward users for switching their primary salary deposit to FinRetain, as this ensures long-term liquidity and highly active transactional behavior.\n\n\n\n\n\nThe FinRetain Visual Analytics platform successfully bridges the gap between raw data and executive decision-making. By leveraging R Shiny, survminer, and networkD3, we have provided stakeholders with an interactive environment to not only view historical data but to simulate and predict future customer behavior."
+  },
+  {
+    "objectID": "findings.html#key-findings-results",
+    "href": "findings.html#key-findings-results",
+    "title": "Findings, Results & Discussion",
+    "section": "",
+    "text": "Our initial exploration using the demographic and behavioral modules revealed several foundational truths about our user base:\n\nIncome vs. App Engagement: Customers in the “High” and “Very High” income brackets exhibit significantly higher transaction frequencies, but they are also more sensitive to friction, showing a steep drop in Satisfaction Score when Support Tickets exceed a certain threshold.\nVolume Distribution: The transaction breakdown indicates that Direct Deposits are the primary driver of incoming liquidity, while Payments (rather than Cash Withdrawals) constitute the highest volume of outgoing capital.\n\n\n\n\nUsing the Kaplan-Meier Churn Probability Curve, we plotted the exact tenure months where different customer segments are statistically most likely to abandon the app.\n\nThe Critical Drop-Off Window: We observed a steep drop in the survival probability curve between Month 3 and Month 6 across all acquisition channels. If a customer survives past Month 6, their probability of long-term retention increases exponentially.\nChannel Variance: Customers acquired via specific marketing channels showed inherently different survival trajectories, suggesting that the quality of onboarding greatly impacts long-term loyalty.\n\n\n\n\nThe dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:\n\nChampions & Loyalists: While making up a smaller physical percentage of the user base, the dark color mapping (indicating high Customer Lifetime Value) confirmed that this group drives the vast majority of future projected revenue.\nAt-Risk Segments: A surprisingly large block of users fell into the “Recent Users” with low Frequency scores. These users are at immediate risk of churning if not engaged quickly.\n\n\n\n\nThe network analysis of capital flow mapped exactly how money enters and leaves the FinRetain ecosystem.\n\nCapital Retention: By balancing the visual nodes (100% Inflow vs. 100% Outflow), we identified the exact proportion of incoming funds that are immediately drained via “Cash Withdrawals” versus funds that are kept within the ecosystem for “App Payments.”\nLiquidity Insights: The thickest flow lines originate from Direct Deposits, proving that convincing a user to set up direct payroll deposit is the single most valuable action the app can incentivize."
+  },
+  {
+    "objectID": "findings.html#strategic-discussions-recommendations",
+    "href": "findings.html#strategic-discussions-recommendations",
+    "title": "Findings, Results & Discussion",
+    "section": "",
+    "text": "Based on the quantitative results derived from the FinRetain platform, our team proposes the following strategic business interventions:\n\n\nSince the Survival Analysis proved that Months 3 through 6 are the most dangerous for customer churn, the marketing team should automate targeted retention campaigns (e.g., fee waivers, premium feature trials) specifically triggered at the 90-day tenure mark.\n\n\n\nThe RFM Treemap highlighted a massive block of low-frequency “Recent Users.” We recommend using the Risk Simulator module to test how artificially increasing their app logins or transaction counts (via gamification or rewards) impacts their projected Customer Lifetime Value (CLV).\n\n\n\nThe Sankey Cash Flow diagram proved that Direct Deposits feed the most capital into the app ecosystem. Business development should focus on campaigns that reward users for switching their primary salary deposit to FinRetain, as this ensures long-term liquidity and highly active transactional behavior."
+  },
+  {
+    "objectID": "findings.html#conclusion",
+    "href": "findings.html#conclusion",
+    "title": "Findings, Results & Discussion",
+    "section": "",
+    "text": "The FinRetain Visual Analytics platform successfully bridges the gap between raw data and executive decision-making. By leveraging R Shiny, survminer, and networkD3, we have provided stakeholders with an interactive environment to not only view historical data but to simulate and predict future customer behavior."
   },
   {
     "objectID": "analysis.html",
     "href": "analysis.html",
-    "title": "Exploratory Data Analysis",
+    "title": "Exploratory & Confirmatory Analysis",
     "section": "",
-    "text": "We analyzed the distribution of fishing activities across the Oceanus region."
+    "text": "Before building predictive models and advanced macro-visualizations, it is crucial to understand the fundamental distributions and behavioral correlations within our customer base. This phase is divided into Exploratory Data Analysis (EDA) and Confirmatory Data Analysis (CDA).\n\n\n\nCode\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\n\n# Ensure app_data.rds is in the exact same folder as this .qmd file\ndf &lt;- readRDS(\"app_data.rds\")\n\n\n\n\nOur EDA phase focuses on understanding who our customers are. Using ggplot2 and plotly in our application, stakeholders can dynamically filter these demographic distributions by gender and customer segment.\n\n\nWe visualized the distribution of customers across our four predefined income brackets.\n\n\nCode\nggplot(df, aes(x = education_level, y = age, fill = education_level)) +\n  geom_boxplot(alpha = 0.7) +\n  theme_minimal() +\n  labs(title = \"Age Distribution by Education Level\", \n       x = \"Education Level\", \n       y = \"Age\") +\n  theme(legend.position = \"none\", \n        axis.text.x = element_text(angle = 45, hjust = 1))\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe CDA phase seeks to test hypotheses regarding how customer behavior impacts overall business metrics like Customer Lifetime Value (CLV) and Net Promoter Score (NPS).\n\n\nWe deployed interactive scatter plots that allow users to map specific X and Y variables against each other (e.g., Total Transactions vs. Satisfaction Score).\nBy overlaying a statistical trendline (using the lm method), stakeholders can immediately confirm or reject suspected correlations.\n\n\nCode\nggplot(df, aes(x = tx_count, y = satisfaction_score)) +\n  geom_point(alpha = 0.5, color = \"#2c3e50\") +\n  geom_smooth(method = \"lm\", color = \"#e74c3c\", se = FALSE) +\n  theme_minimal() +\n  labs(title = \"Total Transactions vs Satisfaction Score\",\n       x = \"Total Transaction Count\",\n       y = \"Satisfaction Score (1-5)\")\n\n\n\n\n\n\n\n\n\n\n\n\nWe aggregated the total dollar volume flowing through four distinct transactional categories:\n\nPayments\nTransfers\nWithdrawals\nDeposits\n\nThis breakdown acts as the foundational baseline that later informs the proportional weights used in our Macro Cash Flow Sankey Diagram.\n\n\nCode\n# Calculate the summaries using the actual columns in the dataset!\nlibrary(dplyr)\n\ntx_sums &lt;- df %&gt;%\n  group_by(preferred_transaction_type) %&gt;%\n  summarise(\n    Total_Volume = sum(total_tx_volume, na.rm = TRUE)\n  ) %&gt;%\n  arrange(desc(Total_Volume)) # Sorts it from highest to lowest volume\n\n# Print the final data table to the webpage\ntx_sums\n\n\n# A tibble: 4 × 2\n  preferred_transaction_type Total_Volume\n  &lt;chr&gt;                             &lt;dbl&gt;\n1 Transfer                        1.01e13\n2 Payment                         2.04e12\n3 Withdrawal                      3.34e11\n4 Deposit                         6.76e10\n\n\n\n\n\n\nWith a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our Linear Regression Risk Simulator and Kaplan-Meier Survival curves."
   },
   {
-    "objectID": "analysis.html#overview",
-    "href": "analysis.html#overview",
-    "title": "Exploratory Data Analysis",
+    "objectID": "analysis.html#demographics-eda",
+    "href": "analysis.html#demographics-eda",
+    "title": "Exploratory & Confirmatory Analysis",
     "section": "",
-    "text": "We analyzed the distribution of fishing activities across the Oceanus region."
+    "text": "Our EDA phase focuses on understanding who our customers are. Using ggplot2 and plotly in our application, stakeholders can dynamically filter these demographic distributions by gender and customer segment.\n\n\nWe visualized the distribution of customers across our four predefined income brackets.\n\n\nCode\nggplot(df, aes(x = education_level, y = age, fill = education_level)) +\n  geom_boxplot(alpha = 0.7) +\n  theme_minimal() +\n  labs(title = \"Age Distribution by Education Level\", \n       x = \"Education Level\", \n       y = \"Age\") +\n  theme(legend.position = \"none\", \n        axis.text.x = element_text(angle = 45, hjust = 1))"
   },
   {
-    "objectID": "analysis.html#temporal-patterns",
-    "href": "analysis.html#temporal-patterns",
-    "title": "Exploratory Data Analysis",
-    "section": "2. Temporal Patterns",
-    "text": "2. Temporal Patterns\nThe code below utilizes ggplot2 to visualize the frequency of events over time.\n\nlibrary(ggplot2)\nlibrary(tidyverse)\n\n# Dummy Data (Replace with your load logic)\ndata &lt;- data.frame(\n  date = seq(as.Date(\"2024-01-01\"), as.Date(\"2024-12-31\"), by=\"day\"),\n  value = rnorm(366, 50, 10)\n)\n\nggplot(data, aes(x=date, y=value)) +\n  geom_line(color=\"#2780e3\") +\n  theme_minimal() +\n  labs(title = \"Daily Activity trends\", y = \"Frequency\")\n\n\n\n\n\n\n\nFigure 1: Distribution of Events over Time"
+    "objectID": "analysis.html#behavioral-analyst-cda",
+    "href": "analysis.html#behavioral-analyst-cda",
+    "title": "Exploratory & Confirmatory Analysis",
+    "section": "",
+    "text": "The CDA phase seeks to test hypotheses regarding how customer behavior impacts overall business metrics like Customer Lifetime Value (CLV) and Net Promoter Score (NPS).\n\n\nWe deployed interactive scatter plots that allow users to map specific X and Y variables against each other (e.g., Total Transactions vs. Satisfaction Score).\nBy overlaying a statistical trendline (using the lm method), stakeholders can immediately confirm or reject suspected correlations.\n\n\nCode\nggplot(df, aes(x = tx_count, y = satisfaction_score)) +\n  geom_point(alpha = 0.5, color = \"#2c3e50\") +\n  geom_smooth(method = \"lm\", color = \"#e74c3c\", se = FALSE) +\n  theme_minimal() +\n  labs(title = \"Total Transactions vs Satisfaction Score\",\n       x = \"Total Transaction Count\",\n       y = \"Satisfaction Score (1-5)\")\n\n\n\n\n\n\n\n\n\n\n\n\nWe aggregated the total dollar volume flowing through four distinct transactional categories:\n\nPayments\nTransfers\nWithdrawals\nDeposits\n\nThis breakdown acts as the foundational baseline that later informs the proportional weights used in our Macro Cash Flow Sankey Diagram.\n\n\nCode\n# Calculate the summaries using the actual columns in the dataset!\nlibrary(dplyr)\n\ntx_sums &lt;- df %&gt;%\n  group_by(preferred_transaction_type) %&gt;%\n  summarise(\n    Total_Volume = sum(total_tx_volume, na.rm = TRUE)\n  ) %&gt;%\n  arrange(desc(Total_Volume)) # Sorts it from highest to lowest volume\n\n# Print the final data table to the webpage\ntx_sums\n\n\n# A tibble: 4 × 2\n  preferred_transaction_type Total_Volume\n  &lt;chr&gt;                             &lt;dbl&gt;\n1 Transfer                        1.01e13\n2 Payment                         2.04e12\n3 Withdrawal                      3.34e11\n4 Deposit                         6.76e10"
+  },
+  {
+    "objectID": "analysis.html#transition-to-advanced-analytics",
+    "href": "analysis.html#transition-to-advanced-analytics",
+    "title": "Exploratory & Confirmatory Analysis",
+    "section": "",
+    "text": "With a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our Linear Regression Risk Simulator and Kaplan-Meier Survival curves."
   },
   {
     "objectID": "about.html",
@@ -77,38 +140,59 @@
     "text": "About this site"
   },
   {
+    "objectID": "data_prep.html",
+    "href": "data_prep.html",
+    "title": "Data Preparation & Feature Engineering",
+    "section": "",
+    "text": "To ensure the FinRetain Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data, performs advanced feature engineering, and exports a highly optimized .rds file. Below is the step-by-step methodology used to prepare the dataset.\n\n\n\nWe began by loading the raw simulated customer dataset. Categorical variables with intrinsic hierarchy needed to be properly factored so that visual plots (like bar charts) would display in a logical order, rather than alphabetically.\n\n\nCode\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nCode\nlibrary(tidyr)\n\n# Load raw dataset\ndf &lt;- read.csv(\"customer_data.csv\")\n\n# Factor ordinal variables for logical plotting\ndf$income_bracket &lt;- factor(df$income_bracket, \n                            levels = c(\"Low\", \"Medium\", \"High\", \"Very High\"))\n\n\n\n\n\nTo power our Advanced Analytics modules (Survival Analysis and RFM Treemap), we needed to dynamically generate new variables from the raw data.\n\n\nThe Kaplan-Meier survival curves require a definitive “event” (1 for occurred, 0 for censored). Since our raw data provided a continuous churn_probability, we established a strict threshold: customers with a probability &gt; 60% were flagged as a definitive churn event.\n\n\nCode\ndf &lt;- df %&gt;%\n  mutate(\n    churn_event = ifelse(churn_probability &gt; 0.6, 1, 0)\n  )\n\n\n\n\n\nWe calculated RFM scores by dividing the customer base into tertiles (using ntile()) across three key dimensions:\n\nRecency (R): Based on customer_tenure (proxy for how long they’ve stayed active).\nFrequency (F): Based on tx_count (Total Transactions).\nMonetary (M): Based on total_tx_volume (Total volume moved).\n\n\n\nCode\ndf &lt;- df %&gt;%\n  mutate(\n    R_Score = ntile(customer_tenure, 3),\n    F_Score = ntile(tx_count, 3),\n    M_Score = ntile(total_tx_volume, 3)\n  )\n\n\n\n\n\nUsing the generated 1-3 scores, we applied conditional logic to segment the user base into actionable business categories:\n\n\nCode\ndf &lt;- df %&gt;%\n  mutate(\n    RFM_Segment = case_when(\n      R_Score == 3 & F_Score == 3 & M_Score == 3 ~ \"Champions\",\n      R_Score &lt;= 2 & F_Score == 3 & M_Score == 3 ~ \"Loyal Customers\",\n      R_Score == 3 & F_Score &lt;= 2 ~ \"Recent Users\",\n      R_Score == 1 & F_Score == 1 & M_Score == 1 ~ \"Lost/Churned Risks\",\n      TRUE ~ \"Average Users\"\n    )\n  )\n\n\n\n\n\n\nOnce the dataset was cleaned and enriched with our engineered features, we saved it as an R Data Serialization (.rds) file. This format preserves all R-specific attributes (like our factored income levels) and loads significantly faster in the Shiny Server environment than a standard CSV.\n\n\nCode\n# Export the final optimized dataset for Shiny\nsaveRDS(df, \"app_data.rds\")"
+  },
+  {
+    "objectID": "data_prep.html#step-1-data-cleaning-formatting",
+    "href": "data_prep.html#step-1-data-cleaning-formatting",
+    "title": "Data Preparation & Feature Engineering",
+    "section": "",
+    "text": "We began by loading the raw simulated customer dataset. Categorical variables with intrinsic hierarchy needed to be properly factored so that visual plots (like bar charts) would display in a logical order, rather than alphabetically.\n\n\nCode\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nCode\nlibrary(tidyr)\n\n# Load raw dataset\ndf &lt;- read.csv(\"customer_data.csv\")\n\n# Factor ordinal variables for logical plotting\ndf$income_bracket &lt;- factor(df$income_bracket, \n                            levels = c(\"Low\", \"Medium\", \"High\", \"Very High\"))"
+  },
+  {
+    "objectID": "data_prep.html#step-2-feature-engineering-advanced-metrics",
+    "href": "data_prep.html#step-2-feature-engineering-advanced-metrics",
+    "title": "Data Preparation & Feature Engineering",
+    "section": "",
+    "text": "To power our Advanced Analytics modules (Survival Analysis and RFM Treemap), we needed to dynamically generate new variables from the raw data.\n\n\nThe Kaplan-Meier survival curves require a definitive “event” (1 for occurred, 0 for censored). Since our raw data provided a continuous churn_probability, we established a strict threshold: customers with a probability &gt; 60% were flagged as a definitive churn event.\n\n\nCode\ndf &lt;- df %&gt;%\n  mutate(\n    churn_event = ifelse(churn_probability &gt; 0.6, 1, 0)\n  )\n\n\n\n\n\nWe calculated RFM scores by dividing the customer base into tertiles (using ntile()) across three key dimensions:\n\nRecency (R): Based on customer_tenure (proxy for how long they’ve stayed active).\nFrequency (F): Based on tx_count (Total Transactions).\nMonetary (M): Based on total_tx_volume (Total volume moved).\n\n\n\nCode\ndf &lt;- df %&gt;%\n  mutate(\n    R_Score = ntile(customer_tenure, 3),\n    F_Score = ntile(tx_count, 3),\n    M_Score = ntile(total_tx_volume, 3)\n  )\n\n\n\n\n\nUsing the generated 1-3 scores, we applied conditional logic to segment the user base into actionable business categories:\n\n\nCode\ndf &lt;- df %&gt;%\n  mutate(\n    RFM_Segment = case_when(\n      R_Score == 3 & F_Score == 3 & M_Score == 3 ~ \"Champions\",\n      R_Score &lt;= 2 & F_Score == 3 & M_Score == 3 ~ \"Loyal Customers\",\n      R_Score == 3 & F_Score &lt;= 2 ~ \"Recent Users\",\n      R_Score == 1 & F_Score == 1 & M_Score == 1 ~ \"Lost/Churned Risks\",\n      TRUE ~ \"Average Users\"\n    )\n  )"
+  },
+  {
+    "objectID": "data_prep.html#step-3-exporting-for-production",
+    "href": "data_prep.html#step-3-exporting-for-production",
+    "title": "Data Preparation & Feature Engineering",
+    "section": "",
+    "text": "Once the dataset was cleaned and enriched with our engineered features, we saved it as an R Data Serialization (.rds) file. This format preserves all R-specific attributes (like our factored income levels) and loads significantly faster in the Shiny Server environment than a standard CSV.\n\n\nCode\n# Export the final optimized dataset for Shiny\nsaveRDS(df, \"app_data.rds\")"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Democratising Data through Visual Analytics",
+    "title": "Democratising FinTech Data through Visual Analytics",
     "section": "",
-    "text": "Our project aims to uncover hidden patterns in [Topic] using advanced visual analytics techniques. Built for ISSS608 Visual Analytics, Academic Year 2025-2026.\nView Methodology Launch Dashboard"
+    "text": "Our project, FinRetain, aims to uncover hidden behavioral patterns, predict churn risk, and map macroeconomic fund flows using advanced visual analytics techniques. Built for ISSS608 Visual Analytics, Academic Year 2025-2026.\nView Project Proposal\nLaunch FinRetain Dashboard"
   },
   {
-    "objectID": "index.html#data-prep",
-    "href": "index.html#data-prep",
-    "title": "Democratising Data through Visual Analytics",
-    "section": "🧹 Data Prep",
-    "text": "🧹 Data Prep\nRigorous cleaning and standardization of over 10,000 records to ensure accuracy."
+    "objectID": "index.html#data-demographics",
+    "href": "index.html#data-demographics",
+    "title": "Democratising FinTech Data through Visual Analytics",
+    "section": "🧹 Data & Demographics",
+    "text": "🧹 Data & Demographics\nRigorous cleaning and feature engineering of complex transactional records to establish baseline demographic and behavioral trends using interactive EDA."
   },
   {
-    "objectID": "index.html#eda",
-    "href": "index.html#eda",
-    "title": "Democratising Data through Visual Analytics",
-    "section": "📊 EDA",
-    "text": "📊 EDA\nInteractive charts and static plots discovering initial trends and outliers."
+    "objectID": "index.html#advanced-analytics",
+    "href": "index.html#advanced-analytics",
+    "title": "Democratising FinTech Data through Visual Analytics",
+    "section": "📈 Advanced Analytics",
+    "text": "📈 Advanced Analytics\nImplementing Kaplan-Meier Survival Curves, dynamic RFM Treemaps, and massive Sankey diagrams to identify exactly when and why customers abandon the platform."
   },
   {
-    "objectID": "index.html#modeling",
-    "href": "index.html#modeling",
-    "title": "Democratising Data through Visual Analytics",
-    "section": "🤖 Modeling",
-    "text": "🤖 Modeling\nAdvanced clustering and time-series forecasting to predict future outcomes."
-  },
-  {
-    "objectID": "poster.html#meeting-minutes",
-    "href": "poster.html#meeting-minutes",
-    "title": "Project Deliverables - Poster",
-    "section": "Meeting Minutes",
-    "text": "Meeting Minutes\n\nWeek 1: Brainstorming and Topic Selection (View PDF)\nWeek 4: Data Cleaning Validation (View PDF)"
+    "objectID": "index.html#risk-simulation",
+    "href": "index.html#risk-simulation",
+    "title": "Democratising FinTech Data through Visual Analytics",
+    "section": "🤖 Risk Simulation",
+    "text": "🤖 Risk Simulation\nDeploying responsive linear regression models that allow stakeholders to simulate future Churn Probability and estimate Customer Lifetime Value (CLV) on the fly."
   }
 ]

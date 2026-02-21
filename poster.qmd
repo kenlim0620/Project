@@ -4,14 +4,3 @@ editor: visual
 ---
 
 ## Project Poster
-
-::: column-page
-<iframe src="assets/poster.pdf" width="100%" height="600px" style="border: none;">
-
-</iframe>
-:::
-
-## Meeting Minutes
-
--   **Week 1**: Brainstorming and Topic Selection ([View PDF](assets/mins_01.pdf))
--   **Week 4**: Data Cleaning Validation ([View PDF](assets/mins_02.pdf))
