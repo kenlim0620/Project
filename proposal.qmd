@@ -84,7 +84,7 @@ Using the `networkD3` library, we will map the directional flow of capital. The 
 ## 6. Project Timeline
 
 | Phase | Task | Expected Completion |
-|----------------|----------------|-----------------------------------------|
+|----|----|----|
 | 1 | Data Cleaning & Pre-processing (`dplyr`, `tidyr`) | 21/02/2026 |
 | 2 | Core UI/UX Design (`bslib`) | 25/02/2026 |
 | 3 | Implementation of EDA & CDA Modules | 01/03/2026 |

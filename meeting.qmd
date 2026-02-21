@@ -9,7 +9,7 @@ format:
     toc-depth: 2
 ---
 
-# Project: FinRetain Customer Visual Analytics
+# Project Timeline
 
 Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.
 
@@ -17,7 +17,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 
 ## Meeting 1: Project Kickoff & Data Strategy
 
-**Date:** \[21/02/2026\]\
+**Date:** 21/02/2026\
 **Time:** 16:00 - 18:00\
 **Location:** Campus Library\
 **Attendees:** LIN XIANWEI, SU HUI
@@ -37,7 +37,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 ### ✅ Action Items
 
 | Task | Assignee | Deadline | Status |
-|-----------------|--------------------|--------------------|-----------------|
+|------------------|-------------------|-------------------|------------------|
 | Create offline data wrangling script (`dplyr`, `tidyr`) | LIN XIANWEI | 21/02/2026 | Completed |
 | Build base UI shell using `bslib` | LIN XIANWEI, SU HUI | 25/02/2026 | Completed |
 | Train `lm` predictive models for Simulator | LIN XIANWEI, SU HUI | 27/02/2026 | Completed |
@@ -66,7 +66,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 ### ✅ Action Items
 
 | Task | Assignee | Deadline | Status |
-|-----------------|--------------------|--------------------|-----------------|
+|------------------|-------------------|-------------------|------------------|
 | Write dynamic RFM calculation code in `app.R` | LIN XIANWEI, SU HUI | 03/03/2026 | Completed |
 | Build Sankey Diagram logic | LIN XIANWEI, SU HUI | 09/03/2026 | Completed |
 | Implement Kaplan-Meier plots | LIN XIANWEI, SU HUI | 14/03/2026 | Completed |
@@ -76,7 +76,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 ## Meeting 3: Deployment & Bug Squashing
 
 **Date:** 15/03/2026\
-**Time:** \[Insert Time\]\
+**Time:** 14:00 - 17:00\
 **Location:** Via Zoom\
 **Attendees:** LIN XIANWEI, SU HUI
 
@@ -97,7 +97,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 ### ✅ Action Items
 
 | Task | Assignee | Deadline | Status |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Final code cleanup and commenting | LIN XIANWEI, SU HUI | 29/03/2026 | Completed |
 | Deploy stable version to Shinyapps.io | LIN XIANWEI, SU HUI | 20/03/2026 | Completed |
 | Write project proposal and Quarto site | LIN XIANWEI, SU HUI | 15/03/2026 | Completed |

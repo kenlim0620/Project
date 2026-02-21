@@ -22,6 +22,8 @@ website:
         text: "Findings & Discussion"
       - href: poster.qmd
         text: "Poster"
+      - href: user-guide.qmd
+        text: "User Guide"
     right:
       - icon: github
         href: https://github.com/kenlim0620/ISSS608-Team-15-Project

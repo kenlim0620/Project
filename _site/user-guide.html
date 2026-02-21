@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Team 15">
-<meta name="dcterms.date" content="2026-02-22">
 
-<title>Project Minutes of Meeting – Team 15 Project</title>
+<title>User Guide – Team 15 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7c8793e99a21e081e2bb8d69993efb75.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-60d4398d82fec002ccec76571ed06d15.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./meeting.html" aria-current="page"> 
+    <a class="nav-link" href="./meeting.html"> 
 <span class="menu-text">Minutes of Meeting</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -129,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Poster</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./user-guide.html"> 
+    <a class="nav-link active" href="./user-guide.html" aria-current="page"> 
 <span class="menu-text">User Guide</span></a>
   </li>  
 </ul>
@@ -158,13 +156,8 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul class="collapse">
-  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link active" data-scroll-target="#project-timeline">Project Timeline</a>
-  <ul class="collapse">
-  <li><a href="#meeting-1-project-kickoff-data-strategy" id="toc-meeting-1-project-kickoff-data-strategy" class="nav-link" data-scroll-target="#meeting-1-project-kickoff-data-strategy">Meeting 1: Project Kickoff &amp; Data Strategy</a></li>
-  <li><a href="#meeting-2-advanced-analytics-integration" id="toc-meeting-2-advanced-analytics-integration" class="nav-link" data-scroll-target="#meeting-2-advanced-analytics-integration">Meeting 2: Advanced Analytics Integration</a></li>
-  <li><a href="#meeting-3-deployment-bug-squashing" id="toc-meeting-3-deployment-bug-squashing" class="nav-link" data-scroll-target="#meeting-3-deployment-bug-squashing">Meeting 3: Deployment &amp; Bug Squashing</a></li>
-  </ul></li>
+  <ul>
+  <li><a href="#this-is-su-hui-part" id="toc-this-is-su-hui-part" class="nav-link active" data-scroll-target="#this-is-su-hui-part">This is SU HUI part</a></li>
   </ul>
 </nav>
     </div>
@@ -173,26 +166,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Minutes of Meeting</h1>
+<h1 class="title">User Guide</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Team 15 </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 22, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -202,210 +183,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="project-timeline" class="level1">
-<h1>Project Timeline</h1>
-<p>Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.</p>
-<hr>
-<section id="meeting-1-project-kickoff-data-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-1-project-kickoff-data-strategy">Meeting 1: Project Kickoff &amp; Data Strategy</h2>
-<p><strong>Date:</strong> 21/02/2026<br>
-<strong>Time:</strong> 16:00 - 18:00<br>
-<strong>Location:</strong> Campus Library<br>
-<strong>Attendees:</strong> LIN XIANWEI, SU HUI</p>
-<section id="agenda" class="level3">
-<h3 class="anchored" data-anchor-id="agenda">🎯 Agenda</h3>
-<ol type="1">
-<li>Define project scope and core analytical modules.</li>
-<li>Discuss data handling for the large <code>transactions_data</code> file.</li>
-<li>Assign initial roles.</li>
-</ol>
-</section>
-<section id="key-discussions-decisions" class="level3">
-<h3 class="anchored" data-anchor-id="key-discussions-decisions">🗣️ Key Discussions &amp; Decisions</h3>
-<ul>
-<li><strong>Data Pipeline:</strong> The team identified that the transaction dataset is too large to process live on a free <code>shinyapps.io</code> server.</li>
-<li><strong><em>Decision:</em></strong> We will build an offline data pipeline to aggregate the transaction types and join them with the customer demographics, saving the output as a highly compressed <code>app_data.rds</code> file for lightning-fast app loading.</li>
-<li><strong>Core Modules:</strong> Agreed to build an EDA Demographic tab, a CDA Behavioral tab, and a Churn/CLV Risk Simulator using Linear Regression models.</li>
-</ul>
-</section>
-<section id="action-items" class="level3">
-<h3 class="anchored" data-anchor-id="action-items">✅ Action Items</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 24%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Task</th>
-<th>Assignee</th>
-<th>Deadline</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Create offline data wrangling script (<code>dplyr</code>, <code>tidyr</code>)</td>
-<td>LIN XIANWEI</td>
-<td>21/02/2026</td>
-<td>Completed</td>
-</tr>
-<tr class="even">
-<td>Build base UI shell using <code>bslib</code></td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>25/02/2026</td>
-<td>Completed</td>
-</tr>
-<tr class="odd">
-<td>Train <code>lm</code> predictive models for Simulator</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>27/02/2026</td>
-<td>Completed</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-</section>
-<section id="meeting-2-advanced-analytics-integration" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-2-advanced-analytics-integration">Meeting 2: Advanced Analytics Integration</h2>
-<p><strong>Date:</strong> 01/03/2026<br>
-<strong>Time:</strong> 15:00 - 18:00<br>
-<strong>Location:</strong> Via Zoom<br>
-<strong>Attendees:</strong> LIN XIANWEI, SU HUI</p>
-<section id="agenda-1" class="level3">
-<h3 class="anchored" data-anchor-id="agenda-1">🎯 Agenda</h3>
-<ol type="1">
-<li>Review the base Shiny app.</li>
-<li>Brainstorm unique insights to secure high marks for novelty and methodology.</li>
-</ol>
-</section>
-<section id="key-discussions-decisions-1" class="level3">
-<h3 class="anchored" data-anchor-id="key-discussions-decisions-1">🗣️ Key Discussions &amp; Decisions</h3>
-<ul>
-<li><strong>Novelty Requirement:</strong> Standard bar charts are insufficient for top marks. We need advanced financial analytics.</li>
-<li><strong><em>Decision 1 (Survival Analysis):</em></strong> We will implement Kaplan-Meier survival curves using the <code>survival</code> package to predict the exact tenure month customers are most likely to churn.</li>
-<li><strong><em>Decision 2 (RFM Segmentation):</em></strong> We will calculate Recency, Frequency, and Monetary scores on the fly and visualize them using a <code>plotly</code> Treemap.</li>
-<li><strong><em>Decision 3 (Cash Flow):</em></strong> We will implement a <code>networkD3</code> Sankey diagram to visualize macro fund flows.</li>
-</ul>
-</section>
-<section id="action-items-1" class="level3">
-<h3 class="anchored" data-anchor-id="action-items-1">✅ Action Items</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 24%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Task</th>
-<th>Assignee</th>
-<th>Deadline</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Write dynamic RFM calculation code in <code>app.R</code></td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>03/03/2026</td>
-<td>Completed</td>
-</tr>
-<tr class="even">
-<td>Build Sankey Diagram logic</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>09/03/2026</td>
-<td>Completed</td>
-</tr>
-<tr class="odd">
-<td>Implement Kaplan-Meier plots</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>14/03/2026</td>
-<td>Completed</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-</section>
-<section id="meeting-3-deployment-bug-squashing" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-3-deployment-bug-squashing">Meeting 3: Deployment &amp; Bug Squashing</h2>
-<p><strong>Date:</strong> 15/03/2026<br>
-<strong>Time:</strong> 14:00 - 17:00<br>
-<strong>Location:</strong> Via Zoom<br>
-<strong>Attendees:</strong> LIN XIANWEI, SU HUI</p>
-<section id="agenda-2" class="level3">
-<h3 class="anchored" data-anchor-id="agenda-2">🎯 Agenda</h3>
-<ol type="1">
-<li>Deploy the unified <code>app.R</code> to shinyapps.io.</li>
-<li>Troubleshoot server crashes and UI bugs.</li>
-</ol>
-</section>
-<section id="key-discussions-decisions-2" class="level3">
-<h3 class="anchored" data-anchor-id="key-discussions-decisions-2">🗣️ Key Discussions &amp; Decisions</h3>
-<ul>
-<li><strong>Issue 1: Server Crash on Deployment (Exit Status 1).</strong> The server crashed because it was looking for the raw CSV files which were excluded from the deployment folder.
-<ul>
-<li><strong><em>Fix:</em></strong> Stripped the offline data pipeline from the deployment version of <code>app.R</code> and loaded <code>app_data.rds</code> directly.</li>
-</ul></li>
-<li><strong>Issue 2: Survival Plot Error (<code>object of type 'symbol' is not subsettable</code>).</strong> The <code>ggsurvplot</code> function failed in the reactive Shiny environment.
-<ul>
-<li><strong><em>Fix:</em></strong> Replaced <code>survfit()</code> with <code>surv_fit()</code> and explicitly wrapped the plot in a <code>print()</code> command.</li>
-</ul></li>
-<li><strong>Issue 3: Sankey Diagram Visual Imbalance.</strong> The left side of the Sankey diagram was visually squashed because incoming funds were much smaller than outgoing volume.
-<ul>
-<li><strong><em>Fix:</em></strong> Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts (<code>$X,XXX,XXX</code>).</li>
-</ul></li>
-</ul>
-</section>
-<section id="action-items-2" class="level3">
-<h3 class="anchored" data-anchor-id="action-items-2">✅ Action Items</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Task</th>
-<th>Assignee</th>
-<th>Deadline</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Final code cleanup and commenting</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>29/03/2026</td>
-<td>Completed</td>
-</tr>
-<tr class="even">
-<td>Deploy stable version to Shinyapps.io</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>20/03/2026</td>
-<td>Completed</td>
-</tr>
-<tr class="odd">
-<td>Write project proposal and Quarto site</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>15/03/2026</td>
-<td>Completed</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><em>Minutes prepared by: TEAM 15 - LIN XIANWEI, SU HUI</em></p>
+<section id="this-is-su-hui-part" class="level1">
+<h1>This is SU HUI part</h1>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
