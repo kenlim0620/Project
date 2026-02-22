@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Team 15">
-<meta name="dcterms.date" content="2026-02-22">
+<meta name="dcterms.date" content="2026-02-23">
 
-<title>Data Preparation &amp; Feature Engineering – Team 15 Project</title>
+<title>Data Preparation &amp; Feature Engineering – FinRetain App</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Team 15 Project</span>
+    <span class="navbar-title">FinRetain App</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -131,6 +131,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ui_design.html"> 
+<span class="menu-text">UI/UX Design</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./storyboard.html"> 
+<span class="menu-text">Storyboard</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./proposal.html"> 
@@ -196,9 +204,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#introduction-to-the-data-pipeline" id="toc-introduction-to-the-data-pipeline" class="nav-link active" data-scroll-target="#introduction-to-the-data-pipeline">Introduction to the Data Pipeline</a>
   <ul class="collapse">
-  <li><a href="#step-1-data-cleaning-formatting" id="toc-step-1-data-cleaning-formatting" class="nav-link" data-scroll-target="#step-1-data-cleaning-formatting">Step 1: Data Cleaning &amp; Formatting</a></li>
-  <li><a href="#step-2-feature-engineering-advanced-metrics" id="toc-step-2-feature-engineering-advanced-metrics" class="nav-link" data-scroll-target="#step-2-feature-engineering-advanced-metrics">Step 2: Feature Engineering (Advanced Metrics)</a></li>
-  <li><a href="#step-3-exporting-for-production" id="toc-step-3-exporting-for-production" class="nav-link" data-scroll-target="#step-3-exporting-for-production">Step 3: Exporting for Production</a></li>
+  <li><a href="#step-1.-data-extraction" id="toc-step-1.-data-extraction" class="nav-link" data-scroll-target="#step-1.-data-extraction">Step 1. Data Extraction</a></li>
+  <li><a href="#step-2.-data-cleaning-type-conversion-formatting" id="toc-step-2.-data-cleaning-type-conversion-formatting" class="nav-link" data-scroll-target="#step-2.-data-cleaning-type-conversion-formatting">Step 2. Data Cleaning &amp; Type Conversion (Formatting)</a></li>
+  <li><a href="#step-3-feature-engineering-advanced-metrics" id="toc-step-3-feature-engineering-advanced-metrics" class="nav-link" data-scroll-target="#step-3-feature-engineering-advanced-metrics">Step 3: Feature Engineering (Advanced Metrics)</a></li>
+  <li><a href="#step-4-final-verification-and-exporting-for-production" id="toc-step-4-final-verification-and-exporting-for-production" class="nav-link" data-scroll-target="#step-4-final-verification-and-exporting-for-production">Step 4: Final Verification and Exporting for Production</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -225,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 22, 2026</p>
+      <p class="date">February 23, 2026</p>
     </div>
   </div>
   
@@ -241,109 +250,208 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Introduction to the Data Pipeline</h1>
 <p>To ensure the <strong>FinRetain</strong> Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data, performs advanced feature engineering, and exports a highly optimized <code>.rds</code> file. Below is the step-by-step methodology used to prepare the dataset.</p>
 <hr>
-<section id="step-1-data-cleaning-formatting" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-data-cleaning-formatting">Step 1: Data Cleaning &amp; Formatting</h2>
-<p>We began by loading the raw simulated customer dataset. Categorical variables with intrinsic hierarchy needed to be properly factored so that visual plots (like bar charts) would display in a logical order, rather than alphabetically.</p>
+<section id="step-1.-data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-data-extraction">Step 1. Data Extraction</h2>
+<p>First, we began by loading the raw simulated customer dataset. Categorical variables with intrinsic hierarchy needed to be properly factored so that visual plots (like bar charts) would display in a logical order, rather than alphabetically.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load raw data (Using read.csv for best compatibility)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>raw_customers <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"customer_data.csv"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>raw_transactions <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"transactions_data.xlsx"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Inspect initial dimensions</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(raw_customers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 48723    54</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
+</section>
+<section id="step-2.-data-cleaning-type-conversion-formatting" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-data-cleaning-type-conversion-formatting">Step 2. Data Cleaning &amp; Type Conversion (Formatting)</h2>
+<p>Many of our visual models (like the EDA Boxplots and K-Means clusters) require specific data types. We need to convert character dates into actual <code>Date</code> objects and ensure categorical variables are treated as factors.</p>
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load raw dataset</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"customer_data.csv"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Factor ordinal variables for logical plotting</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>income_bracket <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>income_bracket, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>, <span class="st">"Very High"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>clean_customers <span class="ot">&lt;-</span> raw_customers <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert date columns using lubridate</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_tx =</span> <span class="fu">ymd</span>(first_tx),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_tx =</span> <span class="fu">ymd</span>(last_tx),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_survey_date =</span> <span class="fu">ymd</span>(last_survey_date)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert categorical strings to factors for plotting and clustering</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">education_level =</span> <span class="fu">factor</span>(education_level, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"High School"</span>, <span class="st">"Bachelor"</span>, <span class="st">"Master"</span>, <span class="st">"PhD"</span>)),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">customer_segment =</span> <span class="fu">as.factor</span>(customer_segment),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">as.factor</span>(gender),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">income_bracket =</span> <span class="fu">factor</span>(income_bracket, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>, <span class="st">"Very High"</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Handle Missing Values for critical numerical columns</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">support_tickets_count =</span> <span class="fu">replace_na</span>(support_tickets_count, <span class="dv">0</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">tx_count =</span> <span class="fu">replace_na</span>(tx_count, <span class="dv">0</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_tx_volume =</span> <span class="fu">replace_na</span>(total_tx_volume, <span class="dv">0</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="step-2-feature-engineering-advanced-metrics" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-feature-engineering-advanced-metrics">Step 2: Feature Engineering (Advanced Metrics)</h2>
-<p>To power our Advanced Analytics modules (Survival Analysis and RFM Treemap), we needed to dynamically generate new variables from the raw data.</p>
+<section id="step-3-feature-engineering-advanced-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-feature-engineering-advanced-metrics">Step 3: Feature Engineering (Advanced Metrics)</h2>
+<p>To power our Advanced Analytics modules (Survival Analysis and RFM Treemap), we needed to dynamically generate new variables from the raw data.To support the advanced modules in our <code>analysis.qmd</code> file, we must mathematically derive several new variables.</p>
 <section id="binary-churn-flag-for-survival-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="binary-churn-flag-for-survival-analysis">2.1 Binary Churn Flag for Survival Analysis</h3>
-<p>The Kaplan-Meier survival curves require a definitive “event” (1 for occurred, 0 for censored). Since our raw data provided a continuous <code>churn_probability</code>, we established a strict threshold: customers with a probability &gt; 60% were flagged as a definitive churn event.</p>
+<h3 class="anchored" data-anchor-id="binary-churn-flag-for-survival-analysis">Binary Churn Flag for Survival Analysis</h3>
+<p>The Kaplan-Meier Survival Curve requires a binary event indicator (1 = Churned, 0 = Active). We derive this from the <code>customer_segment</code> or <code>churn_probability</code> fields. It also requires a definitive “event” (1 for occurred, 0 for censored). Since our raw data provided a continuous <code>churn_probability</code>, we established a strict threshold: customers with a probability &gt; 60% were flagged as a definitive churn event.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">churn_event =</span> <span class="fu">ifelse</span>(churn_probability <span class="sc">&gt;</span> <span class="fl">0.6</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean_customers <span class="ot">&lt;-</span> clean_customers <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create binary flag for the Survival Analysis Model</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">churn_event =</span> <span class="fu">ifelse</span>(customer_segment <span class="sc">==</span> <span class="st">"inactive"</span> <span class="sc">|</span> churn_probability <span class="sc">&gt;</span> <span class="fl">0.8</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure customer_tenure is numeric (measured in months)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">customer_tenure =</span> <span class="fu">as.numeric</span>(customer_tenure)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="rfm-recency-frequency-monetary-scoring" class="level3">
-<h3 class="anchored" data-anchor-id="rfm-recency-frequency-monetary-scoring">2.2 RFM (Recency, Frequency, Monetary) Scoring</h3>
-<p>We calculated RFM scores by dividing the customer base into tertiles (using <code>ntile()</code>) across three key dimensions:</p>
+<h3 class="anchored" data-anchor-id="rfm-recency-frequency-monetary-scoring">RFM (Recency, Frequency, Monetary) Scoring</h3>
+<p>Our interactive Treemap visualizes RFM segments. We must calculate the R, F, and M scores (1-5 scale) using quantiles, and then group customers into business logic categories. We calculated RFM scores by dividing the customer base into tertiles (using <code>ntile()</code>) across three key dimensions:</p>
 <ul>
 <li><p><strong>Recency (R):</strong> Based on <code>customer_tenure</code> (proxy for how long they’ve stayed active).</p></li>
 <li><p><strong>Frequency (F):</strong> Based on <code>tx_count</code> (Total Transactions).</p></li>
 <li><p><strong>Monetary (M):</strong> Based on <code>total_tx_volume</code> (Total volume moved).</p></li>
 </ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">R_Score =</span> <span class="fu">ntile</span>(customer_tenure, <span class="dv">3</span>),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">F_Score =</span> <span class="fu">ntile</span>(tx_count, <span class="dv">3</span>),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">M_Score =</span> <span class="fu">ntile</span>(total_tx_volume, <span class="dv">3</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
 </section>
 <section id="rfm-segmentation-rules" class="level3">
-<h3 class="anchored" data-anchor-id="rfm-segmentation-rules">2.3 RFM Segmentation Rules</h3>
-<p>Using the generated 1-3 scores, we applied conditional logic to segment the user base into actionable business categories:</p>
+<h3 class="anchored" data-anchor-id="rfm-segmentation-rules">RFM Segmentation Rules</h3>
+<p>Using the generated 1-5 scores, we applied conditional logic to segment the user base into actionable business categories:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">RFM_Segment =</span> <span class="fu">case_when</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> F_Score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> M_Score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Champions"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> F_Score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> M_Score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Loyal Customers"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> F_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Recent Users"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> F_Score <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> M_Score <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Lost/Churned Risks"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Average Users"</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the "current date" for Recency calculation as the max date in the dataset</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>reference_date <span class="ot">&lt;-</span> <span class="fu">max</span>(clean_customers<span class="sc">$</span>last_tx, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>clean_customers <span class="ot">&lt;-</span> clean_customers <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Calculate Recency (Days since last transaction)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">recency_days =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(reference_date, last_tx, <span class="at">units =</span> <span class="st">"days"</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Assign Quantile Scores (1 to 5)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">R_Score =</span> <span class="fu">ntile</span>(<span class="sc">-</span>recency_days, <span class="dv">5</span>), <span class="co"># Lower days = Higher Score (5)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">F_Score =</span> <span class="fu">ntile</span>(tx_count, <span class="dv">5</span>),      <span class="co"># Higher count = Higher Score (5)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">M_Score =</span> <span class="fu">ntile</span>(total_tx_volume, <span class="dv">5</span>) <span class="co"># Higher volume = Higher Score (5)</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Calculate Average RFM Score</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">RFM_Avg =</span> (R_Score <span class="sc">+</span> F_Score <span class="sc">+</span> M_Score) <span class="sc">/</span> <span class="dv">3</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 4. Define Segments using Business Logic</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">RFM_Segment =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">&amp;</span> F_Score <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">&amp;</span> M_Score <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Champions"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">&amp;</span> F_Score <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Loyal Customers"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> F_Score <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"At Risk"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> F_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Lost / Inactive"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Average Users"</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 </section>
-<section id="step-3-exporting-for-production" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-exporting-for-production">Step 3: Exporting for Production</h2>
+<section id="step-4-final-verification-and-exporting-for-production" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-final-verification-and-exporting-for-production">Step 4: Final Verification and Exporting for Production</h2>
 <p>Once the dataset was cleaned and enriched with our engineered features, we saved it as an R Data Serialization (<code>.rds</code>) file. This format preserves all R-specific attributes (like our factored income levels) and loads significantly faster in the Shiny Server environment than a standard CSV.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the final optimized dataset for Shiny</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(df, <span class="st">"app_data.rds"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load raw data</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>raw_customers <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"customer_data.csv"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>raw_transactions <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"transactions_data.xlsx"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Get the reference date for RFM calculation BEFORE the pipeline</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>reference_date <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">ymd</span>(raw_customers<span class="sc">$</span>last_tx), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. The Unified ETL Pipeline</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>clean_customers <span class="ot">&lt;-</span> raw_customers <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># --- STEP A: Clean Dates &amp; Types ---</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_tx =</span> <span class="fu">ymd</span>(first_tx),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_tx =</span> <span class="fu">ymd</span>(last_tx),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_survey_date =</span> <span class="fu">ymd</span>(last_survey_date),</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">education_level =</span> <span class="fu">factor</span>(education_level, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"High School"</span>, <span class="st">"Bachelor"</span>, <span class="st">"Master"</span>, <span class="st">"PhD"</span>)),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">customer_segment =</span> <span class="fu">as.factor</span>(customer_segment),</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">gender =</span> <span class="fu">as.factor</span>(gender),</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">income_bracket =</span> <span class="fu">factor</span>(income_bracket, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>, <span class="st">"Very High"</span>)),</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">customer_tenure =</span> <span class="fu">as.numeric</span>(customer_tenure)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># --- STEP B: Handle Missing Values ---</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">support_tickets_count =</span> <span class="fu">replace_na</span>(support_tickets_count, <span class="dv">0</span>),</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">tx_count =</span> <span class="fu">replace_na</span>(tx_count, <span class="dv">0</span>),</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_tx_volume =</span> <span class="fu">replace_na</span>(total_tx_volume, <span class="dv">0</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># --- STEP C: Survival Analysis Feature (Fixes your error!) ---</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">churn_event =</span> <span class="fu">ifelse</span>(customer_segment <span class="sc">==</span> <span class="st">"inactive"</span> <span class="sc">|</span> churn_probability <span class="sc">&gt;</span> <span class="fl">0.8</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># --- STEP D: RFM Segmentation ---</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">recency_days =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(reference_date, last_tx, <span class="at">units =</span> <span class="st">"days"</span>)),</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">R_Score =</span> <span class="fu">ntile</span>(<span class="sc">-</span>recency_days, <span class="dv">5</span>),</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">F_Score =</span> <span class="fu">ntile</span>(tx_count, <span class="dv">5</span>),</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">M_Score =</span> <span class="fu">ntile</span>(total_tx_volume, <span class="dv">5</span>)</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">RFM_Segment =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">&amp;</span> F_Score <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">&amp;</span> M_Score <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Champions"</span>,</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">&amp;</span> F_Score <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Loyal Customers"</span>,</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> F_Score <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"At Risk"</span>,</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>      R_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> F_Score <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Lost / Inactive"</span>,</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Average Users"</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Save the final processed data</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(clean_customers, <span class="at">file =</span> <span class="st">"app_data.rds"</span>)</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Verify it worked perfectly!</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(clean_customers <span class="sc">%&gt;%</span> <span class="fu">select</span>(churn_event, RFM_Segment, tx_count, total_tx_volume))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  churn_event     RFM_Segment           tx_count        total_tx_volume    
+ Min.   :0.0000   Length:48723       Min.   :   10.00   Min.   :3.182e+06  
+ 1st Qu.:0.0000   Class :character   1st Qu.:   12.00   1st Qu.:2.016e+07  
+ Median :0.0000   Mode  :character   Median :   18.00   Median :4.808e+07  
+ Mean   :0.2033                      Mean   :   64.84   Mean   :2.575e+08  
+ 3rd Qu.:0.0000                      3rd Qu.:   35.00   3rd Qu.:1.204e+08  
+ Max.   :1.0000                      Max.   :77465.00   Max.   :1.073e+12  </code></pre>
 </div>
+</div>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>The dataset is now completely formatted. It includes the <code>RFM_Segment</code> for our Treemap, <code>churn_event</code> for the Kaplan-Meier survival curves, and strictly typed numeric columns for the K-Means clustering and predictive regression models.</p>
 
 
+</section>
 </section>
 </section>
 

@@ -1,48 +1,139 @@
-/* css styles */
-/* Import modern font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-
-body {
-  font-family: 'Inter', sans-serif;
-  color: #1d1d1f; /* Soft Black */
-  background-color: #fbfbfd; /* Very light grey */
+/* =========================================
+   1. HERO SECTION (Deep Tech Gradient)
+   ========================================= */
+.hero-section {
+  padding: 5rem 3rem;
+  /* A deep navy-to-slate gradient common in FinTech */
+  background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #3a506b 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  margin-bottom: 4rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Navbar Customization */
-.navbar {
-  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+/* Adds a subtle glowing "data orb" effect in the background */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 60%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(72, 202, 228, 0.15) 0%, transparent 70%);
+  transform: rotate(30deg);
+  z-index: 0;
 }
 
-/* Card Styling for Minutes and Sections */
-.card-style {
-  background: white;
-  border-radius: 18px; /* Smooth corners */
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  margin-bottom: 2rem;
-  border: 1px solid rgba(0,0,0,0.02);
-  transition: transform 0.2s ease;
+/* =========================================
+   2. HERO TYPOGRAPHY & BUTTONS
+   ========================================= */
+.hero-text {
+  z-index: 1; /* Keeps text above the glow */
+  position: relative;
 }
 
-.card-style:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+.hero-text h1 {
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  /* Vibrant Cyan text gradient for the main title */
+  background: -webkit-linear-gradient(45deg, #00b4d8, #caf0f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Hero Section Typography */
-h1.title {
+.hero-text h3 {
+  color: #ade8f4;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  font-size: 1.25rem;
+}
+
+/* Glowing primary button */
+.btn-primary {
+  background-color: #0077b6;
+  border-color: #0077b6;
+  box-shadow: 0 4px 15px rgba(0, 119, 182, 0.4);
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #00b4d8;
+  border-color: #00b4d8;
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.6);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   3. GLASSMORPHISM FEATURE BOXES (Data Nodes)
+   ========================================= */
+.feature-box {
+  padding: 2.5rem 1.5rem;
+  /* Creates a frosted glass effect */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 119, 182, 0.1);
+  border-radius: 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.feature-box h2 {
+  color: #1c2541;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-/* Meeting Minutes Badges */
-.badge-role {
-  background-color: #e3f2fd;
-  color: #0d47a1;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 0.8em;
-  font-weight: 600;
+/* When hovered, the boxes glow cyan and pop up */
+.feature-box:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 180, 216, 0.15);
+  border-color: #00b4d8;
+}
+
+/* =========================================
+   4. FLOATING ANIMATION (For Hero Image)
+   ========================================= */
+.floating-img {
+  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+  position: relative;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   5. NAVBAR DROPDOWN MENU FIX
+   ========================================= */
+/* Ensure the dropdown box is white */
+.dropdown-menu {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 119, 182, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Force the text inside the dropdown to be dark blue/black */
+.dropdown-item {
+  color: #1c2541 !important; 
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Add a nice light blue highlight when you hover over the menu options */
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: #e8f4f8 !important; 
+  color: #0077b6 !important;
+  transform: translateX(3px); /* Gives a cool, subtle slide-right effect */
 }

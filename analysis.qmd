@@ -1,6 +1,6 @@
 ---
 title: "Exploratory & Confirmatory Analysis"
-author: "Team 15"
+author: "LIN XIANWEI"
 date: today
 format: 
   html:
@@ -19,41 +19,57 @@ Before building predictive models and advanced macro-visualizations, it is cruci
 
 ------------------------------------------------------------------------
 
+## 1. Loading packages
+
 ```{r}
-library(ggplot2)
+# Load all required libraries for advanced interactive analytics
 library(dplyr)
 library(tidyr)
+library(ggplot2)
+library(plotly)
+library(survival)
+library(networkD3)
+library(scales)
+library(broom) # For tidying survival models
 
-# Ensure app_data.rds is in the exact same folder as this .qmd file
+# Load the core application dataset
 df <- readRDS("app_data.rds")
+
+# Define FinTech Color Palette
+fintech_colors <- c("#1c2541", "#0077b6", "#00b4d8", "#90e0ef", "#caf0f8")
+risk_color <- "#e74c3c"
 ```
 
-## 1. Demographics (EDA)
+## 2. Demographics (EDA)
 
 Our EDA phase focuses on understanding *who* our customers are. Using `ggplot2` and `plotly` in our application, stakeholders can dynamically filter these demographic distributions by gender and customer segment.
 
-### Income and Education Distributions
+### 2.1 Income and Education Distributions
 
-We visualized the distribution of customers across our four predefined income brackets.
+Our EDA phase focuses on understanding *who* our customers are. We visualized the distribution of customers across education levels to see how age correlates with educational attainment.
 
 ```{r}
 #| fig-align: "center"
 
-ggplot(df, aes(x = education_level, y = age, fill = education_level)) +
-  geom_boxplot(alpha = 0.7) +
+p_eda <- ggplot(df, aes(x = education_level, y = age, fill = education_level)) +
+  geom_boxplot(alpha = 0.8, color = "#1c2541", outlier.color = risk_color) +
+  scale_fill_manual(values = colorRampPalette(fintech_colors)(length(unique(df$education_level)))) +
   theme_minimal() +
   labs(title = "Age Distribution by Education Level", 
        x = "Education Level", 
        y = "Age") +
   theme(legend.position = "none", 
-        axis.text.x = element_text(angle = 45, hjust = 1))
+        panel.grid.minor = element_blank())
+
+# Convert to interactive Plotly object
+ggplotly(p_eda) %>% config(displayModeBar = FALSE)
 ```
 
-## 2. Behavioral Analyst (CDA)
+## 3. Behavioral Analysis (CDA)
 
 The CDA phase seeks to test hypotheses regarding how customer *behavior* impacts overall business metrics like Customer Lifetime Value (CLV) and Net Promoter Score (NPS).
 
-### 2.1 Interactive Correlation Analysis
+### 3.1 Interactive Correlation Analysis
 
 We deployed interactive scatter plots that allow users to map specific X and Y variables against each other (e.g., *Total Transactions vs. Satisfaction Score*).
 
@@ -71,7 +87,25 @@ ggplot(df, aes(x = tx_count, y = satisfaction_score)) +
        y = "Satisfaction Score (1-5)")
 ```
 
-### 2.2 Transaction Volume Breakdown
+### Transaction vs. Satisfaction Hypothesis
+
+We plotted transaction counts against satisfaction scores. The red trendline highlights a concerning friction point: higher transaction volumes do not strictly guarantee higher satisfaction.
+
+```{r}
+#| fig-align: "center"
+
+p_cda <- ggplot(df, aes(x = tx_count, y = satisfaction_score, text = paste("Support Tickets:", support_tickets_count))) +
+  geom_point(alpha = 0.4, color = "#0077b6") +
+  geom_smooth(method = "lm", color = risk_color, se = TRUE, fill = "#ffcccb", alpha = 0.3) +
+  theme_minimal() +
+  labs(title = "Hypothesis Testing: Usage vs Satisfaction",
+       x = "Total Transaction Count",
+       y = "Satisfaction Score (1-5)")
+
+ggplotly(p_cda, tooltip = c("x", "y", "text")) %>% config(displayModeBar = FALSE)
+```
+
+### 3.2 Transaction Volume Breakdown
 
 We aggregated the total dollar volume flowing through four distinct transactional categories:
 
@@ -100,6 +134,179 @@ tx_sums <- df %>%
 tx_sums
 ```
 
-## Transition to Advanced Analytics
+## 4. Cluster Analysis
 
-With a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our Linear Regression Risk Simulator and Kaplan-Meier Survival curves.
+To move beyond basic demographic segmentation, we applied a **K-Means Clustering algorithm** (k=3) to automatically group users based on their transaction frequency and monetary volume to discover hidden behavioral groupings within our user base. By scaling and analyzing `tx_count` (Transaction Frequency) against `total_tx_volume` (Monetary Value), the algorithm identified three distinct customer clusters without any manual labeling.
+
+```{r}
+#| fig-align: "center"
+
+# 1. Prepare data and apply K-Means
+set.seed(42)
+cluster_data <- df %>% select(tx_count, total_tx_volume) %>% drop_na()
+kmeans_result <- kmeans(scale(cluster_data), centers = 3)
+cluster_data$Cluster <- paste("Persona", kmeans_result$cluster)
+
+# 2. Interactive Cluster Plot
+p_cluster <- ggplot(cluster_data, aes(x = tx_count, y = total_tx_volume, color = Cluster)) +
+  geom_point(alpha = 0.6, size = 2) +
+  scale_color_manual(values = c("#0077b6", "#00b4d8", risk_color)) +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  theme_minimal() +
+  labs(title = "Algorithmic Behavioral Segmentation",
+       x = "Transaction Frequency",
+       y = "Total Monetary Volume")
+
+ggplotly(p_cluster) %>% layout(legend = list(orientation = "h", x = 0.3, y = -0.2))
+```
+
+## 5. Transition to Advanced Analytics
+
+With a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our **Linear Regression Risk Simulator** and **Kaplan-Meier Survival** curves.
+
+### 5.1 RFM Analysis
+
+While K-Means provides algorithmic grouping, **RFM** (Recency, Frequency, Monetary) provides established business logic. We categorized our users based on their \`**R_Score\`, \`F_Score\`, and \`M_Scor**e\` to identify key groups like "**Champions**" and "**At-Risk**" users. In our Shiny application, this is visualized as an interactive Treemap.
+
+```{r}
+## 4. Advanced Segmentation (RFM Analysis)
+#| fig-align: "center"
+library(dplyr)
+library(ggplot2)
+
+# Calculate the size of each RFM Segment
+rfm_summary <- df %>%
+  group_by(RFM_Segment) %>%
+  summarise(Customer_Count = n()) %>%
+  arrange(desc(Customer_Count))
+
+# Plotting the Segment Distribution
+ggplot(rfm_summary, aes(x = reorder(RFM_Segment, Customer_Count), y = Customer_Count, fill = RFM_Segment)) +
+  geom_bar(stat = "identity", alpha = 0.8) +
+  coord_flip() +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  labs(title = "Customer Distribution by RFM Segment",
+       x = "RFM Segment",
+       y = "Number of Customers")
+```
+
+### Interactive RFM Treemap
+
+**RFM Analysis** provides established business logic. Here is the entire distribution of our customer base grouped by their Recency, Frequency, and Monetary scores.
+
+```{r}
+#| fig-align: "center"
+
+# Calculate RFM Sizes
+rfm_summary <- df %>%
+  group_by(RFM_Segment) %>%
+  summarise(Customer_Count = n()) %>%
+  arrange(desc(Customer_Count))
+
+# Build an interactive Plotly Treemap
+plot_ly(
+  type = "treemap",
+  labels = rfm_summary$RFM_Segment,
+  parents = rep("All Customers", nrow(rfm_summary)),
+  values = rfm_summary$Customer_Count,
+  textinfo = "label+value+percent parent",
+  marker = list(colorscale = "Blues")
+) %>%
+  layout(title = "Customer Distribution by RFM Segment")
+```
+
+### 5.2 Exploratory Modelling
+
+To understand the macro-dynamics of our user base, we explored the dimensions of **Time** (when users leave) and **Capital** (where money flows) by using **Survival Analysis (Time-to-Churn)**.
+
+We applied a **Kaplan-Meier Survival Model** to map the probability of a customer remaining active over time. By using `customer_tenure` and the binary `churn_event` indicator, we can pinpoint the exact month where retention efforts must be intensified.
+
+```{r}
+#| fig-align: "center"
+library(survival)
+
+# Build the Kaplan-Meier survival object
+km_fit <- survfit(Surv(customer_tenure, churn_event) ~ 1, data = df)
+
+# Plot the baseline survival curve using base R (survminer is used in the app)
+plot(km_fit, 
+     xlab = "Customer Tenure (Months)", 
+     ylab = "Survival Probability", 
+     main = "Kaplan-Meier Estimate of Customer Retention",
+     col = "#0077b6", lwd = 2, conf.int = TRUE)
+abline(v = 3, col = "red", lty = 2) # Highlight Month 3 risk zone
+```
+
+```{r}
+#| fig-align: "center"
+
+# Build Kaplan-Meier Model
+km_fit <- survfit(Surv(customer_tenure, churn_event) ~ 1, data = df)
+km_data <- tidy(km_fit) # Use broom to tidy for ggplot
+
+# Interactive Survival Curve
+p_surv <- ggplot(km_data, aes(x = time, y = estimate)) +
+  geom_step(color = "#1c2541", size = 1) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.2, fill = "#0077b6") +
+  geom_vline(xintercept = 3, color = risk_color, linetype = "dashed") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme_minimal() +
+  labs(title = "Kaplan-Meier Retention Curve",
+       x = "Customer Tenure (Months)",
+       y = "Probability of Retaining User") +
+  annotate("text", x = 4.5, y = 0.6, label = "High Risk Zone", color = risk_color)
+
+ggplotly(p_surv) %>% config(displayModeBar = FALSE)
+```
+
+### 5.3 Macro Cash Flow (Sankey Network)
+
+To visualize liquidity, we mapped the flow of transactions using our actual transactional dataset. Deposits represent capital entering the FinRetain ecosystem ("**App Wallet**"), while **Payments**, **Transfer**s, and **Withdrawals** represent capital flowing out to various destinations.
+
+```{r}
+#| fig-align: "center"
+library(readxl)
+# 1. Load data & summarize
+tx_data <- read_xlsx("transactions_data.xlsx")
+tx_summary <- tx_data %>%
+  group_by(type) %>%
+  summarise(total_volume = sum(amount, na.rm = TRUE))
+
+# 2. Map logical flow
+links <- data.frame(
+  source = c("External Accounts", "App Wallet", "App Wallet", "App Wallet"),
+  target = c("App Wallet", "Merchant Payments", "Peer Transfers", "External Withdrawals"),
+  type_name = c("Deposit", "Payment", "Transfer", "Withdrawal")
+) %>%
+  left_join(tx_summary, by = c("type_name" = "type")) %>%
+  rename(value = total_volume) %>% filter(value > 0)
+
+# 3. Calculate Node Totals
+node_totals <- data.frame(name = unique(c(links$source, links$target))) %>%
+  rowwise() %>%
+  mutate(total = max(sum(links$value[links$source == name]), sum(links$value[links$target == name])),
+         label = paste0(name, " ($", format(round(total, 0), big.mark = ","), ")"))
+
+# 4. Indices for D3
+links$IDsource <- match(links$source, node_totals$name) - 1
+links$IDtarget <- match(links$target, node_totals$name) - 1
+
+# 5. Render D3 Interactive Sankey
+sankeyNetwork(Links = links, Nodes = node_totals, Source = "IDsource", Target = "IDtarget",
+              Value = "value", NodeID = "label", fontSize = 14, nodeWidth = 40, 
+              nodePadding = 20, sinksRight = FALSE, 
+              colourScale = JS("d3.scaleOrdinal().range(['#1c2541', '#0077b6', '#00b4d8', '#90e0ef']);"))
+```
+
+### 5.4 Predictive Modelling (Risk Simulator)
+
+The core of our Visual Analytics solution is transitioning from reactive data to proactive forecasting. We built a baseline **Multiple Linear/Logistic Regression Model** to predict `churn_probability` based on user behavior metrics. This mathematical model powers the "Risk Simulator" in our Shiny App, allowing stakeholders to use slider inputs to change these variables and instantly recalculate the predicted risk.
+
+```{r}
+# Build a baseline predictive model for Churn Probability
+predictive_model <- lm(churn_probability ~ support_tickets_count + tx_count + satisfaction_score, data = df)
+
+# Display the model summary to confirm statistical significance of variables
+summary(predictive_model)
+```

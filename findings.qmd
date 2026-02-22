@@ -1,6 +1,6 @@
 ---
 title: "Findings, Results & Discussion"
-author: "Team 15"
+author: "Ken Lin & Team"
 date: today
 format: 
   html:
@@ -11,60 +11,107 @@ format:
 
 # Executive Summary
 
-The **FinRetain** interactive application has enabled us to move beyond static data and dynamically explore the lifecycle of our financial user base. By integrating exploratory visualizations with advanced predictive analytics, we uncovered critical insights into customer behavior, retention bottlenecks, and macroeconomic flow within the platform.
+The **FinRetain** visual analytics project set out to democratize complex transactional data and uncover the hidden drivers of customer churn. Through a rigorous pipeline of Exploratory Data Analysis, Algorithmic Clustering, Macro-Ecosystem Mapping, and Predictive Modelling, we have transitioned our understanding of the user base from reactive observation to proactive forecasting. Below are the synthesized findings and strategic business recommendations derived from our interactive dashboard.
 
 ------------------------------------------------------------------------
 
-## 1. Key Findings & Results
+## 1. The Engagement Friction Point (EDA & CDA Results)
 
-### 1.1 Demographic & Behavioral Baselines (EDA/CDA)
+Our initial hypothesis assumed that users with the highest transaction volumes would inherently possess the highest satisfaction scores. Our Confirmatory Data Analysis (CDA) proved this false.
 
-Our initial exploration using the demographic and behavioral modules revealed several foundational truths about our user base:
-
--   **Income vs. App Engagement:** Customers in the "High" and "Very High" income brackets exhibit significantly higher transaction frequencies, but they are also more sensitive to friction, showing a steep drop in Satisfaction Score when Support Tickets exceed a certain threshold.
 -   **Volume Distribution:** The transaction breakdown indicates that Direct Deposits are the primary driver of incoming liquidity, while Payments (rather than Cash Withdrawals) constitute the highest volume of outgoing capital.
+-   **Income vs. App Engagement:** Customers in the "High" and "Very High" income brackets exhibit significantly higher transaction frequencies. However, they are also highly sensitive to friction, showing a steep drop in Satisfaction Score when their `support_tickets_count` increases.
+-   **The Finding:** While high-income and highly educated users transact more frequently, their satisfaction scores exhibit high variance. By mapping `support_tickets_count` onto our scatter plots, a clear negative correlation emerged.
+-   **The Insight:** The FinRetain App's core UX is functional, but our customer support pipeline is a severe bottleneck. High-value users lose faith in the platform the moment they encounter a dispute that requires a support ticket.
+-   **Actionable Step:** Implement automated, AI-driven ticket resolution for "High-Value" users to reduce friction and protect satisfaction scores.
 
-### 1.2 Time-to-Event: Survival Analysis Insights
+------------------------------------------------------------------------
 
-Using the Kaplan-Meier Churn Probability Curve, we plotted the exact tenure months where different customer segments are statistically most likely to abandon the app.
+## 2. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)
 
--   **The Critical Drop-Off Window:** We observed a steep drop in the survival probability curve between Month 3 and Month 6 across all acquisition channels. If a customer survives past Month 6, their probability of long-term retention increases exponentially.
--   **Channel Variance:** Customers acquired via specific marketing channels showed inherently different survival trajectories, suggesting that the quality of onboarding greatly impacts long-term loyalty.
+Manual demographic filtering is insufficient for modern FinTech marketing. We deployed both K-Means clustering and RFM (Recency, Frequency, Monetary) analysis to segment our users. Rather than relying solely on demographic assumptions, we deployed algorithmic clustering to find hidden behavioral patterns, and the dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:
 
-### 1.3 Value Stratification: RFM Segmentation
+-   **Three Personas:** By running K-Means on `tx_count` and `total_tx_volume`, the algorithm autonomously grouped our users into three distinct personas. It highlighted a massive "middle-class" of users who log in and transact frequently, but move very little actual monetary value.
 
-The dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:
+-   **K-Means Findings:** The algorithm naturally grouped our users into three distinct behavioral personas based purely on transaction frequency and monetary volume. We identified a massive "middle-class" of users who transact frequently but with very low monetary value.
 
 -   **Champions & Loyalists:** While making up a smaller physical percentage of the user base, the dark color mapping (indicating high Customer Lifetime Value) confirmed that this group drives the vast majority of future projected revenue.
--   **At-Risk Segments:** A surprisingly large block of users fell into the "Recent Users" with low Frequency scores. These users are at immediate risk of churning if not engaged quickly.
 
-### 1.4 Macro Ecosystem: Cash Flow Sankey
+-   **At-Risk Segments:** A surprisingly large block of users fell into the "Recent Users" category with dangerously low Frequency scores. These users are at immediate risk of churning if not engaged quickly.
+
+-   **RFM Findings:** Our interactive Treemap revealed that while we have a solid block of "Champions" (High R, F, and M scores), an alarming percentage of users fall into the "Recent but Low Frequency" block.
+
+-   **Actionable Step:** Gamify the daily app experience (e.g., daily login rewards, micro-investing features) specifically targeted at the low-frequency segments identified in the Treemap to convert them into Champions.
+
+------------------------------------------------------------------------
+
+## 3. The Churn Timeline and Capital Bleed
+
+Understanding *who* leaves is only half the battle; we needed to know *when* they leave and *where* the money goes. Using the Kaplan-Meier Churn Probability Curve, we plotted the exact tenure months where different customer segments are statistically most likely to abandon the app.
+
+**The Critical Drop-Off Window**
+
+We observed a steep drop in the survival probability curve between Month 3 and Month 6 across all acquisition channels. If a customer survives past Month 6, their probability of long-term retention increases exponentially.
+
+**Channel Variance**
+
+Customers acquired via specific marketing channels showed inherently different survival trajectories, suggesting that the quality of onboarding greatly impacts long-term loyalty.
+
+### 3.1 The 90-Day Drop-Off (Survival Analysis)
+
+-   **The Finding:** Our Kaplan-Meier Survival Curve pinpointed a critical "Danger Zone" between Month 3 and Month 6 of a customer's tenure. The probability of survival plummets drastically during this 90-day window.
+-   **The Insight:** Users are downloading the app, trying it for a few months, and abandoning it if it doesn't become their primary financial hub.
+-   **Actionable Step:** Marketing must deploy aggressive, targeted retention campaigns (e.g., fee waivers, premium account trials) exactly at the 60-day mark to preempt the Month 3 drop-off.
+
+### 3.2 Systemic Liquidity (Sankey Network)
+
+-   **The Finding:** The Macro Cash Flow diagram mapped the exact dollar amounts flowing through the ecosystem. It visually proved that Direct Deposits are the absolute lifeblood of the platform, but a significant portion of that capital immediately flows out via External Withdrawals rather than staying in the app ecosystem (like Peer Transfers or App Investments).
+-   **Actionable Step:** Incentivize users to keep their money inside the FinRetain ecosystem by offering higher yield savings rates for capital that originates from Direct Deposits.
+
+------------------------------------------------------------------------
+
+## 4. Macro Ecosystem: Cash Flow Sankey
 
 The network analysis of capital flow mapped exactly how money enters and leaves the FinRetain ecosystem.
 
--   **Capital Retention:** By balancing the visual nodes (100% Inflow vs. 100% Outflow), we identified the exact proportion of incoming funds that are immediately drained via "Cash Withdrawals" versus funds that are kept within the ecosystem for "App Payments."
--   **Liquidity Insights:** The thickest flow lines originate from Direct Deposits, proving that convincing a user to set up direct payroll deposit is the single most valuable action the app can incentivize.
+**Capital Retention:** By balancing the visual nodes, we identified the exact proportion of incoming funds that are immediately drained via "External Withdrawals" versus funds that are kept within the ecosystem for "Merchant Payments" and "Peer Transfers."
+
+**Liquidity Insights:** The thickest flow lines originate from external Deposits, proving that convincing a user to set up direct payroll deposit is the single most valuable action the app can incentivize.
 
 ------------------------------------------------------------------------
 
-## 2. Strategic Discussions & Recommendations
+## 5. Proactive Intervention (Predictive Modelling)
+
+The most significant achievement of the FinRetain project is the **Risk Simulator**. By integrating a Multiple Linear Regression model into our Shiny UI, we proved that churn is not inevitable. The model confirmed that `support_tickets_count` and `tx_count` are statistically significant predictors of `churn_probability`. Our multiple linear regression model confirmed that user behavior directly dictates future value.
+
+-   **Simulated Salvage:** By interacting with the UI sliders, we proved that artificially lowering a user's support ticket count and slightly increasing their transaction frequency drastically shifts their predicted Churn Probability from "High Risk" (Red) to "Safe" (Green), effectively saving their Customer Lifetime Value (CLV).
+
+-   **The Result:** Stakeholders can now use the dashboard sliders to simulate interventions. If a user has an 80% churn risk, the stakeholder can simulate lowering their support tickets (via faster customer service) and increasing their transaction frequency (via marketing pushes). The visual gauges update instantly, showing how the user's Customer Lifetime Value (CLV) is salvaged.
+
+------------------------------------------------------------------------
+
+## 6. Strategic Discussions & Recommendations
 
 Based on the quantitative results derived from the FinRetain platform, our team proposes the following strategic business interventions:
 
 ### A. Targeted "Month 3" Interventions
 
-Since the Survival Analysis proved that Months 3 through 6 are the most dangerous for customer churn, the marketing team should automate targeted retention campaigns (e.g., fee waivers, premium feature trials) specifically triggered at the 90-day tenure mark.
+Since the Survival Analysis proved that Months 3 through 6 are the most dangerous for customer churn, the marketing team should automate targeted retention campaigns (e.g., fee waivers, premium feature trials) specifically triggered at the **90-day tenure mark**.
 
 ### B. Proactive RFM Nurturing
 
-The RFM Treemap highlighted a massive block of low-frequency "Recent Users." We recommend using the **Risk Simulator** module to test how artificially increasing their app logins or transaction counts (via gamification or rewards) impacts their projected Customer Lifetime Value (CLV).
+The RFM Treemap highlighted a massive block of low-frequency "Recent Users." We recommend using the insights from the **Risk Simulator** module to gamify the app experience (via daily login rewards or micro-investing features) to artificially inflate their transaction frequency and protect their projected CLV.
 
 ### C. Direct Deposit Incentivization
 
-The Sankey Cash Flow diagram proved that Direct Deposits feed the most capital into the app ecosystem. Business development should focus on campaigns that reward users for switching their primary salary deposit to FinRetain, as this ensures long-term liquidity and highly active transactional behavior.
+The Sankey Cash Flow diagram proved that external Deposits feed the most capital into the app ecosystem. Business development should focus on campaigns that financially reward users for switching their primary salary deposit to FinRetain, as this ensures long-term liquidity.
+
+### D. Frictionless Customer Support for High-Value Users
+
+Our CDA scatter plots proved that high-income users churn rapidly when dealing with poor customer support. We strongly recommend routing users identified as "Champions" by our RFM model to a priority, zero-wait-time customer service queue.
 
 ------------------------------------------------------------------------
 
-## 3. Conclusion
+## 7. Conclusion
 
-The FinRetain Visual Analytics platform successfully bridges the gap between raw data and executive decision-making. By leveraging R Shiny, `survminer`, and `networkD3`, we have provided stakeholders with an interactive environment to not only view historical data but to simulate and predict future customer behavior.
+Data visualization is only valuable if it drives decisions. The FinRetain Visual Analytics platform successfully bridges the gap between raw data and executive decision-making. By leveraging R Shiny, `plotly`, `survival` models, `networkD3`, `survival` curves and `networkD3`, we have provided stakeholders with an interactive environment and exact insights needed to reduce churn, optimize capital flow, and maximize Customer Lifetime Value to not only view historical demographic data, but to actively simulate and predict future customer behavior.

@@ -4,39 +4,39 @@ page-layout: full
 ---
 
 ::::: {.grid .hero-section}
-::: {.g-col-12 .g-col-md-6 .hero-text}
+::: {.g-col-12 .g-col-md-7 .hero-text}
 # Democratising FinTech Data through Visual Analytics
 
-### An interactive exploration of Customer Retention & Ecosystem Cash Flow
+### An interactive exploration of Customer Retention, Behavioral Clustering, and Macro Ecosystem Flow.
 
-Our project application, **FinRetain**, aims to uncover hidden behavioral patterns, predict churn risk, and map macroeconomic fund flows using advanced visual analytics techniques. Built for **ISSS608 Visual Analytics**, Academic Year 2025-2026.
+Our project, **FinRetain**, leverages Exploratory Data Analysis, K-Means Clustering, and Predictive Modelling to transform static transactional data into actionable business intelligence. Built for **ISSS608 Visual Analytics**.
 
 [View Project Proposal](proposal.qmd){.btn .btn-outline-primary .btn-lg role="button"}
 
-[Launch FinRetain Dashboard](https://lin-xianwei.shinyapps.io/New-Shiny/){.btn .btn-primary .btn-lg role="button" target="_blank"}
+[Launch Interactive Dashboard](https://your-username.shinyapps.io/finretain){.btn .btn-primary .btn-lg role="button" target="_blank"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
-![](images/Gemini_Generated_Image_ulmcemulmcemulmc.png)
+::: {.g-col-12 .g-col-md-5}
+![](Gemini_Generated_Image_ulmcemulmcemulmc.png)
 :::
 :::::
 
 :::::: {.grid .text-center .py-5}
-::: {.g-col-12 .g-col-md-4}
-## 🧹 Data & Demographics
+::: {.g-col-12 .g-col-md-4 .feature-box}
+## 📊 EDA & CDA
 
-Rigorous cleaning and feature engineering of complex transactional records to establish baseline demographic and behavioral trends using interactive EDA.
+Rigorous data preparation to establish demographic baselines and confirm behavioral hypotheses using interactive visualization.
 :::
 
-::: {.g-col-12 .g-col-md-4}
-## 📈 Advanced Analytics
+::: {.g-col-12 .g-col-md-4 .feature-box}
+## 🧠 Clustering & Modelling
 
-Implementing Kaplan-Meier Survival Curves, dynamic RFM Treemaps, and massive Sankey diagrams to identify exactly when and why customers abandon the platform.
+Deploying K-Means algorithms to segment users, paired with Kaplan-Meier Survival Models and Sankey Networks to trace capital flow.
 :::
 
-::: {.g-col-12 .g-col-md-4}
-## 🤖 Risk Simulation
+::: {.g-col-12 .g-col-md-4 .feature-box}
+## 🔮 Predictive Simulation
 
-Deploying responsive linear regression models that allow stakeholders to simulate future Churn Probability and estimate Customer Lifetime Value (CLV) on the fly.
+An interactive Risk Simulator powered by regression models, allowing stakeholders to dynamically forecast Churn Probability and CLV.
 :::
 ::::::

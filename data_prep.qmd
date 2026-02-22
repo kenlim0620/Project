@@ -16,40 +16,73 @@ To ensure the **FinRetain** Shiny application runs at lightning speed on the web
 
 ------------------------------------------------------------------------
 
-## Step 1: Data Cleaning & Formatting
+## Step 1. Data Extraction
 
-We began by loading the raw simulated customer dataset. Categorical variables with intrinsic hierarchy needed to be properly factored so that visual plots (like bar charts) would display in a logical order, rather than alphabetically.
+First, we began by loading the raw simulated customer dataset. Categorical variables with intrinsic hierarchy needed to be properly factored so that visual plots (like bar charts) would display in a logical order, rather than alphabetically.
 
-```{r}
+```{r load-data}
 library(dplyr)
+library(lubridate)
 library(tidyr)
+library(readr)
+library(readxl)
 
-# Load raw dataset
-df <- read.csv("customer_data.csv")
+# 1. Load raw data (Using read.csv for best compatibility)
+raw_customers <- read.csv("customer_data.csv")
+raw_transactions <- read_xlsx("transactions_data.xlsx")
 
-# Factor ordinal variables for logical plotting
-df$income_bracket <- factor(df$income_bracket, 
-                            levels = c("Low", "Medium", "High", "Very High"))
+# 2. Inspect initial dimensions
+dim(raw_customers)
 ```
 
-## Step 2: Feature Engineering (Advanced Metrics)
+## Step 2. Data Cleaning & Type Conversion (Formatting)
 
-To power our Advanced Analytics modules (Survival Analysis and RFM Treemap), we needed to dynamically generate new variables from the raw data.
-
-### 2.1 Binary Churn Flag for Survival Analysis
-
-The Kaplan-Meier survival curves require a definitive "event" (1 for occurred, 0 for censored). Since our raw data provided a continuous `churn_probability`, we established a strict threshold: customers with a probability \> 60% were flagged as a definitive churn event.
+Many of our visual models (like the EDA Boxplots and K-Means clusters) require specific data types. We need to convert character dates into actual `Date` objects and ensure categorical variables are treated as factors.
 
 ```{r}
-df <- df %>%
+clean_customers <- raw_customers %>%
+  # Convert date columns using lubridate
   mutate(
-    churn_event = ifelse(churn_probability > 0.6, 1, 0)
+    first_tx = ymd(first_tx),
+    last_tx = ymd(last_tx),
+    last_survey_date = ymd(last_survey_date)
+  ) %>%
+  # Convert categorical strings to factors for plotting and clustering
+  mutate(
+    education_level = factor(education_level, levels = c("High School", "Bachelor", "Master", "PhD")),
+    customer_segment = as.factor(customer_segment),
+    gender = as.factor(gender),
+    income_bracket = factor(income_bracket, levels = c("Low", "Medium", "High", "Very High"))
+  ) %>%
+  # Handle Missing Values for critical numerical columns
+  mutate(
+    support_tickets_count = replace_na(support_tickets_count, 0),
+    tx_count = replace_na(tx_count, 0),
+    total_tx_volume = replace_na(total_tx_volume, 0)
   )
 ```
 
-### 2.2 RFM (Recency, Frequency, Monetary) Scoring
+## Step 3: Feature Engineering (Advanced Metrics)
 
-We calculated RFM scores by dividing the customer base into tertiles (using `ntile()`) across three key dimensions:
+To power our Advanced Analytics modules (Survival Analysis and RFM Treemap), we needed to dynamically generate new variables from the raw data.To support the advanced modules in our `analysis.qmd` file, we must mathematically derive several new variables.
+
+### Binary Churn Flag for Survival Analysis
+
+The Kaplan-Meier Survival Curve requires a binary event indicator (1 = Churned, 0 = Active). We derive this from the `customer_segment` or `churn_probability` fields. It also requires a definitive "event" (1 for occurred, 0 for censored). Since our raw data provided a continuous `churn_probability`, we established a strict threshold: customers with a probability \> 60% were flagged as a definitive churn event.
+
+```{r}
+clean_customers <- clean_customers %>%
+  mutate(
+    # Create binary flag for the Survival Analysis Model
+    churn_event = ifelse(customer_segment == "inactive" | churn_probability > 0.8, 1, 0),
+    # Ensure customer_tenure is numeric (measured in months)
+    customer_tenure = as.numeric(customer_tenure)
+  )
+```
+
+### RFM (Recency, Frequency, Monetary) Scoring
+
+Our interactive Treemap visualizes RFM segments. We must calculate the R, F, and M scores (1-5 scale) using quantiles, and then group customers into business logic categories. We calculated RFM scores by dividing the customer base into tertiles (using `ntile()`) across three key dimensions:
 
 -   **Recency (R):** Based on `customer_tenure` (proxy for how long they've stayed active).
 
@@ -57,37 +90,111 @@ We calculated RFM scores by dividing the customer base into tertiles (using `nti
 
 -   **Monetary (M):** Based on `total_tx_volume` (Total volume moved).
 
-```{r}
-df <- df %>%
-  mutate(
-    R_Score = ntile(customer_tenure, 3),
-    F_Score = ntile(tx_count, 3),
-    M_Score = ntile(total_tx_volume, 3)
-  )
-```
+### RFM Segmentation Rules
 
-### 2.3 RFM Segmentation Rules
-
-Using the generated 1-3 scores, we applied conditional logic to segment the user base into actionable business categories:
+Using the generated 1-5 scores, we applied conditional logic to segment the user base into actionable business categories:
 
 ```{r}
-df <- df %>%
+# Define the "current date" for Recency calculation as the max date in the dataset
+reference_date <- max(clean_customers$last_tx, na.rm = TRUE)
+
+clean_customers <- clean_customers %>%
   mutate(
+    # 1. Calculate Recency (Days since last transaction)
+    recency_days = as.numeric(difftime(reference_date, last_tx, units = "days"))
+  ) %>%
+  mutate(
+    # 2. Assign Quantile Scores (1 to 5)
+    R_Score = ntile(-recency_days, 5), # Lower days = Higher Score (5)
+    F_Score = ntile(tx_count, 5),      # Higher count = Higher Score (5)
+    M_Score = ntile(total_tx_volume, 5) # Higher volume = Higher Score (5)
+  ) %>%
+  mutate(
+    # 3. Calculate Average RFM Score
+    RFM_Avg = (R_Score + F_Score + M_Score) / 3,
+    
+    # 4. Define Segments using Business Logic
     RFM_Segment = case_when(
-      R_Score == 3 & F_Score == 3 & M_Score == 3 ~ "Champions",
-      R_Score <= 2 & F_Score == 3 & M_Score == 3 ~ "Loyal Customers",
-      R_Score == 3 & F_Score <= 2 ~ "Recent Users",
-      R_Score == 1 & F_Score == 1 & M_Score == 1 ~ "Lost/Churned Risks",
+      R_Score >= 4 & F_Score >= 4 & M_Score >= 4 ~ "Champions",
+      R_Score >= 3 & F_Score >= 3 ~ "Loyal Customers",
+      R_Score <= 2 & F_Score >= 3 ~ "At Risk",
+      R_Score <= 2 & F_Score <= 2 ~ "Lost / Inactive",
       TRUE ~ "Average Users"
     )
   )
 ```
 
-## Step 3: Exporting for Production
+## Step 4: Final Verification and Exporting for Production
 
 Once the dataset was cleaned and enriched with our engineered features, we saved it as an R Data Serialization (`.rds`) file. This format preserves all R-specific attributes (like our factored income levels) and loads significantly faster in the Shiny Server environment than a standard CSV.
 
 ```{r}
-# Export the final optimized dataset for Shiny
-saveRDS(df, "app_data.rds")
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(lubridate)
+library(tidyr)
+library(readr)
+
+# 1. Load raw data
+raw_customers <- read.csv("customer_data.csv")
+raw_transactions <- read_xlsx("transactions_data.xlsx")
+
+# 2. Get the reference date for RFM calculation BEFORE the pipeline
+reference_date <- max(ymd(raw_customers$last_tx), na.rm = TRUE)
+
+# 3. The Unified ETL Pipeline
+clean_customers <- raw_customers %>%
+  
+  # --- STEP A: Clean Dates & Types ---
+  mutate(
+    first_tx = ymd(first_tx),
+    last_tx = ymd(last_tx),
+    last_survey_date = ymd(last_survey_date),
+    education_level = factor(education_level, levels = c("High School", "Bachelor", "Master", "PhD")),
+    customer_segment = as.factor(customer_segment),
+    gender = as.factor(gender),
+    income_bracket = factor(income_bracket, levels = c("Low", "Medium", "High", "Very High")),
+    customer_tenure = as.numeric(customer_tenure)
+  ) %>%
+  
+  # --- STEP B: Handle Missing Values ---
+  mutate(
+    support_tickets_count = replace_na(support_tickets_count, 0),
+    tx_count = replace_na(tx_count, 0),
+    total_tx_volume = replace_na(total_tx_volume, 0)
+  ) %>%
+  
+  # --- STEP C: Survival Analysis Feature (Fixes your error!) ---
+  mutate(
+    churn_event = ifelse(customer_segment == "inactive" | churn_probability > 0.8, 1, 0)
+  ) %>%
+  
+  # --- STEP D: RFM Segmentation ---
+  mutate(
+    recency_days = as.numeric(difftime(reference_date, last_tx, units = "days")),
+    R_Score = ntile(-recency_days, 5),
+    F_Score = ntile(tx_count, 5),
+    M_Score = ntile(total_tx_volume, 5)
+  ) %>%
+  mutate(
+    RFM_Segment = case_when(
+      R_Score >= 4 & F_Score >= 4 & M_Score >= 4 ~ "Champions",
+      R_Score >= 3 & F_Score >= 3 ~ "Loyal Customers",
+      R_Score <= 2 & F_Score >= 3 ~ "At Risk",
+      R_Score <= 2 & F_Score <= 2 ~ "Lost / Inactive",
+      TRUE ~ "Average Users"
+    )
+  )
+
+# 4. Save the final processed data
+saveRDS(clean_customers, file = "app_data.rds")
+
+# 5. Verify it worked perfectly!
+summary(clean_customers %>% select(churn_event, RFM_Segment, tx_count, total_tx_volume))
 ```
+
+### Conclusion
+
+The dataset is now completely formatted. It includes the `RFM_Segment` for our Treemap, `churn_event` for the Kaplan-Meier survival curves, and strictly typed numeric columns for the K-Means clustering and predictive regression models.

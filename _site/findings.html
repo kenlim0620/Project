@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Team 15">
-<meta name="dcterms.date" content="2026-02-22">
+<meta name="author" content="Ken Lin &amp; Team">
+<meta name="dcterms.date" content="2026-02-23">
 
-<title>Findings, Results &amp; Discussion – Team 15 Project</title>
+<title>Findings, Results &amp; Discussion – FinRetain App</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Team 15 Project</span>
+    <span class="navbar-title">FinRetain App</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -96,6 +96,14 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ui_design.html"> 
+<span class="menu-text">UI/UX Design</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./storyboard.html"> 
+<span class="menu-text">Storyboard</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./proposal.html"> 
@@ -161,9 +169,13 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a>
   <ul class="collapse">
-  <li><a href="#key-findings-results" id="toc-key-findings-results" class="nav-link" data-scroll-target="#key-findings-results">1. Key Findings &amp; Results</a></li>
-  <li><a href="#strategic-discussions-recommendations" id="toc-strategic-discussions-recommendations" class="nav-link" data-scroll-target="#strategic-discussions-recommendations">2. Strategic Discussions &amp; Recommendations</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">3. Conclusion</a></li>
+  <li><a href="#the-engagement-friction-point-eda-cda-results" id="toc-the-engagement-friction-point-eda-cda-results" class="nav-link" data-scroll-target="#the-engagement-friction-point-eda-cda-results">1. The Engagement Friction Point (EDA &amp; CDA Results)</a></li>
+  <li><a href="#algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" id="toc-algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" class="nav-link" data-scroll-target="#algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation">2. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)</a></li>
+  <li><a href="#the-churn-timeline-and-capital-bleed" id="toc-the-churn-timeline-and-capital-bleed" class="nav-link" data-scroll-target="#the-churn-timeline-and-capital-bleed">3. The Churn Timeline and Capital Bleed</a></li>
+  <li><a href="#macro-ecosystem-cash-flow-sankey" id="toc-macro-ecosystem-cash-flow-sankey" class="nav-link" data-scroll-target="#macro-ecosystem-cash-flow-sankey">4. Macro Ecosystem: Cash Flow Sankey</a></li>
+  <li><a href="#proactive-intervention-predictive-modelling" id="toc-proactive-intervention-predictive-modelling" class="nav-link" data-scroll-target="#proactive-intervention-predictive-modelling">5. Proactive Intervention (Predictive Modelling)</a></li>
+  <li><a href="#strategic-discussions-recommendations" id="toc-strategic-discussions-recommendations" class="nav-link" data-scroll-target="#strategic-discussions-recommendations">6. Strategic Discussions &amp; Recommendations</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">7. Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -183,14 +195,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Team 15 </p>
+             <p>Ken Lin &amp; Team </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 22, 2026</p>
+      <p class="date">February 23, 2026</p>
     </div>
   </div>
   
@@ -204,64 +216,97 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="executive-summary" class="level1">
 <h1>Executive Summary</h1>
-<p>The <strong>FinRetain</strong> interactive application has enabled us to move beyond static data and dynamically explore the lifecycle of our financial user base. By integrating exploratory visualizations with advanced predictive analytics, we uncovered critical insights into customer behavior, retention bottlenecks, and macroeconomic flow within the platform.</p>
+<p>The <strong>FinRetain</strong> visual analytics project set out to democratize complex transactional data and uncover the hidden drivers of customer churn. Through a rigorous pipeline of Exploratory Data Analysis, Algorithmic Clustering, Macro-Ecosystem Mapping, and Predictive Modelling, we have transitioned our understanding of the user base from reactive observation to proactive forecasting. Below are the synthesized findings and strategic business recommendations derived from our interactive dashboard.</p>
 <hr>
-<section id="key-findings-results" class="level2">
-<h2 class="anchored" data-anchor-id="key-findings-results">1. Key Findings &amp; Results</h2>
-<section id="demographic-behavioral-baselines-edacda" class="level3">
-<h3 class="anchored" data-anchor-id="demographic-behavioral-baselines-edacda">1.1 Demographic &amp; Behavioral Baselines (EDA/CDA)</h3>
-<p>Our initial exploration using the demographic and behavioral modules revealed several foundational truths about our user base:</p>
+<section id="the-engagement-friction-point-eda-cda-results" class="level2">
+<h2 class="anchored" data-anchor-id="the-engagement-friction-point-eda-cda-results">1. The Engagement Friction Point (EDA &amp; CDA Results)</h2>
+<p>Our initial hypothesis assumed that users with the highest transaction volumes would inherently possess the highest satisfaction scores. Our Confirmatory Data Analysis (CDA) proved this false.</p>
 <ul>
-<li><strong>Income vs.&nbsp;App Engagement:</strong> Customers in the “High” and “Very High” income brackets exhibit significantly higher transaction frequencies, but they are also more sensitive to friction, showing a steep drop in Satisfaction Score when Support Tickets exceed a certain threshold.</li>
 <li><strong>Volume Distribution:</strong> The transaction breakdown indicates that Direct Deposits are the primary driver of incoming liquidity, while Payments (rather than Cash Withdrawals) constitute the highest volume of outgoing capital.</li>
-</ul>
-</section>
-<section id="time-to-event-survival-analysis-insights" class="level3">
-<h3 class="anchored" data-anchor-id="time-to-event-survival-analysis-insights">1.2 Time-to-Event: Survival Analysis Insights</h3>
-<p>Using the Kaplan-Meier Churn Probability Curve, we plotted the exact tenure months where different customer segments are statistically most likely to abandon the app.</p>
-<ul>
-<li><strong>The Critical Drop-Off Window:</strong> We observed a steep drop in the survival probability curve between Month 3 and Month 6 across all acquisition channels. If a customer survives past Month 6, their probability of long-term retention increases exponentially.</li>
-<li><strong>Channel Variance:</strong> Customers acquired via specific marketing channels showed inherently different survival trajectories, suggesting that the quality of onboarding greatly impacts long-term loyalty.</li>
-</ul>
-</section>
-<section id="value-stratification-rfm-segmentation" class="level3">
-<h3 class="anchored" data-anchor-id="value-stratification-rfm-segmentation">1.3 Value Stratification: RFM Segmentation</h3>
-<p>The dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:</p>
-<ul>
-<li><strong>Champions &amp; Loyalists:</strong> While making up a smaller physical percentage of the user base, the dark color mapping (indicating high Customer Lifetime Value) confirmed that this group drives the vast majority of future projected revenue.</li>
-<li><strong>At-Risk Segments:</strong> A surprisingly large block of users fell into the “Recent Users” with low Frequency scores. These users are at immediate risk of churning if not engaged quickly.</li>
-</ul>
-</section>
-<section id="macro-ecosystem-cash-flow-sankey" class="level3">
-<h3 class="anchored" data-anchor-id="macro-ecosystem-cash-flow-sankey">1.4 Macro Ecosystem: Cash Flow Sankey</h3>
-<p>The network analysis of capital flow mapped exactly how money enters and leaves the FinRetain ecosystem.</p>
-<ul>
-<li><strong>Capital Retention:</strong> By balancing the visual nodes (100% Inflow vs.&nbsp;100% Outflow), we identified the exact proportion of incoming funds that are immediately drained via “Cash Withdrawals” versus funds that are kept within the ecosystem for “App Payments.”</li>
-<li><strong>Liquidity Insights:</strong> The thickest flow lines originate from Direct Deposits, proving that convincing a user to set up direct payroll deposit is the single most valuable action the app can incentivize.</li>
+<li><strong>Income vs.&nbsp;App Engagement:</strong> Customers in the “High” and “Very High” income brackets exhibit significantly higher transaction frequencies. However, they are also highly sensitive to friction, showing a steep drop in Satisfaction Score when their <code>support_tickets_count</code> increases.</li>
+<li><strong>The Finding:</strong> While high-income and highly educated users transact more frequently, their satisfaction scores exhibit high variance. By mapping <code>support_tickets_count</code> onto our scatter plots, a clear negative correlation emerged.</li>
+<li><strong>The Insight:</strong> The FinRetain App’s core UX is functional, but our customer support pipeline is a severe bottleneck. High-value users lose faith in the platform the moment they encounter a dispute that requires a support ticket.</li>
+<li><strong>Actionable Step:</strong> Implement automated, AI-driven ticket resolution for “High-Value” users to reduce friction and protect satisfaction scores.</li>
 </ul>
 <hr>
 </section>
+<section id="algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" class="level2">
+<h2 class="anchored" data-anchor-id="algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation">2. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)</h2>
+<p>Manual demographic filtering is insufficient for modern FinTech marketing. We deployed both K-Means clustering and RFM (Recency, Frequency, Monetary) analysis to segment our users. Rather than relying solely on demographic assumptions, we deployed algorithmic clustering to find hidden behavioral patterns, and the dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:</p>
+<ul>
+<li><p><strong>Three Personas:</strong> By running K-Means on <code>tx_count</code> and <code>total_tx_volume</code>, the algorithm autonomously grouped our users into three distinct personas. It highlighted a massive “middle-class” of users who log in and transact frequently, but move very little actual monetary value.</p></li>
+<li><p><strong>K-Means Findings:</strong> The algorithm naturally grouped our users into three distinct behavioral personas based purely on transaction frequency and monetary volume. We identified a massive “middle-class” of users who transact frequently but with very low monetary value.</p></li>
+<li><p><strong>Champions &amp; Loyalists:</strong> While making up a smaller physical percentage of the user base, the dark color mapping (indicating high Customer Lifetime Value) confirmed that this group drives the vast majority of future projected revenue.</p></li>
+<li><p><strong>At-Risk Segments:</strong> A surprisingly large block of users fell into the “Recent Users” category with dangerously low Frequency scores. These users are at immediate risk of churning if not engaged quickly.</p></li>
+<li><p><strong>RFM Findings:</strong> Our interactive Treemap revealed that while we have a solid block of “Champions” (High R, F, and M scores), an alarming percentage of users fall into the “Recent but Low Frequency” block.</p></li>
+<li><p><strong>Actionable Step:</strong> Gamify the daily app experience (e.g., daily login rewards, micro-investing features) specifically targeted at the low-frequency segments identified in the Treemap to convert them into Champions.</p></li>
+</ul>
+<hr>
+</section>
+<section id="the-churn-timeline-and-capital-bleed" class="level2">
+<h2 class="anchored" data-anchor-id="the-churn-timeline-and-capital-bleed">3. The Churn Timeline and Capital Bleed</h2>
+<p>Understanding <em>who</em> leaves is only half the battle; we needed to know <em>when</em> they leave and <em>where</em> the money goes. Using the Kaplan-Meier Churn Probability Curve, we plotted the exact tenure months where different customer segments are statistically most likely to abandon the app.</p>
+<p><strong>The Critical Drop-Off Window</strong></p>
+<p>We observed a steep drop in the survival probability curve between Month 3 and Month 6 across all acquisition channels. If a customer survives past Month 6, their probability of long-term retention increases exponentially.</p>
+<p><strong>Channel Variance</strong></p>
+<p>Customers acquired via specific marketing channels showed inherently different survival trajectories, suggesting that the quality of onboarding greatly impacts long-term loyalty.</p>
+<section id="the-90-day-drop-off-survival-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="the-90-day-drop-off-survival-analysis">3.1 The 90-Day Drop-Off (Survival Analysis)</h3>
+<ul>
+<li><strong>The Finding:</strong> Our Kaplan-Meier Survival Curve pinpointed a critical “Danger Zone” between Month 3 and Month 6 of a customer’s tenure. The probability of survival plummets drastically during this 90-day window.</li>
+<li><strong>The Insight:</strong> Users are downloading the app, trying it for a few months, and abandoning it if it doesn’t become their primary financial hub.</li>
+<li><strong>Actionable Step:</strong> Marketing must deploy aggressive, targeted retention campaigns (e.g., fee waivers, premium account trials) exactly at the 60-day mark to preempt the Month 3 drop-off.</li>
+</ul>
+</section>
+<section id="systemic-liquidity-sankey-network" class="level3">
+<h3 class="anchored" data-anchor-id="systemic-liquidity-sankey-network">3.2 Systemic Liquidity (Sankey Network)</h3>
+<ul>
+<li><strong>The Finding:</strong> The Macro Cash Flow diagram mapped the exact dollar amounts flowing through the ecosystem. It visually proved that Direct Deposits are the absolute lifeblood of the platform, but a significant portion of that capital immediately flows out via External Withdrawals rather than staying in the app ecosystem (like Peer Transfers or App Investments).</li>
+<li><strong>Actionable Step:</strong> Incentivize users to keep their money inside the FinRetain ecosystem by offering higher yield savings rates for capital that originates from Direct Deposits.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="macro-ecosystem-cash-flow-sankey" class="level2">
+<h2 class="anchored" data-anchor-id="macro-ecosystem-cash-flow-sankey">4. Macro Ecosystem: Cash Flow Sankey</h2>
+<p>The network analysis of capital flow mapped exactly how money enters and leaves the FinRetain ecosystem.</p>
+<p><strong>Capital Retention:</strong> By balancing the visual nodes, we identified the exact proportion of incoming funds that are immediately drained via “External Withdrawals” versus funds that are kept within the ecosystem for “Merchant Payments” and “Peer Transfers.”</p>
+<p><strong>Liquidity Insights:</strong> The thickest flow lines originate from external Deposits, proving that convincing a user to set up direct payroll deposit is the single most valuable action the app can incentivize.</p>
+<hr>
+</section>
+<section id="proactive-intervention-predictive-modelling" class="level2">
+<h2 class="anchored" data-anchor-id="proactive-intervention-predictive-modelling">5. Proactive Intervention (Predictive Modelling)</h2>
+<p>The most significant achievement of the FinRetain project is the <strong>Risk Simulator</strong>. By integrating a Multiple Linear Regression model into our Shiny UI, we proved that churn is not inevitable. The model confirmed that <code>support_tickets_count</code> and <code>tx_count</code> are statistically significant predictors of <code>churn_probability</code>. Our multiple linear regression model confirmed that user behavior directly dictates future value.</p>
+<ul>
+<li><p><strong>Simulated Salvage:</strong> By interacting with the UI sliders, we proved that artificially lowering a user’s support ticket count and slightly increasing their transaction frequency drastically shifts their predicted Churn Probability from “High Risk” (Red) to “Safe” (Green), effectively saving their Customer Lifetime Value (CLV).</p></li>
+<li><p><strong>The Result:</strong> Stakeholders can now use the dashboard sliders to simulate interventions. If a user has an 80% churn risk, the stakeholder can simulate lowering their support tickets (via faster customer service) and increasing their transaction frequency (via marketing pushes). The visual gauges update instantly, showing how the user’s Customer Lifetime Value (CLV) is salvaged.</p></li>
+</ul>
+<hr>
 </section>
 <section id="strategic-discussions-recommendations" class="level2">
-<h2 class="anchored" data-anchor-id="strategic-discussions-recommendations">2. Strategic Discussions &amp; Recommendations</h2>
+<h2 class="anchored" data-anchor-id="strategic-discussions-recommendations">6. Strategic Discussions &amp; Recommendations</h2>
 <p>Based on the quantitative results derived from the FinRetain platform, our team proposes the following strategic business interventions:</p>
 <section id="a.-targeted-month-3-interventions" class="level3">
 <h3 class="anchored" data-anchor-id="a.-targeted-month-3-interventions">A. Targeted “Month 3” Interventions</h3>
-<p>Since the Survival Analysis proved that Months 3 through 6 are the most dangerous for customer churn, the marketing team should automate targeted retention campaigns (e.g., fee waivers, premium feature trials) specifically triggered at the 90-day tenure mark.</p>
+<p>Since the Survival Analysis proved that Months 3 through 6 are the most dangerous for customer churn, the marketing team should automate targeted retention campaigns (e.g., fee waivers, premium feature trials) specifically triggered at the <strong>90-day tenure mark</strong>.</p>
 </section>
 <section id="b.-proactive-rfm-nurturing" class="level3">
 <h3 class="anchored" data-anchor-id="b.-proactive-rfm-nurturing">B. Proactive RFM Nurturing</h3>
-<p>The RFM Treemap highlighted a massive block of low-frequency “Recent Users.” We recommend using the <strong>Risk Simulator</strong> module to test how artificially increasing their app logins or transaction counts (via gamification or rewards) impacts their projected Customer Lifetime Value (CLV).</p>
+<p>The RFM Treemap highlighted a massive block of low-frequency “Recent Users.” We recommend using the insights from the <strong>Risk Simulator</strong> module to gamify the app experience (via daily login rewards or micro-investing features) to artificially inflate their transaction frequency and protect their projected CLV.</p>
 </section>
 <section id="c.-direct-deposit-incentivization" class="level3">
 <h3 class="anchored" data-anchor-id="c.-direct-deposit-incentivization">C. Direct Deposit Incentivization</h3>
-<p>The Sankey Cash Flow diagram proved that Direct Deposits feed the most capital into the app ecosystem. Business development should focus on campaigns that reward users for switching their primary salary deposit to FinRetain, as this ensures long-term liquidity and highly active transactional behavior.</p>
+<p>The Sankey Cash Flow diagram proved that external Deposits feed the most capital into the app ecosystem. Business development should focus on campaigns that financially reward users for switching their primary salary deposit to FinRetain, as this ensures long-term liquidity.</p>
+</section>
+<section id="d.-frictionless-customer-support-for-high-value-users" class="level3">
+<h3 class="anchored" data-anchor-id="d.-frictionless-customer-support-for-high-value-users">D. Frictionless Customer Support for High-Value Users</h3>
+<p>Our CDA scatter plots proved that high-income users churn rapidly when dealing with poor customer support. We strongly recommend routing users identified as “Champions” by our RFM model to a priority, zero-wait-time customer service queue.</p>
 <hr>
 </section>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">3. Conclusion</h2>
-<p>The FinRetain Visual Analytics platform successfully bridges the gap between raw data and executive decision-making. By leveraging R Shiny, <code>survminer</code>, and <code>networkD3</code>, we have provided stakeholders with an interactive environment to not only view historical data but to simulate and predict future customer behavior.</p>
+<h2 class="anchored" data-anchor-id="conclusion">7. Conclusion</h2>
+<p>Data visualization is only valuable if it drives decisions. The FinRetain Visual Analytics platform successfully bridges the gap between raw data and executive decision-making. By leveraging R Shiny, <code>plotly</code>, <code>survival</code> models, <code>networkD3</code>, <code>survival</code> curves and <code>networkD3</code>, we have provided stakeholders with an interactive environment and exact insights needed to reduce churn, optimize capital flow, and maximize Customer Lifetime Value to not only view historical demographic data, but to actively simulate and predict future customer behavior.</p>
 
 
 </section>

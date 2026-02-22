@@ -1,0 +1,84 @@
+---
+title: "Project Storyboard"
+author: "LIN XIANWEI"
+date: today
+format: 
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 2
+editor: visual
+---
+
+# The FinRetain Narrative
+
+Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.
+
+------------------------------------------------------------------------
+
+## Introduction
+
+The **FinRetain** project translates raw, high-dimensional transactional data into a visual story of customer behavior, liquidity flow, and churn risk. Instead of looking at isolated metrics, this storyboard walks through the holistic lifecycle of our user base, providing actionable insights at every stage.
+
+------------------------------------------------------------------------
+
+## Motivation
+
+In the highly competitive FinTech sector, customer acquisition is expensive, but customer retention is profitable. Currently, platform managers face a critical blind spot: they know *when* a user leaves, but they cannot visualize the behavioral degradation leading up to that moment.
+
+Our motivation is to replace reactive reporting with proactive, predictive visual analytics. We want to answer three questions: 1. *Who* are our most valuable users? 2. *Where* is the money flowing? 3. *When* and *Why* will a user leave?
+
+------------------------------------------------------------------------
+
+## Methodology
+
+To tell this story, we designed a pipeline that moves from the past (descriptive) to the future (predictive):
+
+-   **Phase 1: Foundation (Data Prep & UI Design):** Cleaning 10,000+ records and designing a low-cognitive-load interface.
+-   **Phase 2: Discovery (EDA & CDA):** Establishing demographic baselines and testing behavioral hypotheses.
+-   **Phase 3: Segmentation (Cluster Analysis):** Using K-Means and RFM to group users autonomously.
+-   **Phase 4: Ecosystem Mapping:** Deploying Sankey diagrams to trace macro cash flows.
+-   **Phase 5: Forecasting (Predictive Modelling):** Simulating future churn risk using dynamic regression.
+
+------------------------------------------------------------------------
+
+## The Storyboard: A User's Journey
+
+### Scene 1: The Onboarding & Baseline (Demographics)
+
+-   **The Visual:** A dynamic grid of Box Plots and Bar Charts.
+-   **The Story:** A new user joins the app. Through our EDA tabs, we immediately categorize their demographic profile (e.g., Age, Education, Income). We notice that high-income users tend to be older, setting the stage for how we market premium investment products to them.
+
+### Scene 2: The Engagement Friction (CDA)
+
+-   **The Visual:** An interactive Scatter Plot with a Linear Trendline.
+-   **The Story:** As the user interacts with the app, we track their transactions versus their satisfaction. The plot reveals a narrative twist: users who transact frequently but have high support ticket counts show plunging satisfaction. The UI highlights this friction point for the product team.
+
+### Scene 3: Finding the Champions (Clustering & RFM)
+
+-   **The Visual:** A dense, color-coded RFM Treemap and K-Means Scatter Plot.
+-   **The Story:** Months pass. The user's behavior matures. Our K-Means algorithm automatically assigns them to the "High-Value/High-Frequency" cluster. In the Treemap, they appear as a large, dark-blue square. They are now a "Champion."
+
+### Scene 4: The Threat of Departure (Survival Analysis)
+
+-   **The Visual:** A Kaplan-Meier Survival Curve showing a steep drop at Month 3.
+-   **The Story:** The narrative reaches its climax. The survival curve shows that even Champions are at severe risk of churning around the 90-day mark. This visual acts as a ticking clock, urging the marketing team to deploy retention incentives immediately at Month 2.
+
+### Scene 5: The Financial Bleed (Macro Cash Flow)
+
+-   **The Visual:** A massive, flowing Sankey Diagram.
+-   **The Story:** Zooming out from the individual user, we look at the ecosystem. If users churn, where does the money go? The Sankey traces capital from "Direct Deposits" directly out to "External Withdrawals." It visualizes the exact dollar amount the company bleeds when retention fails.
+
+------------------------------------------------------------------------
+
+## Forecasting & Simulation
+
+To change the ending of this story, we step into the Risk Simulator. Instead of accepting the churn predicted in Scene 4, a stakeholder adjusts the UI sliders—simulating a scenario where the user receives faster customer support and automated savings features.
+
+**The Result:** The model recalculates on the fly. The Churn Probability gauge drops from Red (85%) to Green (12%), and the predicted Customer Lifetime Value (CLV) increases. We have visually forecasted a saved customer.
+
+------------------------------------------------------------------------
+
+## Conclusion
+
+The FinRetain dashboard proves that Visual Analytics is more than just plotting charts; it is about building a decision-making engine. By combining exploratory data analysis, algorithmic clustering, and predictive forecasting into a single, cohesive storyboard, we empower FinTech platforms to protect their most valuable asset: their users.

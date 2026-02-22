@@ -3,11 +3,15 @@ project:
   output-dir: _site # Standard for GitHub Pages hosting
 
 website:
-  title: "Team 15 Project"
+  title: "FinRetain App"
   navbar:
     left:
       - href: index.qmd
         text: "Home"
+      - href: ui_design.qmd           
+        text: "UI/UX Design"
+      - href: storyboard.qmd            
+        text: "Storyboard"
       - href: proposal.qmd
         text: "Proposal"
       - href: meeting.qmd
@@ -30,11 +34,21 @@ website:
       - text: "Launch App 🚀"
         href: https://lin-xianwei.shinyapps.io/New-Shiny/ # Link to your separate Shiny App
 
+page-footer:
+    background: dark
+    left: "LIN XIANWEI - Project Prototype"
+    right: "Singapore Management University"
+    
 format:
   html:
-    theme: cosmo # Clean, professional, modern
+    theme: lumen # Clean, professional, modern
     css: styles.css
     toc: true
     toc-depth: 3
     smooth-scroll: true
     highlight-style: github
+    
+execute:
+  echo: true
+  warning: false
+  message: false

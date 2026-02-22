@@ -1,0 +1,64 @@
+---
+title: "Proposed UI Design & Architecture"
+author: "LIN XIANWEI"
+date: today
+format: 
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 2
+editor: visual
+---
+
+# UI/UX Philosophy
+
+The FinRetain dashboard is designed to transform complex financial data into intuitive, actionable insights. To achieve this, our User Interface (UI) architecture strictly follows the principles of reducing cognitive load and maximizing interactivity. The application is divided into a consistent global shell and modular workspaces.
+
+------------------------------------------------------------------------
+
+## Global Architecture: The App Shell
+
+To maintain context across all analytical tasks, the dashboard utilizes a **Sidebar Layout**.
+
+-   **Sidebar Panel (Left, 25% width):** This is the persistent control center. It contains the primary navigation menu to switch between modules, as well as global filters (Date Range, Customer Segment, Income Level) that apply consistently across the entire app.
+-   **Main Canvas (Right, 75% width):** The dynamic viewing area where visualizations are rendered. This maximizes horizontal screen real estate, which is crucial for wide charts like timelines and Sankey diagrams.
+
+------------------------------------------------------------------------
+
+## Module UIs: Component Breakdown
+
+### The EDA & CDA Module
+
+**Goal:** Allow users to quickly slice demographic and behavioral data.
+
+**UI Components:**
+
+1.  **Top Row (ValueBoxes):** Key Performance Indicators (KPIs) such as Total Users, Average Satisfaction, and Churn Rate displayed as highly visible cards.
+
+2.  **Control Bar:** Dropdown menus specifically for the plots (e.g., "Select X-Axis", "Select Y-Axis") placed immediately above the charts.
+
+3.  **Plot Area:** A 2x2 grid layout for static or interactive `plotly` charts, ensuring multiple distributions can be compared simultaneously without scrolling.
+
+### Advanced Analytics: Sankey & Treemap
+
+**Goal:** Maximize space for dense, high-dimensional visualizations. **UI Components:** \* **Full-Width Canvas:** For the Macro Cash Flow Sankey diagram, the UI dynamically collapses secondary menus to grant the visualization 100% of the main panel width. \* **Interactive Tooltips:** Instead of cluttering the screen with legends, the UI relies on hover-triggered tooltips. Hovering over a node in the Treemap or Sankey dims the rest of the screen and brings the exact data metrics to the foreground.
+
+### The Risk Simulator (Predictive UI)
+
+**Goal:** Create a "What-If" sandbox for stakeholders to interact with our underlying regression and machine learning models.
+
+**UI Components:**
+
+1.  **Input Column (Left):** A vertical stack of interactive `sliderInput` and `selectInput` widgets. These represent the specific attributes of a hypothetical customer (e.g., "Support Tickets Count", "Transaction Frequency").
+
+2.  **Output Gauges (Right Top):** Real-time, color-coded gauge charts. As the user moves a slider, a gauge instantly updates to show the new "Churn Probability" (Green = Safe, Red = High Risk).
+
+3.  **Text/Table Output (Right Bottom):** A dynamically updating text box that outputs the specific projected Customer Lifetime Value (CLV) in dollars based on the simulation.
+
+------------------------------------------------------------------------
+
+## Design Heuristics Applied
+
+1.  **Consistency:** Color palettes are standardized across all modules (e.g., Red always indicates high churn risk or negative sentiment; Blue indicates stability).
+2.  **Error Prevention:** Dropdowns and sliders are constrained to logical limits (e.g., you cannot select a negative number of transactions) to prevent the R server from crashing.
+3.  **Feedback:** Loading spinners (`shinycssloaders`) are integrated into the UI so the user knows when the K-Means or Predictive models are calculating in the background.
