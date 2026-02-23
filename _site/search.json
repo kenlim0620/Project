@@ -2,9 +2,58 @@
   {
     "objectID": "user-guide.html",
     "href": "user-guide.html",
-    "title": "User Guide",
+    "title": "FinRetain: Interactive User Guide",
     "section": "",
-    "text": "This is SU HUI part"
+    "text": "Welcome to the FinRetain Visual Analytics Dashboard! This application empowers stakeholders to explore customer demographics, statistically confirm behavioral trends, and actively simulate future churn risk.\nAccess the Live Dashboard Here: FinRetain Shiny App\nThis guide will walk you through the six primary modules of the dashboard and how to extract maximum value from them.\n\n\n\nThe FinRetain app is divided into distinct analytical modules, accessible via the top navigation bar. Move sequentially from left to right to follow our data science pipeline, or jump directly to the predictive simulator if you want to test interventions.\n\nExploratory Data (EDA): Understand the demographic shape and tenure of the customer base.\nConfirmatory Data (CDA): View mathematical correlations and statistical proofs.\nCustomer Segmentation: Explore algorithmic (K-Means) and rule-based (RFM) customer groups.\nSurvival Timeline: Track the exact months where churn risk spikes.\nEcosystem Cash Flow: Trace macro-liquidity through the platform.\nPredictive Risk Simulator: Use machine learning to forecast a specific user’s future value.\n\n\n\n\n\nThis tab allows you to view the foundational demographics of our user base.\n\nStep 1: Use the sidebar on the left to filter the entire dashboard by Gender or Customer Segment.\nStep 2: Observe how the “Income Distribution” bar chart and “Age by Education” box plots dynamically update.\nStep 3: Review the Ridgeline plot at the bottom to see how customer tenure density varies across different RFM segments.\n\n\n💡 Try this! Filter the Customer Segment to “Premium” and see how the density of their tenure shifts compared to the “Standard” segment.\n\n\n\n\n\nMove beyond visual assumptions and interact with our statistical models.\n\nMacro Correlation Matrix: This heatmap identifies strong positive (blue) or negative (red) relationships across all numerical features.\nHypothesis Testing: Use the dropdown menu to facet the ggscatterstats plot by either Income Bracket or Education Level. This proves the statistical significance of the relationship between Transaction Count and Satisfaction.\n\n\n\n\n\nThis module groups users using two distinct methodologies: Machine Learning and Value Stratification.\n\nAlgorithmic Personas (K-Means): Hover over the scatter plot to see how our unsupervised machine learning algorithm automatically grouped users into three behavioral clusters based purely on transaction volume and count.\nValue Stratification (RFM Treemap): This chart categorizes the database into actionable blocks (e.g., “Champions”, “Recent Users”).\n\nSize = Number of users in that segment.\nColor = The Average Customer Lifetime Value (CLV).\n\n\n\n💡 Try this! Hover over the smallest boxes in the Treemap. Notice how some visually small segments actually possess the darkest colors, indicating highly concentrated wealth.\n\n\n\n\n\nThis module answers the critical question: When do users leave?\n\nStep 1: Go to the “Survival Parameters” sidebar.\nStep 2: Select a variable to group the customers by (Acquisition Channel, Income Bracket, or Customer Segment).\nStep 3: The Kaplan-Meier curve will generate a timeline. Look for the steepest drops in the line—this indicates the exact tenure month where drop-off risk is highest.\n\n\n\n\n\nA macro-view of the platform’s liquidity.\n\nVisualizing the Flow: This Sankey network traces capital from the moment it enters the platform (Incoming Transfers, Direct Deposits) to the moment it leaves (App Payments, Outgoing Transfers, Cash Withdrawals).\nInteraction: You can click and drag the nodes (the vertical bars) to rearrange the network for a clearer view of specific money pipelines.\n\n\n\n\n\nThis is the most powerful tool in the application, allowing you to simulate interventions to save at-risk customers.\n\nStep 1: Use the sliders on the left to build a custom user profile (adjusting Age, Total Transactions, Support Tickets, and Satisfaction Score).\nStep 2: Click the “Simulate Future Value” button.\nStep 3: The dashboard will use our Multiple Linear Regression models to instantly predict this user’s Churn Risk (Probability of leaving in 30 days) and Predicted CLV (Estimated lifetime revenue).\nStep 4: Scroll down to the Data Table to instantly view the top 5 real customers in the database who most closely match the exact profile you just simulated.\n\n\n💡 Try this! Set the “Support Tickets Logged” slider to 0 and hit simulate. Then, slide it up to 15 and hit simulate again. Watch how drastically the red “Predicted Churn Risk” box spikes!"
+  },
+  {
+    "objectID": "user-guide.html#overview-the-navigation-menu",
+    "href": "user-guide.html#overview-the-navigation-menu",
+    "title": "FinRetain: Interactive User Guide",
+    "section": "",
+    "text": "The FinRetain app is divided into distinct analytical modules, accessible via the top navigation bar. Move sequentially from left to right to follow our data science pipeline, or jump directly to the predictive simulator if you want to test interventions.\n\nExploratory Data (EDA): Understand the demographic shape and tenure of the customer base.\nConfirmatory Data (CDA): View mathematical correlations and statistical proofs.\nCustomer Segmentation: Explore algorithmic (K-Means) and rule-based (RFM) customer groups.\nSurvival Timeline: Track the exact months where churn risk spikes.\nEcosystem Cash Flow: Trace macro-liquidity through the platform.\nPredictive Risk Simulator: Use machine learning to forecast a specific user’s future value."
+  },
+  {
+    "objectID": "user-guide.html#module-1-exploratory-data-eda",
+    "href": "user-guide.html#module-1-exploratory-data-eda",
+    "title": "FinRetain: Interactive User Guide",
+    "section": "",
+    "text": "This tab allows you to view the foundational demographics of our user base.\n\nStep 1: Use the sidebar on the left to filter the entire dashboard by Gender or Customer Segment.\nStep 2: Observe how the “Income Distribution” bar chart and “Age by Education” box plots dynamically update.\nStep 3: Review the Ridgeline plot at the bottom to see how customer tenure density varies across different RFM segments.\n\n\n💡 Try this! Filter the Customer Segment to “Premium” and see how the density of their tenure shifts compared to the “Standard” segment."
+  },
+  {
+    "objectID": "user-guide.html#module-2-confirmatory-data-cda",
+    "href": "user-guide.html#module-2-confirmatory-data-cda",
+    "title": "FinRetain: Interactive User Guide",
+    "section": "",
+    "text": "Move beyond visual assumptions and interact with our statistical models.\n\nMacro Correlation Matrix: This heatmap identifies strong positive (blue) or negative (red) relationships across all numerical features.\nHypothesis Testing: Use the dropdown menu to facet the ggscatterstats plot by either Income Bracket or Education Level. This proves the statistical significance of the relationship between Transaction Count and Satisfaction."
+  },
+  {
+    "objectID": "user-guide.html#module-3-customer-segmentation",
+    "href": "user-guide.html#module-3-customer-segmentation",
+    "title": "FinRetain: Interactive User Guide",
+    "section": "",
+    "text": "This module groups users using two distinct methodologies: Machine Learning and Value Stratification.\n\nAlgorithmic Personas (K-Means): Hover over the scatter plot to see how our unsupervised machine learning algorithm automatically grouped users into three behavioral clusters based purely on transaction volume and count.\nValue Stratification (RFM Treemap): This chart categorizes the database into actionable blocks (e.g., “Champions”, “Recent Users”).\n\nSize = Number of users in that segment.\nColor = The Average Customer Lifetime Value (CLV).\n\n\n\n💡 Try this! Hover over the smallest boxes in the Treemap. Notice how some visually small segments actually possess the darkest colors, indicating highly concentrated wealth."
+  },
+  {
+    "objectID": "user-guide.html#module-4-survival-timeline",
+    "href": "user-guide.html#module-4-survival-timeline",
+    "title": "FinRetain: Interactive User Guide",
+    "section": "",
+    "text": "This module answers the critical question: When do users leave?\n\nStep 1: Go to the “Survival Parameters” sidebar.\nStep 2: Select a variable to group the customers by (Acquisition Channel, Income Bracket, or Customer Segment).\nStep 3: The Kaplan-Meier curve will generate a timeline. Look for the steepest drops in the line—this indicates the exact tenure month where drop-off risk is highest."
+  },
+  {
+    "objectID": "user-guide.html#module-5-ecosystem-cash-flow",
+    "href": "user-guide.html#module-5-ecosystem-cash-flow",
+    "title": "FinRetain: Interactive User Guide",
+    "section": "",
+    "text": "A macro-view of the platform’s liquidity.\n\nVisualizing the Flow: This Sankey network traces capital from the moment it enters the platform (Incoming Transfers, Direct Deposits) to the moment it leaves (App Payments, Outgoing Transfers, Cash Withdrawals).\nInteraction: You can click and drag the nodes (the vertical bars) to rearrange the network for a clearer view of specific money pipelines."
+  },
+  {
+    "objectID": "user-guide.html#module-6-predictive-risk-simulator",
+    "href": "user-guide.html#module-6-predictive-risk-simulator",
+    "title": "FinRetain: Interactive User Guide",
+    "section": "",
+    "text": "This is the most powerful tool in the application, allowing you to simulate interventions to save at-risk customers.\n\nStep 1: Use the sliders on the left to build a custom user profile (adjusting Age, Total Transactions, Support Tickets, and Satisfaction Score).\nStep 2: Click the “Simulate Future Value” button.\nStep 3: The dashboard will use our Multiple Linear Regression models to instantly predict this user’s Churn Risk (Probability of leaving in 30 days) and Predicted CLV (Estimated lifetime revenue).\nStep 4: Scroll down to the Data Table to instantly view the top 5 real customers in the database who most closely match the exact profile you just simulated.\n\n\n💡 Try this! Set the “Support Tickets Logged” slider to 0 and hit simulate. Then, slide it up to 15 and hit simulate again. Watch how drastically the red “Predicted Churn Risk” box spikes!"
   },
   {
     "objectID": "storyboard.html",

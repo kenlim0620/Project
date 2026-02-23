@@ -1,6 +1,98 @@
 ---
-title: "User Guide"
-editor: visual
+title: "FinRetain: Interactive User Guide"
+author: "Team 15"
+date: today
+format: 
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 2
+    smooth-scroll: true
 ---
 
-# This is SU HUI part
+# Getting Started with FinRetain
+
+Welcome to the FinRetain Visual Analytics Dashboard! This application empowers stakeholders to explore customer demographics, statistically confirm behavioral trends, and actively simulate future churn risk.
+
+**Access the Live Dashboard Here:** [FinRetain Shiny App](https://lin-xianwei.shinyapps.io/New-Shiny/)
+
+This guide will walk you through the six primary modules of the dashboard and how to extract maximum value from them.
+
+------------------------------------------------------------------------
+
+## Overview: The Navigation Menu
+
+The FinRetain app is divided into distinct analytical modules, accessible via the top navigation bar. Move sequentially from left to right to follow our data science pipeline, or jump directly to the predictive simulator if you want to test interventions.
+
+1.  **Exploratory Data (EDA):** Understand the demographic shape and tenure of the customer base.
+2.  **Confirmatory Data (CDA):** View mathematical correlations and statistical proofs.
+3.  **Customer Segmentation:** Explore algorithmic (K-Means) and rule-based (RFM) customer groups.
+4.  **Survival Timeline:** Track the exact months where churn risk spikes.
+5.  **Ecosystem Cash Flow:** Trace macro-liquidity through the platform.
+6.  **Predictive Risk Simulator:** Use machine learning to forecast a specific user's future value.
+
+------------------------------------------------------------------------
+
+## Module 1: Exploratory Data (EDA)
+
+This tab allows you to view the foundational demographics of our user base.
+
+-   **Step 1:** Use the sidebar on the left to filter the entire dashboard by **Gender** or **Customer Segment**.
+-   **Step 2:** Observe how the "Income Distribution" bar chart and "Age by Education" box plots dynamically update.
+-   **Step 3:** Review the Ridgeline plot at the bottom to see how customer tenure density varies across different RFM segments.
+
+> **💡 Try this!** Filter the Customer Segment to "Premium" and see how the density of their tenure shifts compared to the "Standard" segment.
+
+------------------------------------------------------------------------
+
+## Module 2: Confirmatory Data (CDA)
+
+Move beyond visual assumptions and interact with our statistical models.
+
+-   **Macro Correlation Matrix:** This heatmap identifies strong positive (blue) or negative (red) relationships across all numerical features.
+-   **Hypothesis Testing:** Use the dropdown menu to facet the `ggscatterstats` plot by either *Income Bracket* or *Education Level*. This proves the statistical significance of the relationship between Transaction Count and Satisfaction.
+
+------------------------------------------------------------------------
+
+## Module 3: Customer Segmentation
+
+This module groups users using two distinct methodologies: Machine Learning and Value Stratification.
+
+-   **Algorithmic Personas (K-Means):** Hover over the scatter plot to see how our unsupervised machine learning algorithm automatically grouped users into three behavioral clusters based purely on transaction volume and count.
+-   **Value Stratification (RFM Treemap):** This chart categorizes the database into actionable blocks (e.g., "Champions", "Recent Users").
+    -   **Size** = Number of users in that segment.
+    -   **Color** = The Average Customer Lifetime Value (CLV).
+
+> **💡 Try this!** Hover over the smallest boxes in the Treemap. Notice how some visually small segments actually possess the darkest colors, indicating highly concentrated wealth.
+
+------------------------------------------------------------------------
+
+## Module 4: Survival Timeline
+
+This module answers the critical question: *When do users leave?*
+
+-   **Step 1:** Go to the "Survival Parameters" sidebar.
+-   **Step 2:** Select a variable to group the customers by (Acquisition Channel, Income Bracket, or Customer Segment).
+-   **Step 3:** The Kaplan-Meier curve will generate a timeline. Look for the steepest drops in the line—this indicates the exact tenure month where drop-off risk is highest.
+
+------------------------------------------------------------------------
+
+## Module 5: Ecosystem Cash Flow
+
+A macro-view of the platform's liquidity.
+
+-   **Visualizing the Flow:** This Sankey network traces capital from the moment it enters the platform (Incoming Transfers, Direct Deposits) to the moment it leaves (App Payments, Outgoing Transfers, Cash Withdrawals).
+-   **Interaction:** You can click and drag the nodes (the vertical bars) to rearrange the network for a clearer view of specific money pipelines.
+
+------------------------------------------------------------------------
+
+## Module 6: Predictive Risk Simulator
+
+This is the most powerful tool in the application, allowing you to simulate interventions to save at-risk customers.
+
+-   **Step 1:** Use the sliders on the left to build a custom user profile (adjusting Age, Total Transactions, Support Tickets, and Satisfaction Score).
+-   **Step 2:** Click the **"Simulate Future Value"** button.
+-   **Step 3:** The dashboard will use our Multiple Linear Regression models to instantly predict this user's **Churn Risk** (Probability of leaving in 30 days) and **Predicted CLV** (Estimated lifetime revenue).
+-   **Step 4:** Scroll down to the Data Table to instantly view the top 5 real customers in the database who most closely match the exact profile you just simulated.
+
+> **💡 Try this!** Set the "Support Tickets Logged" slider to 0 and hit simulate. Then, slide it up to 15 and hit simulate again. Watch how drastically the red "Predicted Churn Risk" box spikes!
