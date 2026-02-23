@@ -44,7 +44,7 @@ To tell this story, we designed a pipeline that moves from the past (descriptive
 
 ## The Storyboard: A User's Journey
 
-### Scene 1: The Onboarding & Baseline (Demographics)
+### Scene 1: The Onboarding & Baseline (Demographics - EDA)
 
 -   **The Visual:** A dynamic grid of Box Plots and Bar Charts.
 -   **The Story:** A new user joins the app. Through our EDA tabs, we immediately categorize their demographic profile (e.g., Age, Education, Income). We notice that high-income users tend to be older, setting the stage for how we market premium investment products to them.

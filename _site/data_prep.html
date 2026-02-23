@@ -208,6 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-2.-data-cleaning-type-conversion-formatting" id="toc-step-2.-data-cleaning-type-conversion-formatting" class="nav-link" data-scroll-target="#step-2.-data-cleaning-type-conversion-formatting">Step 2. Data Cleaning &amp; Type Conversion (Formatting)</a></li>
   <li><a href="#step-3-feature-engineering-advanced-metrics" id="toc-step-3-feature-engineering-advanced-metrics" class="nav-link" data-scroll-target="#step-3-feature-engineering-advanced-metrics">Step 3: Feature Engineering (Advanced Metrics)</a></li>
   <li><a href="#step-4-final-verification-and-exporting-for-production" id="toc-step-4-final-verification-and-exporting-for-production" class="nav-link" data-scroll-target="#step-4-final-verification-and-exporting-for-production">Step 4: Final Verification and Exporting for Production</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -446,12 +447,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  Max.   :1.0000                      Max.   :77465.00   Max.   :1.073e+12  </code></pre>
 </div>
 </div>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Data Formatting before saving</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>final_app_data <span class="ot">&lt;-</span> clean_customers <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert binary churn to a labeled factor for categorical plotting</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">churn_factor =</span> <span class="fu">factor</span>(churn_event, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Active"</span>, <span class="st">"Churned"</span>)),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure categorical variables are treated as factors</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">income_bracket =</span> <span class="fu">as.factor</span>(income_bracket),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">education_level =</span> <span class="fu">as.factor</span>(education_level),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">RFM_Segment =</span> <span class="fu">as.factor</span>(RFM_Segment)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the perfectly clean, ML-ready dataset</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(final_app_data, <span class="st">"app_data.rds"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>The dataset is now completely formatted. It includes the <code>RFM_Segment</code> for our Treemap, <code>churn_event</code> for the Kaplan-Meier survival curves, and strictly typed numeric columns for the K-Means clustering and predictive regression models.</p>
 
 
-</section>
 </section>
 </section>
 
