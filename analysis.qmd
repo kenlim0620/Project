@@ -13,11 +13,20 @@ execute:
   message: false
 ---
 
-# Uncovering the Baseline Story
+# Storyboard Baseline
 
-Before building predictive models and advanced macro-visualizations, it is crucial to understand the fundamental distributions and behavioral correlations within our customer base. This phase is divided into Exploratory Data Analysis (EDA) and Confirmatory Data Analysis (CDA).
+Through a rigorous pipeline of Exploratory Data Analysis (EDA), Confirmatory Data Analysis (CDA), and advanced Machine Learning techniques, we have successfully transformed raw transactional logs into a predictive retention engine.
 
-------------------------------------------------------------------------
+### Key Analytical Takeaways:
+
+1.  **The Friction Point is Proven:** Our CDA (`ggscatterstats` and Correlation Matrix) mathematically confirmed that customer support bottlenecks are the primary driver of negative sentiment and churn risk, even among high-volume users.
+2.  **The 90-Day Danger Zone:** The Kaplan-Meier Survival Analysis revealed a critical drop-off in customer retention between Month 3 and Month 6, highlighting the exact time window where marketing interventions are most necessary.
+3.  **Liquidity is Tied to Retention:** The Sankey diagram illustrated the macro-financial impact of churn. When users leave, capital flows directly out of the app wallet to external accounts, causing a massive bleed in platform liquidity.
+4.  **Predictive Interventions Work:** The Multiple Linear Regression model proves that churn is not random—it is highly sensitive to actionable variables like `support_tickets_count` and `app_logins_frequency`.
+
+### Next Steps: The Interactive Dashboard
+
+Static analysis provides the "what" and the "why," but decision-makers need tools to simulate the "what if." All of the statistical models, clustering algorithms (K-Means), and datasets generated in this document have been integrated into the **FinRetain Shiny Application**. Stakeholders can now use the dashboard's **Risk Simulator** to dynamically adjust user parameters and visualize the real-time impact on Customer Lifetime Value (CLV) and Churn Probability.
 
 ## 1. Loading packages
 
@@ -38,13 +47,46 @@ df <- readRDS("app_data.rds")
 # Define FinTech Color Palette
 fintech_colors <- c("#1c2541", "#0077b6", "#00b4d8", "#90e0ef", "#caf0f8")
 risk_color <- "#e74c3c"
+
+# Load the clean data generated from our preparation pipeline
+clean_customers <- readRDS("app_data.rds")
+
+# Prepare churn as a factor for categorical plotting
+clean_customers$churn_factor <- factor(clean_customers$churn_event, 
+                                       levels = c(0, 1), 
+                                       labels = c("Active", "Churned"))
 ```
 
 ## 2. Demographics (EDA)
 
 Our EDA phase focuses on understanding *who* our customers are. Using `ggplot2` and `plotly` in our application, stakeholders can dynamically filter these demographic distributions by gender and customer segment.
 
-### 2.1 Income and Education Distributions
+### 2.1 Joy / Ridgeline Plots for Distributions - Tenure Distribution by Segment
+
+How does Customer Tenure (how long they stay) distribute across different RFM Segments? Are "Champions" naturally older accounts, while "At Risk" users are newer? By using a ridgeline plot, we visualize the density of customer tenure across our RFM Segments. This helps us see if our "Champions" are primarily older accounts, or if recent users are also reaching champion status.
+
+```{r}
+#| label: eda-ridgeline
+#| warning: false
+#| message: false
+
+# Install ggridges if you haven't: install.packages("ggridges")
+library(ggplot2)
+library(ggridges)
+
+ggplot(clean_customers, aes(x = customer_tenure, y = RFM_Segment, fill = RFM_Segment)) +
+  geom_density_ridges(alpha = 0.7, scale = 1.5) +
+  scale_fill_viridis_d(option = "mako") +  # Professional color palette
+  theme_minimal() +
+  theme(legend.position = "none") +
+  labs(
+    title = "Customer Tenure Distribution by RFM Segment",
+    x = "Tenure (Months)",
+    y = "RFM Segment"
+  )
+```
+
+### 2.2 Income and Education Distributions (EDA)
 
 Our EDA phase focuses on understanding *who* our customers are. We visualized the distribution of customers across education levels to see how age correlates with educational attainment.
 
@@ -69,11 +111,129 @@ ggplotly(p_eda) %>% config(displayModeBar = FALSE)
 
 The CDA phase seeks to test hypotheses regarding how customer *behavior* impacts overall business metrics like Customer Lifetime Value (CLV) and Net Promoter Score (NPS).
 
-### 3.1 Interactive Correlation Analysis
+### 3.1 Correlation Matrix
 
-We deployed interactive scatter plots that allow users to map specific X and Y variables against each other (e.g., *Total Transactions vs. Satisfaction Score*).
+Before diving into predictive modeling, we use a correlation matrix to identify the strength and direction of relationships between our numerical variables. This helps us identify "multicollinearity" and select the most impactful features for our churn prediction model.
 
-By overlaying a statistical trendline (using the `lm` method), stakeholders can immediately confirm or reject suspected correlations.
+```{r}
+# 3. Statistical Correlation Analysis
+#| label: fig-correlation
+#| fig-cap: "Correlation Matrix of Behavioral and Risk Metrics"
+#| warning: false
+#| message: false
+
+library(ggcorrplot)
+library(dplyr)
+
+# 1. Load the processed data
+df <- readRDS("app_data.rds")
+
+# 2. Select numerical columns relevant to our business questions
+corr_data <- df %>%
+  select(
+    `Age` = age, 
+    `Logins` = app_logins_frequency, 
+    `Tx Count` = tx_count, 
+    `Volume` = total_tx_volume, 
+    `Satisfaction` = satisfaction_score, 
+    `Tickets` = support_tickets_count, 
+    `Tenure` = customer_tenure, 
+    `Churn Risk` = churn_probability
+  ) %>%
+  # Remove rows with missing values to ensure accurate calculation
+  filter(complete.cases(.))
+
+# 3. Compute the correlation matrix
+corr_matrix <- cor(corr_data)
+
+# 4. Render the Heatmap
+ggcorrplot(corr_matrix, 
+           hc.order = TRUE,           # Clusters similar variables together
+           type = "lower",            # Shows only the bottom half (cleaner look)
+           outline.col = "white",
+           lab = TRUE,                # Shows the correlation coefficients (r)
+           lab_size = 3.5,
+           colors = c("#e46764", "white", "#6495ed"), # Red (Negative) to Blue (Positive)
+           title = "Behavioral Correlation Matrix",
+           legend.title = "Correlation (r)") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14))
+```
+
+### 3.2 Custom Correlation Function: Transactions vs. Satisfaction
+
+To ensure scalability, we built a custom wrapper function to test the nonparametric (Spearman) correlation between Transaction Count and Satisfaction Score, allowing us to dynamically facet by any demographic variable.
+
+```{r}
+clean_customers <- readRDS("app_data.rds") 
+
+# 2. Load the required libraries
+library(ggstatsplot)
+library(rlang)
+
+# 3. Define our custom FinTech correlation function
+plotcorrelation_tx_v_sat <- function(facet_var) {
+  ggscatterstats(
+    data = clean_customers,
+    x = tx_count, 
+    y = satisfaction_score,
+    type = "nonparametric", 
+    title = paste("Transaction Volume vs Satisfaction faceted by", facet_var),
+    messages = FALSE
+  ) + 
+  facet_wrap(vars(!!sym(facet_var)))
+}
+
+# 4. Call the function
+plotcorrelation_tx_v_sat("income_bracket")
+```
+
+### 3.3 Group Comparisons with `ggbetweenstats`: Volume across Education Levels (CDA)
+
+Does the total transaction volume differ significantly across different education levels? Does a user's education level statistically impact the total monetary volume they push through the app? We use the Kruskal-Wallis test to confirm.
+
+```{r}
+ggbetweenstats(
+  data = clean_customers,
+  x = education_level,
+  y = total_tx_volume,
+  type = "nonparametric",
+  title = "Transaction Volume Distribution by Education Level",
+  ylab = "Total Transaction Volume ($)",
+  xlab = "Education Level",
+  messages = FALSE
+)
+```
+
+### 3.4 Proportional Testing: Churn vs. Income - Proportions & Chi-Square with `ggbarstats` (CDA)
+
+Finally, we test categorical dependency. Is the proportion of churned users statistically dependent on their Income Bracket? The Chi-square test automatically calculates the p-value for this relationship.
+
+```{r}
+#| label: cda-barstats
+#| warning: false
+#| message: false
+
+library(ggstatsplot)
+
+# We need churn_event as a factor for this plot
+clean_customers$churn_factor <- factor(clean_customers$churn_event, 
+                                       levels = c(0, 1), 
+                                       labels = c("Active", "Churned"))
+
+# Compare Churn Status against Income Bracket
+ggbarstats(
+  data = clean_customers,
+  x = churn_factor,
+  y = income_bracket,
+  title = "Churn Proportion across Income Brackets",
+  messages = FALSE
+)
+```
+
+### 3.5 Interactive Correlation Analysis
+
+We deployed interactive scatter plots that allow users to map specific X and Y variables against each other (e.g., *Total Transactions vs. Satisfaction Score*). By overlaying a statistical trendline (using the `lm` method), stakeholders can immediately confirm or reject suspected correlations.
 
 ```{r}
 #| fig-align: "center"
@@ -87,7 +247,7 @@ ggplot(df, aes(x = tx_count, y = satisfaction_score)) +
        y = "Satisfaction Score (1-5)")
 ```
 
-### Transaction vs. Satisfaction Hypothesis
+### 3.6 Transaction vs. Satisfaction Hypothesis
 
 We plotted transaction counts against satisfaction scores. The red trendline highlights a concerning friction point: higher transaction volumes do not strictly guarantee higher satisfaction.
 
@@ -105,7 +265,7 @@ p_cda <- ggplot(df, aes(x = tx_count, y = satisfaction_score, text = paste("Supp
 ggplotly(p_cda, tooltip = c("x", "y", "text")) %>% config(displayModeBar = FALSE)
 ```
 
-### 3.2 Transaction Volume Breakdown
+### 3.7 Transaction Volume Breakdown
 
 We aggregated the total dollar volume flowing through four distinct transactional categories:
 
@@ -191,7 +351,7 @@ ggplot(rfm_summary, aes(x = reorder(RFM_Segment, Customer_Count), y = Customer_C
        y = "Number of Customers")
 ```
 
-### Interactive RFM Treemap
+### 5.2 Interactive RFM Treemap
 
 **RFM Analysis** provides established business logic. Here is the entire distribution of our customer base grouped by their Recency, Frequency, and Monetary scores.
 
@@ -216,7 +376,7 @@ plot_ly(
   layout(title = "Customer Distribution by RFM Segment")
 ```
 
-### 5.2 Exploratory Modelling
+### 5.3 Exploratory Modelling
 
 To understand the macro-dynamics of our user base, we explored the dimensions of **Time** (when users leave) and **Capital** (where money flows) by using **Survival Analysis (Time-to-Churn)**.
 
@@ -237,6 +397,8 @@ plot(km_fit,
      col = "#0077b6", lwd = 2, conf.int = TRUE)
 abline(v = 3, col = "red", lty = 2) # Highlight Month 3 risk zone
 ```
+
+**Interactive Model**
 
 ```{r}
 #| fig-align: "center"
@@ -260,7 +422,7 @@ p_surv <- ggplot(km_data, aes(x = time, y = estimate)) +
 ggplotly(p_surv) %>% config(displayModeBar = FALSE)
 ```
 
-### 5.3 Macro Cash Flow (Sankey Network)
+### 5.4 Macro Cash Flow (Sankey Network)
 
 To visualize liquidity, we mapped the flow of transactions using our actual transactional dataset. Deposits represent capital entering the FinRetain ecosystem ("**App Wallet**"), while **Payments**, **Transfer**s, and **Withdrawals** represent capital flowing out to various destinations.
 
@@ -299,7 +461,7 @@ sankeyNetwork(Links = links, Nodes = node_totals, Source = "IDsource", Target = 
               colourScale = JS("d3.scaleOrdinal().range(['#1c2541', '#0077b6', '#00b4d8', '#90e0ef']);"))
 ```
 
-### 5.4 Predictive Modelling (Risk Simulator)
+### 5.5 Predictive Modelling (Risk Simulator)
 
 The core of our Visual Analytics solution is transitioning from reactive data to proactive forecasting. We built a baseline **Multiple Linear/Logistic Regression Model** to predict `churn_probability` based on user behavior metrics. This mathematical model powers the "Risk Simulator" in our Shiny App, allowing stakeholders to use slider inputs to change these variables and instantly recalculate the predicted risk.
 

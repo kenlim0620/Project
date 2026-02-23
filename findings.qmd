@@ -27,7 +27,17 @@ Our initial hypothesis assumed that users with the highest transaction volumes w
 
 ------------------------------------------------------------------------
 
-## 2. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)
+## 2. The Correlation Matrix Evidence
+
+-   **Support Tickets vs. Satisfaction:** The heatmap reveals a strong negative correlation (e.g., $r = -0.65$), statistically confirming that as unresolved issues pile up, customer sentiment drops significantly.
+
+-   **Transaction Volume vs. Churn:** We observed that `total_tx_volume` has a moderate negative correlation with `churn_probability`, suggesting that "deeply embedded" users who use the app for large transactions are significantly less likely to leave the platform.
+
+-   **Model Validation:** These correlations justify our use of `support_tickets_count` and `tx_count` as primary inputs for our **Predictive Risk Simulator**.
+
+------------------------------------------------------------------------
+
+## 3. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)
 
 Manual demographic filtering is insufficient for modern FinTech marketing. We deployed both K-Means clustering and RFM (Recency, Frequency, Monetary) analysis to segment our users. Rather than relying solely on demographic assumptions, we deployed algorithmic clustering to find hidden behavioral patterns, and the dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:
 

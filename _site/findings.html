@@ -72,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -170,7 +199,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a>
   <ul class="collapse">
   <li><a href="#the-engagement-friction-point-eda-cda-results" id="toc-the-engagement-friction-point-eda-cda-results" class="nav-link" data-scroll-target="#the-engagement-friction-point-eda-cda-results">1. The Engagement Friction Point (EDA &amp; CDA Results)</a></li>
-  <li><a href="#algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" id="toc-algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" class="nav-link" data-scroll-target="#algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation">2. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)</a></li>
+  <li><a href="#the-correlation-matrix-evidence" id="toc-the-correlation-matrix-evidence" class="nav-link" data-scroll-target="#the-correlation-matrix-evidence">2. The Correlation Matrix Evidence</a></li>
+  <li><a href="#algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" id="toc-algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" class="nav-link" data-scroll-target="#algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation">3. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)</a></li>
   <li><a href="#the-churn-timeline-and-capital-bleed" id="toc-the-churn-timeline-and-capital-bleed" class="nav-link" data-scroll-target="#the-churn-timeline-and-capital-bleed">3. The Churn Timeline and Capital Bleed</a></li>
   <li><a href="#macro-ecosystem-cash-flow-sankey" id="toc-macro-ecosystem-cash-flow-sankey" class="nav-link" data-scroll-target="#macro-ecosystem-cash-flow-sankey">4. Macro Ecosystem: Cash Flow Sankey</a></li>
   <li><a href="#proactive-intervention-predictive-modelling" id="toc-proactive-intervention-predictive-modelling" class="nav-link" data-scroll-target="#proactive-intervention-predictive-modelling">5. Proactive Intervention (Predictive Modelling)</a></li>
@@ -230,8 +260,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 </section>
+<section id="the-correlation-matrix-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="the-correlation-matrix-evidence">2. The Correlation Matrix Evidence</h2>
+<ul>
+<li><p><strong>Support Tickets vs.&nbsp;Satisfaction:</strong> The heatmap reveals a strong negative correlation (e.g., <span class="math inline">\(r = -0.65\)</span>), statistically confirming that as unresolved issues pile up, customer sentiment drops significantly.</p></li>
+<li><p><strong>Transaction Volume vs.&nbsp;Churn:</strong> We observed that <code>total_tx_volume</code> has a moderate negative correlation with <code>churn_probability</code>, suggesting that “deeply embedded” users who use the app for large transactions are significantly less likely to leave the platform.</p></li>
+<li><p><strong>Model Validation:</strong> These correlations justify our use of <code>support_tickets_count</code> and <code>tx_count</code> as primary inputs for our <strong>Predictive Risk Simulator</strong>.</p></li>
+</ul>
+<hr>
+</section>
 <section id="algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation" class="level2">
-<h2 class="anchored" data-anchor-id="algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation">2. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)</h2>
+<h2 class="anchored" data-anchor-id="algorithmic-and-rule-based-personas-and-value-satisfaction-segmentation">3. Algorithmic and Rule-Based Personas and Value Satisfaction (Segmentation)</h2>
 <p>Manual demographic filtering is insufficient for modern FinTech marketing. We deployed both K-Means clustering and RFM (Recency, Frequency, Monetary) analysis to segment our users. Rather than relying solely on demographic assumptions, we deployed algorithmic clustering to find hidden behavioral patterns, and the dynamic RFM (Recency, Frequency, Monetary) Treemap allowed us to instantly categorize our entire database into actionable blocks:</p>
 <ul>
 <li><p><strong>Three Personas:</strong> By running K-Means on <code>tx_count</code> and <code>total_tx_volume</code>, the algorithm autonomously grouped our users into three distinct personas. It highlighted a massive “middle-class” of users who log in and transact frequently, but move very little actual monetary value.</p></li>

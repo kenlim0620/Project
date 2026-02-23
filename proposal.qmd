@@ -51,7 +51,7 @@ Using `ggplot2` and `plotly`, we will analyze the demographic distribution of ou
 
 ### 4.2 Confirmatory Data Analysis (CDA)
 
-We will implement interactive scatter plots with statistical trendlines to investigate behavioral hypotheses, specifically assessing the negative correlation between Support Tickets and overall App Satisfaction for high-volume users.
+We will implement interactive scatter plots with statistical trendlines to investigate behavioral hypotheses, specifically assessing the negative correlation between Support Tickets and overall App Satisfaction for high-volume users. We will also implement Statistical Correlation Heatmaps using ggcorrplot to identify the most significant drivers of customer behavior. This will be followed by interactive scatter plots with linear trendlines to investigate specific high-impact relationships (e.g., Support Tickets vs. Satisfaction Scores).
 
 ### 4.3 Behavioral Clustering
 
@@ -82,7 +82,7 @@ We will train a Multiple Linear Regression (`lm`) model to predict the probabili
 ## 6. Project Timeline
 
 | Phase | Task | Expected Completion |
-|:----------:|:---------------------|:-----------------|
+|:----------------:|:-----------------------------|:------------------------|
 | 1 | Data Extraction, ETL Pipeline & Feature Engineering | 21/02/2026 |
 | 2 | Core UI/UX Dashboard Layout Design | 25/02/2026 |
 | 3 | Implementation of EDA, CDA & Clustering Modules | 01/03/2026 |

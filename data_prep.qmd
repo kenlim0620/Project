@@ -195,6 +195,23 @@ saveRDS(clean_customers, file = "app_data.rds")
 summary(clean_customers %>% select(churn_event, RFM_Segment, tx_count, total_tx_volume))
 ```
 
-### Conclusion
+```{r}
+# Final Data Formatting before saving
+final_app_data <- clean_customers %>%
+  mutate(
+    # Convert binary churn to a labeled factor for categorical plotting
+    churn_factor = factor(churn_event, levels = c(0, 1), labels = c("Active", "Churned")),
+    
+    # Ensure categorical variables are treated as factors
+    income_bracket = as.factor(income_bracket),
+    education_level = as.factor(education_level),
+    RFM_Segment = as.factor(RFM_Segment)
+  )
+
+# Save the perfectly clean, ML-ready dataset
+saveRDS(final_app_data, "app_data.rds")
+```
+
+## Conclusion
 
 The dataset is now completely formatted. It includes the `RFM_Segment` for our Treemap, `churn_event` for the Kaplan-Meier survival curves, and strictly typed numeric columns for the K-Means clustering and predictive regression models.
