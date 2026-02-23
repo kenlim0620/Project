@@ -7,7 +7,7 @@ format:
     theme: flatly
     toc: true
     toc-depth: 2
-    code-fold: true
+    code-fold: false
 ---
 
 # Introduction to the Data Pipeline

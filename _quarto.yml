@@ -43,6 +43,8 @@ format:
   html:
     theme: lumen # Clean, professional, modern
     css: styles.css
+    code-fold: false
+    code-tools: true
     toc: true
     toc-depth: 3
     smooth-scroll: true

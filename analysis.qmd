@@ -7,7 +7,7 @@ format:
     theme: flatly
     toc: true
     toc-depth: 2
-    code-fold: true
+    code-fold: false
 execute:
   warning: false
   message: false
@@ -296,6 +296,8 @@ tx_sums
 
 ## 4. Cluster Analysis
 
+### 4.1 K-Means Clustering
+
 To move beyond basic demographic segmentation, we applied a **K-Means Clustering algorithm** (k=3) to automatically group users based on their transaction frequency and monetary volume to discover hidden behavioral groupings within our user base. By scaling and analyzing `tx_count` (Transaction Frequency) against `total_tx_volume` (Monetary Value), the algorithm identified three distinct customer clusters without any manual labeling.
 
 ```{r}
@@ -320,13 +322,9 @@ p_cluster <- ggplot(cluster_data, aes(x = tx_count, y = total_tx_volume, color =
 ggplotly(p_cluster) %>% layout(legend = list(orientation = "h", x = 0.3, y = -0.2))
 ```
 
-## 5. Transition to Advanced Analytics
+### 4.2 RFM Analysis
 
-With a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our **Linear Regression Risk Simulator** and **Kaplan-Meier Survival** curves.
-
-### 5.1 RFM Analysis
-
-While K-Means provides algorithmic grouping, **RFM** (Recency, Frequency, Monetary) provides established business logic. We categorized our users based on their \`**R_Score\`, \`F_Score\`, and \`M_Scor**e\` to identify key groups like "**Champions**" and "**At-Risk**" users. In our Shiny application, this is visualized as an interactive Treemap.
+While K-Means provides algorithmic grouping, **RFM** (Recency, Frequency, Monetary) provides established business logic. We categorized our users based on their \`**R_Score\`, \`F_Score\`, and \`M_Score**\` to identify key groups like "**Champions**" and "**At-Risk**" users. In our Shiny application, this is visualized as an interactive Treemap.
 
 ```{r}
 ## 4. Advanced Segmentation (RFM Analysis)
@@ -351,7 +349,7 @@ ggplot(rfm_summary, aes(x = reorder(RFM_Segment, Customer_Count), y = Customer_C
        y = "Number of Customers")
 ```
 
-### 5.2 Interactive RFM Treemap
+**Interactive RFM Treemap**
 
 **RFM Analysis** provides established business logic. Here is the entire distribution of our customer base grouped by their Recency, Frequency, and Monetary scores.
 
@@ -376,11 +374,13 @@ plot_ly(
   layout(title = "Customer Distribution by RFM Segment")
 ```
 
-### 5.3 Exploratory Modelling
+## 5. Transition to Advanced Analytics
 
-To understand the macro-dynamics of our user base, we explored the dimensions of **Time** (when users leave) and **Capital** (where money flows) by using **Survival Analysis (Time-to-Churn)**.
+With a solid understanding of our demographics and baseline transaction volumes established in this EDA/CDA phase, we confidently move forward to our predictive and advanced modeling phases. The insights gathered here directly feed into the variables chosen for our **Linear Regression Risk Simulator** and **Kaplan-Meier Survival** curves and **Sankey Network**.
 
-We applied a **Kaplan-Meier Survival Model** to map the probability of a customer remaining active over time. By using `customer_tenure` and the binary `churn_event` indicator, we can pinpoint the exact month where retention efforts must be intensified.
+### 5.1 Exploratory Modelling
+
+To understand the macro-dynamics of our user base, we explored the dimensions of **Time** (when users leave) and **Capital** (where money flows) by using **Survival Analysis (Time-to-Churn)**. We applied a **Kaplan-Meier Survival Model** to map the probability of a customer remaining active over time. By using `customer_tenure` and the binary `churn_event` indicator, we can pinpoint the exact month where retention efforts must be intensified.
 
 ```{r}
 #| fig-align: "center"
@@ -422,7 +422,7 @@ p_surv <- ggplot(km_data, aes(x = time, y = estimate)) +
 ggplotly(p_surv) %>% config(displayModeBar = FALSE)
 ```
 
-### 5.4 Macro Cash Flow (Sankey Network)
+### 5.2 Macro Cash Flow (Sankey Network)
 
 To visualize liquidity, we mapped the flow of transactions using our actual transactional dataset. Deposits represent capital entering the FinRetain ecosystem ("**App Wallet**"), while **Payments**, **Transfer**s, and **Withdrawals** represent capital flowing out to various destinations.
 
@@ -461,7 +461,7 @@ sankeyNetwork(Links = links, Nodes = node_totals, Source = "IDsource", Target = 
               colourScale = JS("d3.scaleOrdinal().range(['#1c2541', '#0077b6', '#00b4d8', '#90e0ef']);"))
 ```
 
-### 5.5 Predictive Modelling (Risk Simulator)
+### 5.3 Predictive Modelling (Risk Simulator)
 
 The core of our Visual Analytics solution is transitioning from reactive data to proactive forecasting. We built a baseline **Multiple Linear/Logistic Regression Model** to predict `churn_probability` based on user behavior metrics. This mathematical model powers the "Risk Simulator" in our Shiny App, allowing stakeholders to use slider inputs to change these variables and instantly recalculate the predicted risk.
 

@@ -3,21 +3,27 @@ title: ""
 page-layout: full
 ---
 
-::::: {.grid .hero-section}
-::: {.g-col-12 .g-col-md-7 .hero-text}
+::::: {.grid .hero-section align-items="center"}
+::: {.g-col-12 .g-col-md-6 .hero-text}
 # Democratising FinTech Data through Visual Analytics
 
 ### An interactive exploration of Customer Retention, Behavioral Clustering, and Macro Ecosystem Flow.
 
 Our project, **FinRetain**, leverages Exploratory Data Analysis, K-Means Clustering, and Predictive Modelling to transform static transactional data into actionable business intelligence. Built for **ISSS608 Visual Analytics**.
 
+
 [View Project Proposal](proposal.qmd){.btn .btn-outline-primary .btn-lg role="button"}
+
 
 [Launch Interactive Dashboard](https://your-username.shinyapps.io/finretain){.btn .btn-primary .btn-lg role="button" target="_blank"}
 :::
 
-::: {.g-col-12 .g-col-md-5}
-![](Gemini_Generated_Image_ulmcemulmcemulmc.png)
+
+
+::: {.g-col-12 .g-col-md-6 style="display: flex; flex-direction: column; gap: 2rem;"}
+![](Gemini_Generated_Image_ulmcemulmcemulmc.png){style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"}
+
+![](Gemini_Generated_Image_fhud4qfhud4qfhud.png){style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"}
 :::
 :::::
 
