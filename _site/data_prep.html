@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Team 15">
-<meta name="dcterms.date" content="2026-02-23">
+<meta name="author" content="LIN XIANWEI">
+<meta name="dcterms.date" content="2026-02-24">
 
 <title>Data Preparation &amp; Feature Engineering – FinRetain App</title>
 <style>
@@ -228,14 +228,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Team 15 </p>
+             <p>LIN XIANWEI </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 23, 2026</p>
+      <p class="date">February 24, 2026</p>
     </div>
   </div>
   
@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction-to-the-data-pipeline" class="level1">
 <h1>Introduction to the Data Pipeline</h1>
-<p>To ensure the <strong>FinRetain</strong> Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data, performs advanced feature engineering, and exports a highly optimized <code>.rds</code> file. Below is the step-by-step methodology used to prepare the dataset.</p>
+<p>To ensure the <strong>FinRetain</strong> Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data from <strong>COFINFAD: Colombian Fintech Financial Analytics Dataset</strong>, performs advanced feature engineering, and exports a highly optimized <code>.rds</code> file. Below is the step-by-step methodology used to prepare the dataset.</p>
 <hr>
 <section id="step-1.-data-extraction" class="level2">
 <h2 class="anchored" data-anchor-id="step-1.-data-extraction">Step 1. Data Extraction</h2>
@@ -913,7 +913,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data Preparation &amp; Feature Engineering"</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Team 15"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "LIN XIANWEI"</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
@@ -925,7 +925,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction to the Data Pipeline</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>To ensure the **FinRetain** Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data, performs advanced feature engineering, and exports a highly optimized <span class="in">`.rds`</span> file. Below is the step-by-step methodology used to prepare the dataset.</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>To ensure the **FinRetain** Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data from **COFINFAD: Colombian Fintech Financial Analytics Dataset**, performs advanced feature engineering, and exports a highly optimized <span class="in">`.rds`</span> file. Below is the step-by-step methodology used to prepare the dataset.</span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>

@@ -1,6 +1,6 @@
 ---
 title: "Findings, Results & Discussion"
-author: "Ken Lin & Team"
+author: "LIN XIANWEI"
 date: today
 format: 
   html:

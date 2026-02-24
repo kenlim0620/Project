@@ -1,6 +1,6 @@
 ---
 title: "Data Preparation & Feature Engineering"
-author: "Team 15"
+author: "LIN XIANWEI"
 date: today
 format: 
   html:
@@ -12,7 +12,7 @@ format:
 
 # Introduction to the Data Pipeline
 
-To ensure the **FinRetain** Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data, performs advanced feature engineering, and exports a highly optimized `.rds` file. Below is the step-by-step methodology used to prepare the dataset.
+To ensure the **FinRetain** Shiny application runs at lightning speed on the web, we intentionally decoupled the heavy data processing from the live application. Our data preparation pipeline cleans raw demographic and transactional data from **COFINFAD: Colombian Fintech Financial Analytics Dataset**, performs advanced feature engineering, and exports a highly optimized `.rds` file. Below is the step-by-step methodology used to prepare the dataset.
 
 ------------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 ---
 title: "Project Proposal: FinRetain Customer Visual Analytics"
-author: "Team 15"
+author: "Team 15 - LIN XIAN, ZUO SU HUI"
 date: today
 format: 
   html:
@@ -82,7 +82,7 @@ We will train a Multiple Linear Regression (`lm`) model to predict the probabili
 ## 6. Project Timeline
 
 | Phase | Task | Expected Completion |
-|:--:|:---|:---|
+|:----------------------:|:-----------------------|:-----------------------|
 | 1 | Data Extraction, ETL Pipeline & Feature Engineering | 21/02/2026 |
 | 2 | Core UI/UX Dashboard Layout Design | 25/02/2026 |
 | 3 | Implementation of EDA, CDA & Clustering Modules | 01/03/2026 |
