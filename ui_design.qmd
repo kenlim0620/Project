@@ -1,5 +1,5 @@
 ---
-title: "Proposed UI Design & Architecture"
+title: "Proposed UI Design & Storyboard"
 author: "LIN XIANWEI"
 date: today
 format: 
@@ -10,55 +10,46 @@ format:
 editor: visual
 ---
 
-# UI/UX Philosophy
+# The FinRetain Narrative
 
-The FinRetain dashboard is designed to transform complex financial data into intuitive, actionable insights. To achieve this, our User Interface (UI) architecture strictly follows the principles of reducing cognitive load and maximizing interactivity. The application is divided into a consistent global shell and modular workspaces.
+Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.
 
-------------------------------------------------------------------------
+## Section 1
 
-## Global Architecture: The App Shell
+![](images/Screenshot 2026-03-12 215819.jpg)
 
-To maintain context across all analytical tasks, the dashboard utilizes a **Sidebar Layout**.
+![](images/Screenshot 2026-03-12 215837.jpg)
 
--   **Sidebar Panel (Left, 25% width):** This is the persistent control center. It contains the primary navigation menu to switch between modules, as well as global filters (Date Range, Customer Segment, Income Level) that apply consistently across the entire app.
--   **Main Canvas (Right, 75% width):** The dynamic viewing area where visualizations are rendered. This maximizes horizontal screen real estate, which is crucial for wide charts like timelines and Sankey diagrams.
+## Section 2
 
-------------------------------------------------------------------------
+![](images/Screenshot 2026-03-12 215858.jpg)
 
-## Module UIs: Component Breakdown
+![](images/Screenshot 2026-03-12 215913.jpg)
 
-### The EDA & CDA Module
+## Section 3
 
-**Goal:** Allow users to quickly slice demographic and behavioral data.
+![](images/Screenshot 2026-03-12 220738.jpg)
 
-**UI Components:**
+![](images/Screenshot 2026-03-12 220754.jpg)
 
-1.  **Top Row (ValueBoxes):** Key Performance Indicators (KPIs) such as Total Users, Average Satisfaction, and Churn Rate displayed as highly visible cards.
+## Section 4
 
-2.  **Control Bar:** Dropdown menus specifically for the plots (e.g., "Select X-Axis", "Select Y-Axis") placed immediately above the charts.
+![](images/Screenshot 2026-03-12 220833.jpg)
 
-3.  **Plot Area:** A 2x2 grid layout for static or interactive `plotly` charts, ensuring multiple distributions can be compared simultaneously without scrolling.
+![](images/Screenshot 2026-03-12 220815.jpg)
 
-### Advanced Analytics: Sankey & Treemap
+## Section 5
 
-**Goal:** Maximize space for dense, high-dimensional visualizations. **UI Components:** \* **Full-Width Canvas:** For the Macro Cash Flow Sankey diagram, the UI dynamically collapses secondary menus to grant the visualization 100% of the main panel width. \* **Interactive Tooltips:** Instead of cluttering the screen with legends, the UI relies on hover-triggered tooltips. Hovering over a node in the Treemap or Sankey dims the rest of the screen and brings the exact data metrics to the foreground.
+![](images/Screenshot 2026-03-12 220924.jpg)
 
-### The Risk Simulator (Predictive UI)
+![](images/Screenshot 2026-03-12 220944.jpg)
 
-**Goal:** Create a "What-If" sandbox for stakeholders to interact with our underlying regression and machine learning models.
+## Section 6
 
-**UI Components:**
+![](images/Screenshot 2026-03-12 221019.jpg)
 
-1.  **Input Column (Left):** A vertical stack of interactive `sliderInput` and `selectInput` widgets. These represent the specific attributes of a hypothetical customer (e.g., "Support Tickets Count", "Transaction Frequency").
+![](images/Screenshot 2026-03-12 221039.jpg)
 
-2.  **Output Gauges (Right Top):** Real-time, color-coded gauge charts. As the user moves a slider, a gauge instantly updates to show the new "Churn Probability" (Green = Safe, Red = High Risk).
+# Conclusion
 
-3.  **Text/Table Output (Right Bottom):** A dynamically updating text box that outputs the specific projected Customer Lifetime Value (CLV) in dollars based on the simulation.
-
-------------------------------------------------------------------------
-
-## Design Heuristics Applied
-
-1.  **Consistency:** Color palettes are standardized across all modules (e.g., Red always indicates high churn risk or negative sentiment; Blue indicates stability).
-2.  **Error Prevention:** Dropdowns and sliders are constrained to logical limits (e.g., you cannot select a negative number of transactions) to prevent the R server from crashing.
-3.  **Feedback:** Loading spinners (`shinycssloaders`) are integrated into the UI so the user knows when the K-Means or Predictive models are calculating in the background.
+The FinRetain dashboard proves that Visual Analytics is more than just plotting charts; it is about building a decision-making engine. By combining exploratory data analysis, algorithmic clustering, and predictive forecasting into a single, cohesive storyboard, we empower FinTech platforms to protect their most valuable asset: their users.
