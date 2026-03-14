@@ -9,7 +9,7 @@ website:
       - href: index.qmd
         text: "Home"
       - href: ui_design.qmd           
-        text: "Proposed UI Design & Storyboard"
+        text: "Prototype of Storyboard"
       - href: proposal.qmd
         text: "Proposal"
       - href: meeting.qmd
