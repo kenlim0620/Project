@@ -1,5 +1,5 @@
 ---
-title: "Proposed UI Design & Storyboard"
+title: "Prototype of Proposed UI Design & Storyboard"
 author: "LIN XIANWEI"
 date: today
 format: 
@@ -24,7 +24,7 @@ The motivation for **FinRetain** stems from the "Churn Blindness" often faced by
 
 -   **Actionable Intelligence:** We aim to bridge the gap between complex data science models and non-technical decision-makers. By turning abstract statistical correlations into a "What-If" simulator, we empower managers to see the immediate ROI of improving customer satisfaction.
 
-## Methodology: The "How"
+## Methodology - The "How"
 
 Our methodology follows a rigorous 5-stage Data Science Lifecycle, ensuring that every visual in the app is backed by mathematical validity.
 
@@ -77,7 +77,7 @@ The FinRetain app is divided into distinct analytical modules, accessible via th
 
 ![](images/clipboard-911759235.jpeg)
 
-![](images/Screenshot 2026-03-14 173309.jpg)
+![](images/Screenshot%202026-03-14%20173309.jpg)
 
 This tab allows you to view the foundational demographics of our user base.
 
@@ -106,7 +106,7 @@ Move beyond visual assumptions and interact with our statistical models.
 
 ![](images/clipboard-1600580532.jpeg)
 
-![](images/Screenshot 2026-03-14 173726.jpg)
+![](images/Screenshot%202026-03-14%20173726.jpg)
 
 This module groups users using two distinct methodologies: Machine Learning and Value Stratification.
 
@@ -123,7 +123,7 @@ This module groups users using two distinct methodologies: Machine Learning and 
 
 ![](images/clipboard-1606010195.jpeg)
 
-![](images/Screenshot 2026-03-14 173951.jpg)
+![](images/Screenshot%202026-03-14%20173951.jpg)
 
 ![](images/clipboard-4259787774.jpeg)
 
@@ -160,8 +160,6 @@ This is the most powerful tool in the application, allowing you to simulate inte
 -   **Step 4:** Scroll down to the Data Table to instantly view the top 5 real customers in the database who most closely match the exact profile you just simulated.
 
 > **💡 Try this!** Set the "Support Tickets Logged" slider to 0 and hit simulate. Then, slide it up to 15 and hit simulate again. Watch how drastically the red "Predicted Churn Risk" box spikes!
-
-### 
 
 ## Conclusion
 
