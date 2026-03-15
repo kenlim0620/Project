@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Team 15 - LIN XIAN, ZUO SU HUI">
-<meta name="dcterms.date" content="2026-03-14">
+<meta name="dcterms.date" content="2026-03-15">
 
 <title>Project Minutes of Meeting – FinRetain App</title>
 <style>
@@ -106,6 +106,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 
 <link rel="stylesheet" href="styles.css">
@@ -198,12 +202,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link active" data-scroll-target="#project-timeline">Project Timeline</a>
-  <ul class="collapse">
+  <li><a href="#scope-of-work-sow" id="toc-scope-of-work-sow" class="nav-link active" data-scroll-target="#scope-of-work-sow">Scope of Work (SoW)</a></li>
+  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline">Project Timeline</a></li>
   <li><a href="#meeting-1-project-kickoff-data-strategy" id="toc-meeting-1-project-kickoff-data-strategy" class="nav-link" data-scroll-target="#meeting-1-project-kickoff-data-strategy">Meeting 1: Project Kickoff &amp; Data Strategy</a></li>
   <li><a href="#meeting-2-advanced-analytics-integration" id="toc-meeting-2-advanced-analytics-integration" class="nav-link" data-scroll-target="#meeting-2-advanced-analytics-integration">Meeting 2: Advanced Analytics Integration</a></li>
   <li><a href="#meeting-3-deployment-bug-squashing" id="toc-meeting-3-deployment-bug-squashing" class="nav-link" data-scroll-target="#meeting-3-deployment-bug-squashing">Meeting 3: Deployment &amp; Bug Squashing</a></li>
-  </ul></li>
+  <li><a href="#project-gantt-chart" id="toc-project-gantt-chart" class="nav-link" data-scroll-target="#project-gantt-chart">Project Gantt Chart</a></li>
+  <li><a href="#task-matrix-peer-review-assignments" id="toc-task-matrix-peer-review-assignments" class="nav-link" data-scroll-target="#task-matrix-peer-review-assignments">Task Matrix &amp; Peer Review Assignments</a></li>
   </ul>
 </nav>
     </div>
@@ -229,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 14, 2026</p>
+      <p class="date">March 15, 2026</p>
     </div>
   </div>
   
@@ -241,10 +246,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="project-timeline" class="level1">
-<h1>Project Timeline</h1>
+<section id="scope-of-work-sow" class="level2">
+<h2 class="anchored" data-anchor-id="scope-of-work-sow">Scope of Work (SoW)</h2>
+<p>The scope of the <strong>FinRetain</strong> project encompasses the end-to-end development of an interactive R Shiny application designed to analyze, predict, and prescribe solutions for customer churn.</p>
+<section id="in-scope" class="level3">
+<h3 class="anchored" data-anchor-id="in-scope"><strong>In-Scope:</strong></h3>
+<ul>
+<li><strong>Data Pipeline:</strong> Cleaning and wrangling raw demographic and transactional data into a unified structure (<code>app_data.rds</code>).</li>
+<li><strong>Analytics Engine:</strong> Development of Descriptive (EDA), Diagnostic (CDA), Predictive (Survival/K-Means), and Prescriptive (Risk Simulator) modules.</li>
+<li><strong>UI/UX Development:</strong> Storyboarding, wireframing, and deploying a front-end Shiny dashboard for non-technical stakeholders.</li>
+<li><strong>Documentation:</strong> User guide, storyboard documentation, and final project poster.</li>
+</ul>
+</section>
+<section id="out-of-scope" class="level3">
+<h3 class="anchored" data-anchor-id="out-of-scope"><strong>Out-of-Scope:</strong></h3>
+<ul>
+<li>Live database integration (the app will use a static snapshot of data for this iteration).</li>
+<li>User authentication and role-based access control (RBAC).</li>
+</ul>
+</section>
+</section>
+<section id="project-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="project-timeline">Project Timeline</h2>
 <p>Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.</p>
 <hr>
+</section>
 <section id="meeting-1-project-kickoff-data-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="meeting-1-project-kickoff-data-strategy">Meeting 1: Project Kickoff &amp; Data Strategy</h2>
 <p><strong>Date:</strong> 21/02/2026<br>
@@ -400,53 +426,235 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong><em>Fix:</em></strong> Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts (<code>$X,XXX,XXX</code>).</li>
 </ul></li>
 </ul>
+<hr>
 </section>
-<section id="action-items-2" class="level3">
-<h3 class="anchored" data-anchor-id="action-items-2">✅ Action Items</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
+</section>
+<section id="project-gantt-chart" class="level2">
+<h2 class="anchored" data-anchor-id="project-gantt-chart">Project Gantt Chart</h2>
+<p>The following Gantt chart visualizes our 12-week development sprint, color-coded by the phases of the Data Science Lifecycle.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create the Project Dataframe</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>project_tasks <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Phase =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"1. Initiation"</span>, <span class="dv">2</span>), </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"2. Data Prep"</span>, <span class="dv">1</span>), </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"3. Analytics"</span>, <span class="dv">4</span>), </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"4. Development"</span>, <span class="dv">3</span>), </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"5. Deployment"</span>, <span class="dv">2</span>)),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Task =</span> <span class="fu">c</span>(<span class="st">"Project Proposal &amp; Methodology"</span>, </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>           <span class="st">"UI/UX Storyboards &amp; Wireframes"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Data Cleaning &amp; RFM Engineering"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 1 &amp; 2: EDA &amp; CDA Scripting"</span>, </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 3: K-Means Clustering"</span>, </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 4: Survival Analysis"</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 5: Sankey Flow Logic"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Front-end UI Setup (bslib)"</span>, </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Integrating Analytics (apps.R)"</span>, </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 6: Risk Simulator"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>           <span class="st">"QA Testing &amp; Bug Fixing"</span>, </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Final Poster &amp; Town Hall Prep"</span>),</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">Owner =</span> <span class="fu">c</span>(<span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="st">"LIN XIANWEI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"ZUO SU HUI"</span>, </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI &amp; ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI &amp; ZUO SU HUI"</span>),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compressed timeline from Feb 21 to April 4 (with overlapping parallel tasks)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">Start =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2026-02-21"</span>, <span class="st">"2026-02-24"</span>, <span class="st">"2026-03-01"</span>, <span class="st">"2026-03-05"</span>, </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"2026-03-10"</span>, <span class="st">"2026-03-14"</span>, <span class="st">"2026-03-18"</span>, <span class="st">"2026-03-20"</span>, </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"2026-03-24"</span>, <span class="st">"2026-03-26"</span>, <span class="st">"2026-03-30"</span>, <span class="st">"2026-04-01"</span>)),</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">End =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2026-02-28"</span>, <span class="st">"2026-03-02"</span>, <span class="st">"2026-03-08"</span>, <span class="st">"2026-03-12"</span>, </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"2026-03-17"</span>, <span class="st">"2026-03-20"</span>, <span class="st">"2026-03-25"</span>, <span class="st">"2026-03-27"</span>, </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"2026-03-31"</span>, <span class="st">"2026-04-02"</span>, <span class="st">"2026-04-03"</span>, <span class="st">"2026-04-04"</span>))</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Reorder tasks so the first task appears at the top of the chart</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>project_tasks <span class="ot">&lt;-</span> project_tasks <span class="sc">%&gt;%</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Task =</span> <span class="fu">fct_reorder</span>(Task, <span class="fu">desc</span>(Start)))</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate the Gantt Chart using ggplot2</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(project_tasks, <span class="fu">aes</span>(<span class="at">x =</span> Start, <span class="at">xend =</span> End, <span class="at">y =</span> Task, <span class="at">yend =</span> Task, <span class="at">color =</span> Phase)) <span class="sc">+</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">linewidth =</span> <span class="dv">8</span>, <span class="at">lineend =</span> <span class="st">"round"</span>) <span class="sc">+</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> Start, <span class="at">y =</span> Task, <span class="at">label =</span> Owner), </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">1.5</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"darkgray"</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Changed to show specific dates like "Feb 21", "Mar 07"</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 week"</span>, <span class="at">date_labels =</span> <span class="st">"%b %d"</span>) <span class="sc">+</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"FinRetain Project Roadmap"</span>,</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Task duration and ownership overview (Feb 21 - Apr 4)"</span>,</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Timeline"</span>,</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Project Phase"</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray95"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>),</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-gantt" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gantt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="meeting_files/figure-html/fig-gantt-1.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gantt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: FinRetain Project Development Gantt Chart (Feb 21 - Apr 4)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="task-matrix-peer-review-assignments" class="level2">
+<h2 class="anchored" data-anchor-id="task-matrix-peer-review-assignments">Task Matrix &amp; Peer Review Assignments</h2>
+<p>To ensure code quality and analytical rigor, every major task is assigned a specific “Owner” (the doer) and a “Reviewer” (the moderator).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2. Project Gantt Chart</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-timeline</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "FinRetain Project Timeline and Milestones (Feb 21 - Apr 5)"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 15</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 10</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(vistime, ggplot2)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define project data using the csv text format with the Spring 2026 timeline</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">text=</span><span class="st">"event,group,start,end,color</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">Project Proposal,1. Initiation,2026-02-21,2026-03-15,#a5d6a7</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">UI/UX Storyboards,1. Initiation,2026-02-21,2026-03-10,#a5d6a7</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">Data Cleaning &amp; RFM,2. Data Prep,2026-03-01,2026-03-16,#81d4fa</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">EDA &amp; CDA Modules,3. Analytics,2026-03-10,2026-03-24,#ce93d8</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">K-Means &amp; Survival,3. Analytics,2026-03-15,2026-03-28,#ce93d8</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">Sankey Flow Diagram,3. Analytics,2026-03-20,2026-03-31,#ce93d8</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">R Shiny Dashboard,4. Development,2026-03-20,2026-04-03,#ffb74d</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st">Risk Simulator Engine,4. Development,2026-03-25,2026-04-03,#ffb74d</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">Poster-Minutes-Guide,5. Deployment,2026-03-25,2026-04-01,#DD4B39</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="st">Presentation,6. Deployment,2026-04-01,2026-04-05,#DD4B39"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the exact milestone deadlines</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>proposal_deadline <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2026-03-15"</span>) </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>poster_deadline <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2026-04-01"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>final_deadline <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2026-04-05"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the timeline chart</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">gg_vistime</span>(data, <span class="at">title =</span> <span class="st">"FinRetain Project Timeline (Spring 2026)"</span>) </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Add vertical lines for the critical milestone deadlines</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.numeric</span>(<span class="fu">as.POSIXct</span>(proposal_deadline)), <span class="at">color =</span> <span class="st">"lightgreen"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.numeric</span>(<span class="fu">as.POSIXct</span>(poster_deadline)), <span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.numeric</span>(<span class="fu">as.POSIXct</span>(final_deadline)), <span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="meeting_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-assignments</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Detailed Task Ownership and Moderation Roster"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(knitr, kableExtra, dplyr)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe for the Task Ownership Matrix with specific team members</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>task_matrix <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Phase =</span> <span class="fu">c</span>(<span class="st">"1. Initiation"</span>, <span class="st">"2. Data Prep"</span>, <span class="st">"3. Analytics"</span>, <span class="st">"3. Analytics"</span>, <span class="st">"4. Development"</span>, <span class="st">"4. Development"</span>, <span class="st">"5. Deployment"</span>, <span class="st">"5. Deployment"</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Task =</span> <span class="fu">c</span>(<span class="st">"Proposal &amp; Storyboards"</span>, <span class="st">"Data Cleaning &amp; RFM"</span>, <span class="st">"EDA &amp; CDA Scripts"</span>, <span class="st">"K-Means &amp; Survival"</span>, <span class="st">"Shiny App Setup"</span>, <span class="st">"Risk Simulator Engine"</span>, <span class="st">"Project Poster"</span>, <span class="st">"User Guide &amp; Final App"</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Logically splitting the work between LIN XIANWEI and ZUO SU HUI</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Owner =</span> <span class="fu">c</span>(<span class="st">"LIN XIANWEI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI &amp; ZUO SU HUI"</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Cross-reviewing each other's work</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Reviewer =</span> <span class="fu">c</span>(<span class="st">"ZUO SU HUI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"Course Instructor"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Format the table</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>task_matrix <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"l"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>), </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> F, </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">"left"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <thead>
 <tr class="header">
-<th>Task</th>
-<th>Assignee</th>
-<th>Deadline</th>
-<th>Status</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Phase</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Task</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Owner</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Reviewer</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Final code cleanup and commenting</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>29/03/2026</td>
-<td>Completed</td>
+<td style="text-align: left; font-weight: bold;">1. Initiation</td>
+<td style="text-align: left;">Proposal &amp; Storyboards</td>
+<td style="text-align: left;">LIN XIANWEI</td>
+<td style="text-align: left;">ZUO SU HUI</td>
 </tr>
 <tr class="even">
-<td>Deploy stable version to Shinyapps.io</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>20/03/2026</td>
-<td>Completed</td>
+<td style="text-align: left; font-weight: bold;">2. Data Prep</td>
+<td style="text-align: left;">Data Cleaning &amp; RFM</td>
+<td style="text-align: left;">LIN XIANWEI</td>
+<td style="text-align: left;">ZUO SU HUI</td>
 </tr>
 <tr class="odd">
-<td>Write project proposal and Quarto site</td>
-<td>LIN XIANWEI, SU HUI</td>
-<td>15/03/2026</td>
-<td>Completed</td>
+<td style="text-align: left; font-weight: bold;">3. Analytics</td>
+<td style="text-align: left;">EDA &amp; CDA Scripts</td>
+<td style="text-align: left;">ZUO SU HUI</td>
+<td style="text-align: left;">LIN XIANWEI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">3. Analytics</td>
+<td style="text-align: left;">K-Means &amp; Survival</td>
+<td style="text-align: left;">LIN XIANWEI</td>
+<td style="text-align: left;">ZUO SU HUI</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">4. Development</td>
+<td style="text-align: left;">Shiny App Setup</td>
+<td style="text-align: left;">ZUO SU HUI</td>
+<td style="text-align: left;">LIN XIANWEI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">4. Development</td>
+<td style="text-align: left;">Risk Simulator Engine</td>
+<td style="text-align: left;">LIN XIANWEI</td>
+<td style="text-align: left;">ZUO SU HUI</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">5. Deployment</td>
+<td style="text-align: left;">Project Poster</td>
+<td style="text-align: left;">ZUO SU HUI</td>
+<td style="text-align: left;">LIN XIANWEI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">5. Deployment</td>
+<td style="text-align: left;">User Guide &amp; Final App</td>
+<td style="text-align: left;">LIN XIANWEI &amp; ZUO SU HUI</td>
+<td style="text-align: left;">Course Instructor</td>
 </tr>
 </tbody>
 </table>
-<hr>
-<p><em>Minutes prepared by: TEAM 15 - LIN XIANWEI, SU HUI</em></p>
+</div>
+</div>
+<p><em>Prepared by: TEAM 15 - LIN XIANWEI, ZUO SU HUI</em></p>
 
 
 <!-- -->
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -901,113 +1109,272 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Project Minutes of Meeting"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Team 15 - LIN XIAN, ZUO SU HUI"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: flatly</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Project Timeline</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Meeting 1: Project Kickoff &amp; Data Strategy</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>**Date:** 21/02/2026\</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**Time:** 16:00 - 18:00\</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>**Location:** Campus Library\</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>**Attendees:** LIN XIANWEI, SU HUI</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 Agenda</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Define project scope and core analytical modules.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Discuss data handling for the large <span class="in">`transactions_data`</span> file.</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Assign initial roles.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🗣️ Key Discussions &amp; Decisions</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Data Pipeline:** The team identified that the transaction dataset is too large to process live on a free <span class="in">`shinyapps.io`</span> server.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision:*** We will build an offline data pipeline to aggregate the transaction types and join them with the customer demographics, saving the output as a highly compressed <span class="in">`app_data.rds`</span> file for lightning-fast app loading.</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Core Modules:** Agreed to build an EDA Demographic tab, a CDA Behavioral tab, and a Churn/CLV Risk Simulator using Linear Regression models.</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### ✅ Action Items</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Task <span class="pp">|</span> Assignee <span class="pp">|</span> Deadline <span class="pp">|</span> Status <span class="pp">|</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|----|----|----|----|</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Create offline data wrangling script (<span class="in">`dplyr`</span>, <span class="in">`tidyr`</span>) <span class="pp">|</span> LIN XIANWEI <span class="pp">|</span> 21/02/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Build base UI shell using <span class="in">`bslib`</span> <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 25/02/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Train <span class="in">`lm`</span> predictive models for Simulator <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 27/02/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Meeting 2: Advanced Analytics Integration</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>**Date:** 01/03/2026\</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>**Time:** 15:00 - 18:00\</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>**Location:** Via Zoom\</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**Attendees:** LIN XIANWEI, SU HUI</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 Agenda</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Review the base Shiny app.</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Brainstorm unique insights to secure high marks for novelty and methodology.</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🗣️ Key Discussions &amp; Decisions</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Novelty Requirement:** Standard bar charts are insufficient for top marks. We need advanced financial analytics.</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision 1 (Survival Analysis):*** We will implement Kaplan-Meier survival curves using the <span class="in">`survival`</span> package to predict the exact tenure month customers are most likely to churn.</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision 2 (RFM Segmentation):*** We will calculate Recency, Frequency, and Monetary scores on the fly and visualize them using a <span class="in">`plotly`</span> Treemap.</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision 3 (Cash Flow):*** We will implement a <span class="in">`networkD3`</span> Sankey diagram to visualize macro fund flows.</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### ✅ Action Items</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Task <span class="pp">|</span> Assignee <span class="pp">|</span> Deadline <span class="pp">|</span> Status <span class="pp">|</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="pp">|----|----|----|----|</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Write dynamic RFM calculation code in <span class="in">`app.R`</span> <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 03/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Build Sankey Diagram logic <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 09/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Implement Kaplan-Meier plots <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 14/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Meeting 3: Deployment &amp; Bug Squashing</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>**Date:** 15/03/2026\</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>**Time:** 14:00 - 17:00\</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>**Location:** Via Zoom\</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>**Attendees:** LIN XIANWEI, SU HUI</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 Agenda</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Deploy the unified <span class="in">`app.R`</span> to shinyapps.io.</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Troubleshoot server crashes and UI bugs.</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🗣️ Key Discussions &amp; Decisions</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Issue 1: Server Crash on Deployment (Exit Status 1).** The server crashed because it was looking for the raw CSV files which were excluded from the deployment folder.</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>***Fix:*** Stripped the offline data pipeline from the deployment version of <span class="in">`app.R`</span> and loaded <span class="in">`app_data.rds`</span> directly.</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Issue 2: Survival Plot Error (`object of type 'symbol' is not subsettable`).** The <span class="in">`ggsurvplot`</span> function failed in the reactive Shiny environment.</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>***Fix:*** Replaced <span class="in">`survfit()`</span> with <span class="in">`surv_fit()`</span> and explicitly wrapped the plot in a <span class="in">`print()`</span> command.</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Issue 3: Sankey Diagram Visual Imbalance.** The left side of the Sankey diagram was visually squashed because incoming funds were much smaller than outgoing volume.</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>***Fix:*** Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts (<span class="in">`$X,XXX,XXX`</span>).</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### ✅ Action Items</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Task <span class="pp">|</span> Assignee <span class="pp">|</span> Deadline <span class="pp">|</span> Status <span class="pp">|</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="pp">|----|----|----|----|</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Final code cleanup and commenting <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 29/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Deploy stable version to Shinyapps.io <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 20/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Write project proposal and Quarto site <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 15/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>*Minutes prepared by: TEAM 15 - LIN XIANWEI, SU HUI*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Project Minutes of Meeting"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Team 15 - LIN XIAN, ZUO SU HUI"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: flatly</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scope of Work (SoW)</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>The scope of the **FinRetain** project encompasses the end-to-end development of an interactive R Shiny application designed to analyze, predict, and prescribe solutions for customer churn.</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">### **In-Scope:**</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Data Pipeline:** Cleaning and wrangling raw demographic and transactional data into a unified structure (<span class="in">`app_data.rds`</span>).</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Analytics Engine:** Development of Descriptive (EDA), Diagnostic (CDA), Predictive (Survival/K-Means), and Prescriptive (Risk Simulator) modules.</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**UI/UX Development:** Storyboarding, wireframing, and deploying a front-end Shiny dashboard for non-technical stakeholders.</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Documentation:** User guide, storyboard documentation, and final project poster.</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Out-of-Scope:**</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Live database integration (the app will use a static snapshot of data for this iteration).</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>User authentication and role-based access control (RBAC).</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Project Timeline</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Meeting 1: Project Kickoff &amp; Data Strategy</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>**Date:** 21/02/2026\</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>**Time:** 16:00 - 18:00\</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>**Location:** Campus Library\</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>**Attendees:** LIN XIANWEI, SU HUI</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 Agenda</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Define project scope and core analytical modules.</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Discuss data handling for the large <span class="in">`transactions_data`</span> file.</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Assign initial roles.</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🗣️ Key Discussions &amp; Decisions</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Data Pipeline:** The team identified that the transaction dataset is too large to process live on a free <span class="in">`shinyapps.io`</span> server.</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision:*** We will build an offline data pipeline to aggregate the transaction types and join them with the customer demographics, saving the output as a highly compressed <span class="in">`app_data.rds`</span> file for lightning-fast app loading.</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Core Modules:** Agreed to build an EDA Demographic tab, a CDA Behavioral tab, and a Churn/CLV Risk Simulator using Linear Regression models.</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### ✅ Action Items</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Task <span class="pp">|</span> Assignee <span class="pp">|</span> Deadline <span class="pp">|</span> Status <span class="pp">|</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------|------------------|------------------|------------------|</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Create offline data wrangling script (<span class="in">`dplyr`</span>, <span class="in">`tidyr`</span>) <span class="pp">|</span> LIN XIANWEI <span class="pp">|</span> 21/02/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Build base UI shell using <span class="in">`bslib`</span> <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 25/02/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Train <span class="in">`lm`</span> predictive models for Simulator <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 27/02/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Meeting 2: Advanced Analytics Integration</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>**Date:** 01/03/2026\</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>**Time:** 15:00 - 18:00\</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>**Location:** Via Zoom\</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>**Attendees:** LIN XIANWEI, SU HUI</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 Agenda</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Review the base Shiny app.</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Brainstorm unique insights to secure high marks for novelty and methodology.</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🗣️ Key Discussions &amp; Decisions</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Novelty Requirement:** Standard bar charts are insufficient for top marks. We need advanced financial analytics.</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision 1 (Survival Analysis):*** We will implement Kaplan-Meier survival curves using the <span class="in">`survival`</span> package to predict the exact tenure month customers are most likely to churn.</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision 2 (RFM Segmentation):*** We will calculate Recency, Frequency, and Monetary scores on the fly and visualize them using a <span class="in">`plotly`</span> Treemap.</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***Decision 3 (Cash Flow):*** We will implement a <span class="in">`networkD3`</span> Sankey diagram to visualize macro fund flows.</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="fu">### ✅ Action Items</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Task <span class="pp">|</span> Assignee <span class="pp">|</span> Deadline <span class="pp">|</span> Status <span class="pp">|</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------|------------------|------------------|------------------|</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Write dynamic RFM calculation code in <span class="in">`app.R`</span> <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 03/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Build Sankey Diagram logic <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 09/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Implement Kaplan-Meier plots <span class="pp">|</span> LIN XIANWEI, SU HUI <span class="pp">|</span> 14/03/2026 <span class="pp">|</span> Completed <span class="pp">|</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Meeting 3: Deployment &amp; Bug Squashing</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>**Date:** 15/03/2026\</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>**Time:** 14:00 - 17:00\</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>**Location:** Via Zoom\</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>**Attendees:** LIN XIANWEI, SU HUI</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎯 Agenda</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Deploy the unified <span class="in">`app.R`</span> to shinyapps.io.</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Troubleshoot server crashes and UI bugs.</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🗣️ Key Discussions &amp; Decisions</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Issue 1: Server Crash on Deployment (Exit Status 1).** The server crashed because it was looking for the raw CSV files which were excluded from the deployment folder.</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>***Fix:*** Stripped the offline data pipeline from the deployment version of <span class="in">`app.R`</span> and loaded <span class="in">`app_data.rds`</span> directly.</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Issue 2: Survival Plot Error (`object of type 'symbol' is not subsettable`).** The <span class="in">`ggsurvplot`</span> function failed in the reactive Shiny environment.</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>***Fix:*** Replaced <span class="in">`survfit()`</span> with <span class="in">`surv_fit()`</span> and explicitly wrapped the plot in a <span class="in">`print()`</span> command.</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Issue 3: Sankey Diagram Visual Imbalance.** The left side of the Sankey diagram was visually squashed because incoming funds were much smaller than outgoing volume.</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>***Fix:*** Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts (<span class="in">`$X,XXX,XXX`</span>).</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Project Gantt Chart</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>The following Gantt chart visualizes our 12-week development sprint, color-coded by the phases of the Data Science Lifecycle.</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-gantt</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "FinRetain Project Development Gantt Chart (Feb 21 - Apr 4)"</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 10</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create the Project Dataframe</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>project_tasks <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>  <span class="at">Phase =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"1. Initiation"</span>, <span class="dv">2</span>), </span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"2. Data Prep"</span>, <span class="dv">1</span>), </span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"3. Analytics"</span>, <span class="dv">4</span>), </span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"4. Development"</span>, <span class="dv">3</span>), </span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">"5. Deployment"</span>, <span class="dv">2</span>)),</span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>  <span class="at">Task =</span> <span class="fu">c</span>(<span class="st">"Project Proposal &amp; Methodology"</span>, </span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>           <span class="st">"UI/UX Storyboards &amp; Wireframes"</span>,</span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Data Cleaning &amp; RFM Engineering"</span>,</span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 1 &amp; 2: EDA &amp; CDA Scripting"</span>, </span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 3: K-Means Clustering"</span>, </span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 4: Survival Analysis"</span>, </span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 5: Sankey Flow Logic"</span>,</span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Front-end UI Setup (bslib)"</span>, </span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Integrating Analytics (apps.R)"</span>, </span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Module 6: Risk Simulator"</span>,</span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>           <span class="st">"QA Testing &amp; Bug Fixing"</span>, </span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Final Poster &amp; Town Hall Prep"</span>),</span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a>  <span class="at">Owner =</span> <span class="fu">c</span>(<span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, </span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>            <span class="st">"LIN XIANWEI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"ZUO SU HUI"</span>, </span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>            <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI &amp; ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI &amp; ZUO SU HUI"</span>),</span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compressed timeline from Feb 21 to April 4 (with overlapping parallel tasks)</span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>  <span class="at">Start =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2026-02-21"</span>, <span class="st">"2026-02-24"</span>, <span class="st">"2026-03-01"</span>, <span class="st">"2026-03-05"</span>, </span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"2026-03-10"</span>, <span class="st">"2026-03-14"</span>, <span class="st">"2026-03-18"</span>, <span class="st">"2026-03-20"</span>, </span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"2026-03-24"</span>, <span class="st">"2026-03-26"</span>, <span class="st">"2026-03-30"</span>, <span class="st">"2026-04-01"</span>)),</span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>  <span class="at">End =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">"2026-02-28"</span>, <span class="st">"2026-03-02"</span>, <span class="st">"2026-03-08"</span>, <span class="st">"2026-03-12"</span>, </span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"2026-03-17"</span>, <span class="st">"2026-03-20"</span>, <span class="st">"2026-03-25"</span>, <span class="st">"2026-03-27"</span>, </span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"2026-03-31"</span>, <span class="st">"2026-04-02"</span>, <span class="st">"2026-04-03"</span>, <span class="st">"2026-04-04"</span>))</span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Reorder tasks so the first task appears at the top of the chart</span></span>
+<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a>project_tasks <span class="ot">&lt;-</span> project_tasks <span class="sc">%&gt;%</span></span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Task =</span> <span class="fu">fct_reorder</span>(Task, <span class="fu">desc</span>(Start)))</span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate the Gantt Chart using ggplot2</span></span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(project_tasks, <span class="fu">aes</span>(<span class="at">x =</span> Start, <span class="at">xend =</span> End, <span class="at">y =</span> Task, <span class="at">yend =</span> Task, <span class="at">color =</span> Phase)) <span class="sc">+</span></span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">linewidth =</span> <span class="dv">8</span>, <span class="at">lineend =</span> <span class="st">"round"</span>) <span class="sc">+</span></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> Start, <span class="at">y =</span> Task, <span class="at">label =</span> Owner), </span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">1.5</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"darkgray"</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Changed to show specific dates like "Feb 21", "Mar 07"</span></span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 week"</span>, <span class="at">date_labels =</span> <span class="st">"%b %d"</span>) <span class="sc">+</span></span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"FinRetain Project Roadmap"</span>,</span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Task duration and ownership overview (Feb 21 - Apr 4)"</span>,</span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Timeline"</span>,</span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Project Phase"</span></span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray95"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>),</span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Matrix &amp; Peer Review Assignments</span></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>To ensure code quality and analytical rigor, every major task is assigned a specific "Owner" (the doer) and a "Reviewer" (the moderator).</span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a><span class="do">## 2. Project Gantt Chart</span></span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-timeline</span></span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "FinRetain Project Timeline and Milestones (Feb 21 - Apr 5)"</span></span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 15</span></span>
+<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 10</span></span>
+<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(vistime, ggplot2)</span>
+<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Define project data using the csv text format with the Spring 2026 timeline</span></span>
+<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">text=</span><span class="st">"event,group,start,end,color</span></span>
+<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a><span class="st">Project Proposal,1. Initiation,2026-02-21,2026-03-15,#a5d6a7</span></span>
+<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a><span class="st">UI/UX Storyboards,1. Initiation,2026-02-21,2026-03-10,#a5d6a7</span></span>
+<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a><span class="st">Data Cleaning &amp; RFM,2. Data Prep,2026-03-01,2026-03-16,#81d4fa</span></span>
+<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a><span class="st">EDA &amp; CDA Modules,3. Analytics,2026-03-10,2026-03-24,#ce93d8</span></span>
+<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a><span class="st">K-Means &amp; Survival,3. Analytics,2026-03-15,2026-03-28,#ce93d8</span></span>
+<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a><span class="st">Sankey Flow Diagram,3. Analytics,2026-03-20,2026-03-31,#ce93d8</span></span>
+<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a><span class="st">R Shiny Dashboard,4. Development,2026-03-20,2026-04-03,#ffb74d</span></span>
+<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="st">Risk Simulator Engine,4. Development,2026-03-25,2026-04-03,#ffb74d</span></span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="st">Poster-Minutes-Guide,5. Deployment,2026-03-25,2026-04-01,#DD4B39</span></span>
+<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a><span class="st">Presentation,6. Deployment,2026-04-01,2026-04-05,#DD4B39"</span>)</span>
+<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the exact milestone deadlines</span></span>
+<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a>proposal_deadline <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2026-03-15"</span>) </span>
+<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a>poster_deadline <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2026-04-01"</span>)</span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a>final_deadline <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2026-04-05"</span>)</span>
+<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the timeline chart</span></span>
+<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">gg_vistime</span>(data, <span class="at">title =</span> <span class="st">"FinRetain Project Timeline (Spring 2026)"</span>) </span>
+<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a><span class="co"># Add vertical lines for the critical milestone deadlines</span></span>
+<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> </span>
+<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.numeric</span>(<span class="fu">as.POSIXct</span>(proposal_deadline)), <span class="at">color =</span> <span class="st">"lightgreen"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.numeric</span>(<span class="fu">as.POSIXct</span>(poster_deadline)), <span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.numeric</span>(<span class="fu">as.POSIXct</span>(final_deadline)), <span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
+<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-assignments</span></span>
+<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Detailed Task Ownership and Moderation Roster"</span></span>
+<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(knitr, kableExtra, dplyr)</span>
+<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe for the Task Ownership Matrix with specific team members</span></span>
+<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a>task_matrix <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a>  <span class="at">Phase =</span> <span class="fu">c</span>(<span class="st">"1. Initiation"</span>, <span class="st">"2. Data Prep"</span>, <span class="st">"3. Analytics"</span>, <span class="st">"3. Analytics"</span>, <span class="st">"4. Development"</span>, <span class="st">"4. Development"</span>, <span class="st">"5. Deployment"</span>, <span class="st">"5. Deployment"</span>),</span>
+<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a>  <span class="at">Task =</span> <span class="fu">c</span>(<span class="st">"Proposal &amp; Storyboards"</span>, <span class="st">"Data Cleaning &amp; RFM"</span>, <span class="st">"EDA &amp; CDA Scripts"</span>, <span class="st">"K-Means &amp; Survival"</span>, <span class="st">"Shiny App Setup"</span>, <span class="st">"Risk Simulator Engine"</span>, <span class="st">"Project Poster"</span>, <span class="st">"User Guide &amp; Final App"</span>),</span>
+<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Logically splitting the work between LIN XIANWEI and ZUO SU HUI</span></span>
+<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a>  <span class="at">Owner =</span> <span class="fu">c</span>(<span class="st">"LIN XIANWEI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI &amp; ZUO SU HUI"</span>),</span>
+<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Cross-reviewing each other's work</span></span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a>  <span class="at">Reviewer =</span> <span class="fu">c</span>(<span class="st">"ZUO SU HUI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"ZUO SU HUI"</span>, <span class="st">"LIN XIANWEI"</span>, <span class="st">"Course Instructor"</span>)</span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a><span class="co"># Format the table</span></span>
+<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a>task_matrix <span class="sc">%&gt;%</span></span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="st">"l"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>), </span>
+<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> F, </span>
+<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">"left"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a>*Prepared by: TEAM 15 - LIN XIANWEI, ZUO SU HUI*</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

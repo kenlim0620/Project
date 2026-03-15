@@ -9,7 +9,23 @@ format:
     toc-depth: 2
 ---
 
-# Project Timeline
+## Scope of Work (SoW)
+
+The scope of the **FinRetain** project encompasses the end-to-end development of an interactive R Shiny application designed to analyze, predict, and prescribe solutions for customer churn.
+
+### **In-Scope:**
+
+-   **Data Pipeline:** Cleaning and wrangling raw demographic and transactional data into a unified structure (`app_data.rds`).
+-   **Analytics Engine:** Development of Descriptive (EDA), Diagnostic (CDA), Predictive (Survival/K-Means), and Prescriptive (Risk Simulator) modules.
+-   **UI/UX Development:** Storyboarding, wireframing, and deploying a front-end Shiny dashboard for non-technical stakeholders.
+-   **Documentation:** User guide, storyboard documentation, and final project poster.
+
+### **Out-of-Scope:**
+
+-   Live database integration (the app will use a static snapshot of data for this iteration).
+-   User authentication and role-based access control (RBAC).
+
+## Project Timeline
 
 Below is the official record of team meetings, key decisions, and technical troubleshooting sessions conducted during the development of the FinRetain application.
 
@@ -37,7 +53,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 ### ✅ Action Items
 
 | Task | Assignee | Deadline | Status |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Create offline data wrangling script (`dplyr`, `tidyr`) | LIN XIANWEI | 21/02/2026 | Completed |
 | Build base UI shell using `bslib` | LIN XIANWEI, SU HUI | 25/02/2026 | Completed |
 | Train `lm` predictive models for Simulator | LIN XIANWEI, SU HUI | 27/02/2026 | Completed |
@@ -66,7 +82,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 ### ✅ Action Items
 
 | Task | Assignee | Deadline | Status |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Write dynamic RFM calculation code in `app.R` | LIN XIANWEI, SU HUI | 03/03/2026 | Completed |
 | Build Sankey Diagram logic | LIN XIANWEI, SU HUI | 09/03/2026 | Completed |
 | Implement Kaplan-Meier plots | LIN XIANWEI, SU HUI | 14/03/2026 | Completed |
@@ -94,14 +110,156 @@ Below is the official record of team meetings, key decisions, and technical trou
 -   **Issue 3: Sankey Diagram Visual Imbalance.** The left side of the Sankey diagram was visually squashed because incoming funds were much smaller than outgoing volume.
     -   ***Fix:*** Decoupled the visual drawing weights from the actual dollar amounts. Forced balanced proportions (100% vs 100%) while formatting the text labels to still display the actual, accurate currency amounts (`$X,XXX,XXX`).
 
-### ✅ Action Items
+------------------------------------------------------------------------
 
-| Task | Assignee | Deadline | Status |
-|----|----|----|----|
-| Final code cleanup and commenting | LIN XIANWEI, SU HUI | 29/03/2026 | Completed |
-| Deploy stable version to Shinyapps.io | LIN XIANWEI, SU HUI | 20/03/2026 | Completed |
-| Write project proposal and Quarto site | LIN XIANWEI, SU HUI | 15/03/2026 | Completed |
+## Project Gantt Chart
+
+The following Gantt chart visualizes our 12-week development sprint, color-coded by the phases of the Data Science Lifecycle.
+
+```{r}
+#| label: fig-gantt
+#| fig-cap: "FinRetain Project Development Gantt Chart (Feb 21 - Apr 4)"
+#| fig-width: 10
+#| fig-height: 6
+
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+library(forcats)
+
+# 1. Create the Project Dataframe
+project_tasks <- data.frame(
+  Phase = c(rep("1. Initiation", 2), 
+            rep("2. Data Prep", 1), 
+            rep("3. Analytics", 4), 
+            rep("4. Development", 3), 
+            rep("5. Deployment", 2)),
+  Task = c("Project Proposal & Methodology", 
+           "UI/UX Storyboards & Wireframes",
+           "Data Cleaning & RFM Engineering",
+           "Module 1 & 2: EDA & CDA Scripting", 
+           "Module 3: K-Means Clustering", 
+           "Module 4: Survival Analysis", 
+           "Module 5: Sankey Flow Logic",
+           "Front-end UI Setup (bslib)", 
+           "Integrating Analytics (apps.R)", 
+           "Module 6: Risk Simulator",
+           "QA Testing & Bug Fixing", 
+           "Final Poster & Town Hall Prep"),
+  Owner = c("LIN XIANWEI", "ZUO SU HUI", "LIN XIANWEI", "ZUO SU HUI", 
+            "LIN XIANWEI", "LIN XIANWEI", "ZUO SU HUI", "ZUO SU HUI", 
+            "LIN XIANWEI", "ZUO SU HUI", "LIN XIANWEI & ZUO SU HUI", "LIN XIANWEI & ZUO SU HUI"),
+  
+  # Compressed timeline from Feb 21 to April 4 (with overlapping parallel tasks)
+  Start = as.Date(c("2026-02-21", "2026-02-24", "2026-03-01", "2026-03-05", 
+                    "2026-03-10", "2026-03-14", "2026-03-18", "2026-03-20", 
+                    "2026-03-24", "2026-03-26", "2026-03-30", "2026-04-01")),
+  End = as.Date(c("2026-02-28", "2026-03-02", "2026-03-08", "2026-03-12", 
+                  "2026-03-17", "2026-03-20", "2026-03-25", "2026-03-27", 
+                  "2026-03-31", "2026-04-02", "2026-04-03", "2026-04-04"))
+)
+
+# 2. Reorder tasks so the first task appears at the top of the chart
+project_tasks <- project_tasks %>%
+  mutate(Task = fct_reorder(Task, desc(Start)))
+
+# 3. Generate the Gantt Chart using ggplot2
+ggplot(project_tasks, aes(x = Start, xend = End, y = Task, yend = Task, color = Phase)) +
+  geom_segment(linewidth = 8, lineend = "round") +
+  geom_text(aes(x = Start, y = Task, label = Owner), 
+            vjust = -1.5, size = 3, color = "darkgray", hjust = 0) +
+  scale_color_brewer(palette = "Set1") +
+  # Changed to show specific dates like "Feb 21", "Mar 07"
+  scale_x_date(date_breaks = "1 week", date_labels = "%b %d") +
+  labs(
+    title = "FinRetain Project Roadmap",
+    subtitle = "Task duration and ownership overview (Feb 21 - Apr 4)",
+    x = "Timeline",
+    y = NULL,
+    color = "Project Phase"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_line(color = "gray95", linetype = "dashed"),
+    axis.text.y = element_text(face = "bold", size = 10),
+    plot.title = element_text(face = "bold", size = 16),
+    legend.position = "bottom"
+  )
+```
 
 ------------------------------------------------------------------------
 
-*Minutes prepared by: TEAM 15 - LIN XIANWEI, SU HUI*
+## Task Matrix & Peer Review Assignments
+
+To ensure code quality and analytical rigor, every major task is assigned a specific "Owner" (the doer) and a "Reviewer" (the moderator).
+
+```{r}
+## 2. Project Gantt Chart
+
+#| label: fig-timeline
+#| fig-cap: "FinRetain Project Timeline and Milestones (Feb 21 - Apr 5)"
+#| fig-width: 15
+#| fig-height: 10
+
+# Load required packages
+pacman::p_load(vistime, ggplot2)
+
+# Define project data using the csv text format with the Spring 2026 timeline
+data <- read.csv(text="event,group,start,end,color
+Project Proposal,1. Initiation,2026-02-21,2026-03-15,#a5d6a7
+UI/UX Storyboards,1. Initiation,2026-02-21,2026-03-10,#a5d6a7
+Data Cleaning & RFM,2. Data Prep,2026-03-01,2026-03-16,#81d4fa
+EDA & CDA Modules,3. Analytics,2026-03-10,2026-03-24,#ce93d8
+K-Means & Survival,3. Analytics,2026-03-15,2026-03-28,#ce93d8
+Sankey Flow Diagram,3. Analytics,2026-03-20,2026-03-31,#ce93d8
+R Shiny Dashboard,4. Development,2026-03-20,2026-04-03,#ffb74d
+Risk Simulator Engine,4. Development,2026-03-25,2026-04-03,#ffb74d
+Poster-Minutes-Guide,5. Deployment,2026-03-25,2026-04-01,#DD4B39
+Presentation,6. Deployment,2026-04-01,2026-04-05,#DD4B39")
+
+# Set the exact milestone deadlines
+proposal_deadline <- as.Date("2026-03-15") 
+poster_deadline <- as.Date("2026-04-01")
+final_deadline <- as.Date("2026-04-05")
+
+# Generate the timeline chart
+p <- gg_vistime(data, title = "FinRetain Project Timeline (Spring 2026)") 
+
+# Add vertical lines for the critical milestone deadlines
+p + 
+  geom_vline(xintercept = as.numeric(as.POSIXct(proposal_deadline)), color = "lightgreen", linewidth = 1, linetype = "dashed") +
+  geom_vline(xintercept = as.numeric(as.POSIXct(poster_deadline)), color = "orange", linewidth = 1, linetype = "dashed") +
+  geom_vline(xintercept = as.numeric(as.POSIXct(final_deadline)), color = "darkred", linewidth = 1.2, linetype = "solid") +
+  theme(
+    plot.title = element_text(face = "bold", size = 16, hjust = 0.5)
+  )
+
+#| label: tbl-assignments
+#| tbl-cap: "Detailed Task Ownership and Moderation Roster"
+
+pacman::p_load(knitr, kableExtra, dplyr)
+
+# Create a dataframe for the Task Ownership Matrix with specific team members
+task_matrix <- data.frame(
+  Phase = c("1. Initiation", "2. Data Prep", "3. Analytics", "3. Analytics", "4. Development", "4. Development", "5. Deployment", "5. Deployment"),
+  Task = c("Proposal & Storyboards", "Data Cleaning & RFM", "EDA & CDA Scripts", "K-Means & Survival", "Shiny App Setup", "Risk Simulator Engine", "Project Poster", "User Guide & Final App"),
+  
+  # Logically splitting the work between LIN XIANWEI and ZUO SU HUI
+  Owner = c("LIN XIANWEI", "LIN XIANWEI", "ZUO SU HUI", "LIN XIANWEI", "ZUO SU HUI", "LIN XIANWEI", "ZUO SU HUI", "LIN XIANWEI & ZUO SU HUI"),
+  
+  # Cross-reviewing each other's work
+  Reviewer = c("ZUO SU HUI", "ZUO SU HUI", "LIN XIANWEI", "ZUO SU HUI", "LIN XIANWEI", "ZUO SU HUI", "LIN XIANWEI", "Course Instructor")
+)
+
+# Format the table
+task_matrix %>%
+  kable(align = "l") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = F, 
+                position = "left") %>%
+  column_spec(1, bold = TRUE)
+```
+
+*Prepared by: TEAM 15 - LIN XIANWEI, ZUO SU HUI*
