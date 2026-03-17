@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Team 15 - LIN XIAN, ZUO SU HUI">
-<meta name="dcterms.date" content="2026-03-15">
+<meta name="dcterms.date" content="2026-03-17">
 
 <title>Project Proposal: FinRetain Customer Visual Analytics – FinRetain App</title>
 <style>
@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -131,10 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./ui_design.html"> 
-<span class="menu-text">Prototype of Storyboard</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./proposal.html" aria-current="page"> 
@@ -168,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Poster</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./user-guide.html"> 
+    <a class="nav-link" href="./user-guides.html"> 
 <span class="menu-text">User Guide</span></a>
   </li>  
 </ul>
@@ -198,21 +223,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation"><span class="header-section-number">1</span> 1. Introduction and Motivation</a></li>
-  <li><a href="#project-objectives" id="toc-project-objectives" class="nav-link" data-scroll-target="#project-objectives"><span class="header-section-number">2</span> 2. Project Objectives</a></li>
-  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="header-section-number">3</span> 3. Data Description</a></li>
-  <li><a href="#proposed-methodology-analytical-approach" id="toc-proposed-methodology-analytical-approach" class="nav-link" data-scroll-target="#proposed-methodology-analytical-approach"><span class="header-section-number">4</span> 4. Proposed Methodology &amp; Analytical Approach</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#the-finretain-narrative" id="toc-the-finretain-narrative" class="nav-link" data-scroll-target="#the-finretain-narrative"><span class="header-section-number">2</span> The FinRetain Narrative</a></li>
+  <li><a href="#motivation---the-why" id="toc-motivation---the-why" class="nav-link" data-scroll-target="#motivation---the-why"><span class="header-section-number">3</span> Motivation - The “Why”</a></li>
+  <li><a href="#methodology---the-how" id="toc-methodology---the-how" class="nav-link" data-scroll-target="#methodology---the-how"><span class="header-section-number">4</span> Methodology - The “How”</a></li>
+  <li><a href="#project-objectives" id="toc-project-objectives" class="nav-link" data-scroll-target="#project-objectives"><span class="header-section-number">5</span> Project Objectives</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="header-section-number">6</span> Data Description</a></li>
+  <li><a href="#proposed-methodology-analytical-approach" id="toc-proposed-methodology-analytical-approach" class="nav-link" data-scroll-target="#proposed-methodology-analytical-approach"><span class="header-section-number">7</span> Proposed Methodology &amp; Analytical Approach</a>
   <ul class="collapse">
-  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda"><span class="header-section-number">4.1</span> 4.1 Exploratory Data Analysis (EDA)</a></li>
-  <li><a href="#confirmatory-data-analysis-cda" id="toc-confirmatory-data-analysis-cda" class="nav-link" data-scroll-target="#confirmatory-data-analysis-cda"><span class="header-section-number">4.2</span> 4.2 Confirmatory Data Analysis (CDA)</a></li>
-  <li><a href="#behavioral-clustering" id="toc-behavioral-clustering" class="nav-link" data-scroll-target="#behavioral-clustering"><span class="header-section-number">4.3</span> 4.3 Behavioral Clustering</a></li>
-  <li><a href="#rfm-value-segmentation" id="toc-rfm-value-segmentation" class="nav-link" data-scroll-target="#rfm-value-segmentation"><span class="header-section-number">4.4</span> 4.4 RFM Value Segmentation</a></li>
-  <li><a href="#time-to-event-survival-analysis" id="toc-time-to-event-survival-analysis" class="nav-link" data-scroll-target="#time-to-event-survival-analysis"><span class="header-section-number">4.5</span> 4.5 Time-to-Event Survival Analysis</a></li>
-  <li><a href="#macro-cash-flow-sankey-diagram" id="toc-macro-cash-flow-sankey-diagram" class="nav-link" data-scroll-target="#macro-cash-flow-sankey-diagram"><span class="header-section-number">4.6</span> 4.6 Macro Cash Flow (Sankey Diagram)</a></li>
-  <li><a href="#churn-clv-risk-simulator" id="toc-churn-clv-risk-simulator" class="nav-link" data-scroll-target="#churn-clv-risk-simulator"><span class="header-section-number">4.7</span> 4.7 Churn &amp; CLV Risk Simulator</a></li>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda"><span class="header-section-number">7.1</span> Exploratory Data Analysis (EDA)</a></li>
+  <li><a href="#confirmatory-data-analysis-cda" id="toc-confirmatory-data-analysis-cda" class="nav-link" data-scroll-target="#confirmatory-data-analysis-cda"><span class="header-section-number">7.2</span> Confirmatory Data Analysis (CDA)</a></li>
+  <li><a href="#behavioral-clustering" id="toc-behavioral-clustering" class="nav-link" data-scroll-target="#behavioral-clustering"><span class="header-section-number">7.3</span> Behavioral Clustering</a></li>
+  <li><a href="#rfm-value-segmentation" id="toc-rfm-value-segmentation" class="nav-link" data-scroll-target="#rfm-value-segmentation"><span class="header-section-number">7.4</span> RFM Value Segmentation</a></li>
+  <li><a href="#time-to-event-survival-analysis" id="toc-time-to-event-survival-analysis" class="nav-link" data-scroll-target="#time-to-event-survival-analysis"><span class="header-section-number">7.5</span> Time-to-Event Survival Analysis</a></li>
+  <li><a href="#macro-cash-flow-sankey-diagram" id="toc-macro-cash-flow-sankey-diagram" class="nav-link" data-scroll-target="#macro-cash-flow-sankey-diagram"><span class="header-section-number">7.6</span> Macro Cash Flow (Sankey Diagram)</a></li>
+  <li><a href="#churn-clv-risk-simulator" id="toc-churn-clv-risk-simulator" class="nav-link" data-scroll-target="#churn-clv-risk-simulator"><span class="header-section-number">7.7</span> Churn &amp; CLV Risk Simulator</a></li>
   </ul></li>
-  <li><a href="#proposed-deliverables" id="toc-proposed-deliverables" class="nav-link" data-scroll-target="#proposed-deliverables"><span class="header-section-number">5</span> 5. Proposed Deliverables</a></li>
-  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline"><span class="header-section-number">6</span> 6. Project Timeline</a></li>
+  <li><a href="#proposed-deliverables" id="toc-proposed-deliverables" class="nav-link" data-scroll-target="#proposed-deliverables"><span class="header-section-number">8</span> Proposed Deliverables</a></li>
+  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline"><span class="header-section-number">9</span> Project Timeline</a></li>
   </ul>
 </nav>
     </div>
@@ -238,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 15, 2026</p>
+      <p class="date">March 17, 2026</p>
     </div>
   </div>
   
@@ -250,25 +278,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction-and-motivation" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introduction-and-motivation"><span class="header-section-number">1</span> 1. Introduction and Motivation</h2>
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
 <p>In the highly competitive financial technology (FinTech) and banking sector, customer retention is a critical driver of profitability. Acquiring a new customer is significantly more expensive than retaining an existing one. However, identifying exactly <em>when</em> and <em>why</em> a customer might abandon a financial platform (churn) remains a complex challenge due to the high-dimensional nature of transactional data.</p>
 <p><strong>FinRetain</strong> is designed to address this critical blind spot. It is an interactive visual analytics platform built to help financial analysts and product stakeholders dynamically explore customer demographics, track behavioral friction points, and proactively predict churn using advanced statistical modeling.</p>
 </section>
-<section id="project-objectives" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="project-objectives"><span class="header-section-number">2</span> 2. Project Objectives</h2>
+<section id="the-finretain-narrative" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="the-finretain-narrative"><span class="header-section-number">2</span> The FinRetain Narrative</h2>
+<p>Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.</p>
+</section>
+<section id="motivation---the-why" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="motivation---the-why"><span class="header-section-number">3</span> Motivation - The “Why”</h2>
+<p>The motivation for <strong>FinRetain</strong> stems from the “Churn Blindness” often faced by growing FinTech platforms. While transaction volumes are high, user loyalty is fragile.</p>
+<ul>
+<li><p><strong>The Proactive Gap:</strong> Most financial dashboards are descriptive—they show who has already left. FinRetain was created to move the needle toward predictive and prescriptive analytics, allowing managers to intervene before the customer walks away.</p></li>
+<li><p><strong>The 90-Day Cliff:</strong> Preliminary data suggests a critical drop-off in user retention within the first three months. Our motivation is to pinpoint exactly why this “cliff” exists and which specific user behaviors (like high support ticket counts or low engagement) trigger it.</p></li>
+<li><p><strong>Actionable Intelligence:</strong> We aim to bridge the gap between complex data science models and non-technical decision-makers. By turning abstract statistical correlations into a “What-If” simulator, we empower managers to see the immediate ROI of improving customer satisfaction.</p></li>
+</ul>
+</section>
+<section id="methodology---the-how" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="methodology---the-how"><span class="header-section-number">4</span> Methodology - The “How”</h2>
+<p>Our methodology follows a rigorous 5-stage Data Science Lifecycle, ensuring that every visual in the app is backed by mathematical validity.</p>
+<p><strong>Phase I: Data Engineering &amp; Wrangling</strong></p>
+<p>We processed raw transactional and demographic data into a consolidated customer-level dataset. This involved:</p>
+<ul>
+<li><p>Feature engineering for RFM (Recency, Frequency, Monetary) scores.</p></li>
+<li><p>Calculating “Tenure” and “Churn Event” flags for longitudinal analysis.</p></li>
+</ul>
+<p><strong>Phase II: Descriptive &amp; Diagnostic Analytics (EDA/CDA)</strong></p>
+<ul>
+<li><p>EDA: We use distribution plots to identify baseline user characteristics (Income, Age, Region).</p></li>
+<li><p>CDA: We apply Spearman Correlation and statistical tests to prove the relationship between “Friction Points” (e.g., Support Tickets) and “Outcome Metrics” (e.g., Satisfaction Score).</p></li>
+</ul>
+<p><strong>Phase III: Behavioral Segmentation (Clustering)</strong></p>
+<p>To move beyond generic averages, we implemented K-Means Clustering. This allows the tool to automatically group users into distinct “Personas” (like “High-Value Loyalists” vs.&nbsp;“At-Risk Casuals”) based on their actual usage patterns.</p>
+<p><strong>Phase IV: Predictive Modeling (Survival Analysis)</strong></p>
+<p>We employ Kaplan-Meier Survival Analysis to calculate the probability of a customer remaining with the platform over time. The survival function is defined as:</p>
+<p><img src="images/Screenshot 2026-03-14 170535.jpg" width="196" height="40"></p>
+<p>Where <span class="math inline">\(T\)</span> is the time of churn. This identifies the specific “danger zones” in the customer lifecycle.</p>
+<p><strong>Phase V: Prescriptive Analytics (The Simulator)</strong></p>
+<p>The final stage of our methodology involves a Linear Regression/Predictive Model integrated into a UI. This allows for real-time simulation: by adjusting behavioral sliders, the app calculates a predicted Churn Risk % and Customer Lifetime Value (CLV), providing a direct roadmap for business intervention.</p>
+</section>
+<section id="project-objectives" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="project-objectives"><span class="header-section-number">5</span> Project Objectives</h2>
 <p>Our primary goal is to build an interactive R Shiny application that transforms raw transactional and demographic data into actionable business intelligence. Specifically, this project aims to transition from descriptive reporting to proactive forecasting through:</p>
 <ol type="1">
-<li><strong>Behavioral Exploration:</strong> Provide interactive visual tools to understand user demographic profiles and identify friction points in the user experience.</li>
-<li><strong>Algorithmic Profiling (K-Means):</strong> Autonomously group users into distinct behavioral personas based on transaction frequency and monetary volume.</li>
-<li><strong>Advanced Segmentation (RFM):</strong> Classify the customer base into actionable business segments based on Recency, Frequency, and Monetary metrics.</li>
-<li><strong>Time-to-Event Analysis:</strong> Utilize Survival Analysis to determine the exact tenure timeline where specific customer groups are at the highest risk of dropping off.</li>
-<li><strong>Macro Cash Flow Mapping:</strong> Visualize the holistic ecosystem of liquidity entering and exiting the platform.</li>
-<li><strong>Predictive Risk Assessment:</strong> Implement a dynamic simulator to forecast churn probability and estimate Customer Lifetime Value (CLV) based on adjustable inputs.</li>
+<li><p><strong>Behavioral Exploration:</strong> Provide interactive visual tools to understand user demographic profiles and identify friction points in the user experience.</p></li>
+<li><p><strong>Algorithmic Profiling (K-Means):</strong> Autonomously group users into distinct behavioral personas based on transaction frequency and monetary volume.</p></li>
+<li><p><strong>Advanced Segmentation (RFM):</strong> Classify the customer base into actionable business segments based on Recency, Frequency, and Monetary metrics.</p></li>
+<li><p><strong>Time-to-Event Analysis:</strong> Utilize Survival Analysis to determine the exact tenure timeline where specific customer groups are at the highest risk of dropping off.</p></li>
+<li><p><strong>Macro Cash Flow Mapping:</strong> Visualize the holistic ecosystem of liquidity entering and exiting the platform.</p></li>
+<li><p><strong>Predictive Risk Assessment:</strong> Implement a dynamic simulator to forecast churn probability and estimate Customer Lifetime Value (CLV) based on adjustable inputs.</p></li>
 </ol>
 </section>
-<section id="data-description" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="data-description"><span class="header-section-number">3</span> 3. Data Description</h2>
+<section id="data-description" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="data-description"><span class="header-section-number">6</span> Data Description</h2>
 <p>The dataset powering FinRetain contains historical records of customer accounts and transactional logs, encompassing:</p>
 <ul>
 <li><strong>Demographics:</strong> Age, Gender, Education Level, Income Bracket.</li>
@@ -277,48 +341,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Target Variables:</strong> Customer Tenure (months), Churn Probability, and Customer Lifetime Value (CLV).</li>
 </ul>
 </section>
-<section id="proposed-methodology-analytical-approach" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="proposed-methodology-analytical-approach"><span class="header-section-number">4</span> 4. Proposed Methodology &amp; Analytical Approach</h2>
+<section id="proposed-methodology-analytical-approach" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="proposed-methodology-analytical-approach"><span class="header-section-number">7</span> Proposed Methodology &amp; Analytical Approach</h2>
 <p>To achieve our objectives, the FinRetain platform will be engineered using R Shiny and segmented into six distinct analytical modules:</p>
-<section id="exploratory-data-analysis-eda" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="exploratory-data-analysis-eda"><span class="header-section-number">4.1</span> 4.1 Exploratory Data Analysis (EDA)</h3>
+<section id="exploratory-data-analysis-eda" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="exploratory-data-analysis-eda"><span class="header-section-number">7.1</span> Exploratory Data Analysis (EDA)</h3>
 <p>Using <code>ggplot2</code> and <code>plotly</code>, we will analyze the demographic distribution of our user base. This module will allow stakeholders to filter by Gender and Customer Segments to uncover baseline trends in Income and Education.</p>
 </section>
-<section id="confirmatory-data-analysis-cda" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="confirmatory-data-analysis-cda"><span class="header-section-number">4.2</span> 4.2 Confirmatory Data Analysis (CDA)</h3>
+<section id="confirmatory-data-analysis-cda" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="confirmatory-data-analysis-cda"><span class="header-section-number">7.2</span> Confirmatory Data Analysis (CDA)</h3>
 <p>We will implement interactive scatter plots with statistical trendlines to investigate behavioral hypotheses, specifically assessing the negative correlation between Support Tickets and overall App Satisfaction for high-volume users. We will also implement Statistical Correlation Heatmaps using ggcorrplot to identify the most significant drivers of customer behavior. This will be followed by interactive scatter plots with linear trendlines to investigate specific high-impact relationships (e.g., Support Tickets vs.&nbsp;Satisfaction Scores).</p>
 </section>
-<section id="behavioral-clustering" class="level3" data-number="4.3">
-<h3 data-number="4.3" class="anchored" data-anchor-id="behavioral-clustering"><span class="header-section-number">4.3</span> 4.3 Behavioral Clustering</h3>
+<section id="behavioral-clustering" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="behavioral-clustering"><span class="header-section-number">7.3</span> Behavioral Clustering</h3>
 <p>Using the K-Means clustering algorithm, we will identify hidden user personas. By plotting transaction frequency against total transaction volume, the platform will autonomously categorize users into distinct operational groups (e.g., High-Volume vs.&nbsp;High-Frequency users).</p>
 </section>
-<section id="rfm-value-segmentation" class="level3" data-number="4.4">
-<h3 data-number="4.4" class="anchored" data-anchor-id="rfm-value-segmentation"><span class="header-section-number">4.4</span> 4.4 RFM Value Segmentation</h3>
+<section id="rfm-value-segmentation" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="rfm-value-segmentation"><span class="header-section-number">7.4</span> RFM Value Segmentation</h3>
 <p>Customers will be scored and categorized into segments (e.g., “Champions”, “Loyal Customers”, “At Risk”) based on Recency, Frequency, and Monetary metrics. A dynamic <code>plotly</code> Treemap will visualize the size and hierarchy of each segment to prioritize marketing efforts.</p>
 </section>
-<section id="time-to-event-survival-analysis" class="level3" data-number="4.5">
-<h3 data-number="4.5" class="anchored" data-anchor-id="time-to-event-survival-analysis"><span class="header-section-number">4.5</span> 4.5 Time-to-Event Survival Analysis</h3>
+<section id="time-to-event-survival-analysis" class="level3" data-number="7.5">
+<h3 data-number="7.5" class="anchored" data-anchor-id="time-to-event-survival-analysis"><span class="header-section-number">7.5</span> Time-to-Event Survival Analysis</h3>
 <p>Using the <code>survival</code> package, we will plot Kaplan-Meier Churn Probability Curves. This module will act as a “ticking clock,” allowing stakeholders to identify the critical 90-day drop-off window and compare survival rates across different user demographics.</p>
 </section>
-<section id="macro-cash-flow-sankey-diagram" class="level3" data-number="4.6">
-<h3 data-number="4.6" class="anchored" data-anchor-id="macro-cash-flow-sankey-diagram"><span class="header-section-number">4.6</span> 4.6 Macro Cash Flow (Sankey Diagram)</h3>
+<section id="macro-cash-flow-sankey-diagram" class="level3" data-number="7.6">
+<h3 data-number="7.6" class="anchored" data-anchor-id="macro-cash-flow-sankey-diagram"><span class="header-section-number">7.6</span> Macro Cash Flow (Sankey Diagram)</h3>
 <p>Using the <code>networkD3</code> library, we will map the directional flow of capital. The Sankey diagram will visualize how external funds (Direct Deposits) pool into the app wallet and disperse into out-flows, quantifying the exact dollar amounts retained versus lost.</p>
 </section>
-<section id="churn-clv-risk-simulator" class="level3" data-number="4.7">
-<h3 data-number="4.7" class="anchored" data-anchor-id="churn-clv-risk-simulator"><span class="header-section-number">4.7</span> 4.7 Churn &amp; CLV Risk Simulator</h3>
+<section id="churn-clv-risk-simulator" class="level3" data-number="7.7">
+<h3 data-number="7.7" class="anchored" data-anchor-id="churn-clv-risk-simulator"><span class="header-section-number">7.7</span> Churn &amp; CLV Risk Simulator</h3>
 <p>We will train a Multiple Linear Regression (<code>lm</code>) model to predict the probability of churn. A dynamic UI simulator will allow users to adjust hypothetical customer parameters (e.g., simulating a reduction in support tickets) to see real-time shifts in risk metrics, visually forecasting a “saved” customer.</p>
 </section>
 </section>
-<section id="proposed-deliverables" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="proposed-deliverables"><span class="header-section-number">5</span> 5. Proposed Deliverables</h2>
+<section id="proposed-deliverables" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="proposed-deliverables"><span class="header-section-number">8</span> Proposed Deliverables</h2>
 <ol type="1">
 <li><strong>R Shiny Application:</strong> A fully deployed, interactive web application hosted on shinyapps.io featuring a low-cognitive-load UI designed with <code>bslib</code>.</li>
 <li><strong>Project Report/Website:</strong> A comprehensive Quarto document detailing the technical architecture, methodology, business findings, and user guide.</li>
 <li><strong>Source Code Repository:</strong> A clean, well-commented GitHub repository containing the ETL data pipeline (<code>app_data.rds</code>) and application logic (<code>app.R</code>).</li>
 </ol>
 </section>
-<section id="project-timeline" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="project-timeline"><span class="header-section-number">6</span> 6. Project Timeline</h2>
+<section id="project-timeline" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="project-timeline"><span class="header-section-number">9</span> Project Timeline</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -365,6 +429,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more specific timeline details, please refer to the section of <strong>Minutes of Meeting - Project Gantt Chart</strong> and the followings</p>
+</div>
+</div>
 
 
 <!-- -->
@@ -840,80 +917,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Introduction and Motivation</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>In the highly competitive financial technology (FinTech) and banking sector, customer retention is a critical driver of profitability. Acquiring a new customer is significantly more expensive than retaining an existing one. However, identifying exactly *when* and *why* a customer might abandon a financial platform (churn) remains a complex challenge due to the high-dimensional nature of transactional data.</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>**FinRetain** is designed to address this critical blind spot. It is an interactive visual analytics platform built to help financial analysts and product stakeholders dynamically explore customer demographics, track behavioral friction points, and proactively predict churn using advanced statistical modeling.</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Project Objectives</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## The FinRetain Narrative</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Our primary goal is to build an interactive R Shiny application that transforms raw transactional and demographic data into actionable business intelligence. Specifically, this project aims to transition from descriptive reporting to proactive forecasting through:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Behavioral Exploration:** Provide interactive visual tools to understand user demographic profiles and identify friction points in the user experience.</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Algorithmic Profiling (K-Means):** Autonomously group users into distinct behavioral personas based on transaction frequency and monetary volume.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Advanced Segmentation (RFM):** Classify the customer base into actionable business segments based on Recency, Frequency, and Monetary metrics.</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Time-to-Event Analysis:** Utilize Survival Analysis to determine the exact tenure timeline where specific customer groups are at the highest risk of dropping off.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Macro Cash Flow Mapping:** Visualize the holistic ecosystem of liquidity entering and exiting the platform.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Predictive Risk Assessment:** Implement a dynamic simulator to forecast churn probability and estimate Customer Lifetime Value (CLV) based on adjustable inputs.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Data Description</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>The dataset powering FinRetain contains historical records of customer accounts and transactional logs, encompassing:</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Demographics:** Age, Gender, Education Level, Income Bracket.</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Engagement Metrics:** App Logins, Support Tickets Logged, Satisfaction Score (1-5).</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Transactional Data:** Transaction counts, average transaction values, and aggregated volumes across various types (Deposits, Payments, Transfers, Withdrawals).</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Target Variables:** Customer Tenure (months), Churn Probability, and Customer Lifetime Value (CLV).</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Motivation - The "Why"</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>The motivation for **FinRetain** stems from the "Churn Blindness" often faced by growing FinTech platforms. While transaction volumes are high, user loyalty is fragile.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**The Proactive Gap:** Most financial dashboards are descriptive—they show who has already left. FinRetain was created to move the needle toward predictive and prescriptive analytics, allowing managers to intervene before the customer walks away.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**The 90-Day Cliff:** Preliminary data suggests a critical drop-off in user retention within the first three months. Our motivation is to pinpoint exactly why this "cliff" exists and which specific user behaviors (like high support ticket counts or low engagement) trigger it.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Actionable Intelligence:** We aim to bridge the gap between complex data science models and non-technical decision-makers. By turning abstract statistical correlations into a "What-If" simulator, we empower managers to see the immediate ROI of improving customer satisfaction.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methodology - The "How"</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>Our methodology follows a rigorous 5-stage Data Science Lifecycle, ensuring that every visual in the app is backed by mathematical validity.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**Phase I: Data Engineering &amp; Wrangling**</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Proposed Methodology &amp; Analytical Approach</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>We processed raw transactional and demographic data into a consolidated customer-level dataset. This involved:</span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>To achieve our objectives, the FinRetain platform will be engineered using R Shiny and segmented into six distinct analytical modules:</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Feature engineering for RFM (Recency, Frequency, Monetary) scores.</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.1 Exploratory Data Analysis (EDA)</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Calculating "Tenure" and "Churn Event" flags for longitudinal analysis.</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`ggplot2`</span> and <span class="in">`plotly`</span>, we will analyze the demographic distribution of our user base. This module will allow stakeholders to filter by Gender and Customer Segments to uncover baseline trends in Income and Education.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>**Phase II: Descriptive &amp; Diagnostic Analytics (EDA/CDA)**</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.2 Confirmatory Data Analysis (CDA)</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>EDA: We use distribution plots to identify baseline user characteristics (Income, Age, Region).</span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>We will implement interactive scatter plots with statistical trendlines to investigate behavioral hypotheses, specifically assessing the negative correlation between Support Tickets and overall App Satisfaction for high-volume users. We will also implement Statistical Correlation Heatmaps using ggcorrplot to identify the most significant drivers of customer behavior. This will be followed by interactive scatter plots with linear trendlines to investigate specific high-impact relationships (e.g., Support Tickets vs. Satisfaction Scores).</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>CDA: We apply Spearman Correlation and statistical tests to prove the relationship between "Friction Points" (e.g., Support Tickets) and "Outcome Metrics" (e.g., Satisfaction Score).</span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.3 Behavioral Clustering</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>**Phase III: Behavioral Segmentation (Clustering)**</span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>Using the K-Means clustering algorithm, we will identify hidden user personas. By plotting transaction frequency against total transaction volume, the platform will autonomously categorize users into distinct operational groups (e.g., High-Volume vs. High-Frequency users).</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>To move beyond generic averages, we implemented K-Means Clustering. This allows the tool to automatically group users into distinct "Personas" (like "High-Value Loyalists" vs. "At-Risk Casuals") based on their actual usage patterns.</span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.4 RFM Value Segmentation</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>**Phase IV: Predictive Modeling (Survival Analysis)**</span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>Customers will be scored and categorized into segments (e.g., "Champions", "Loyal Customers", "At Risk") based on Recency, Frequency, and Monetary metrics. A dynamic <span class="in">`plotly`</span> Treemap will visualize the size and hierarchy of each segment to prioritize marketing efforts.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>We employ Kaplan-Meier Survival Analysis to calculate the probability of a customer remaining with the platform over time. The survival function is defined as:</span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.5 Time-to-Event Survival Analysis</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20170535.jpg)</span>{width="196" height="40"}</span>
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`survival`</span> package, we will plot Kaplan-Meier Churn Probability Curves. This module will act as a "ticking clock," allowing stakeholders to identify the critical 90-day drop-off window and compare survival rates across different user demographics.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>Where $T$ is the time of churn. This identifies the specific "danger zones" in the customer lifecycle.</span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.6 Macro Cash Flow (Sankey Diagram)</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>**Phase V: Prescriptive Analytics (The Simulator)**</span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`networkD3`</span> library, we will map the directional flow of capital. The Sankey diagram will visualize how external funds (Direct Deposits) pool into the app wallet and disperse into out-flows, quantifying the exact dollar amounts retained versus lost.</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>The final stage of our methodology involves a Linear Regression/Predictive Model integrated into a UI. This allows for real-time simulation: by adjusting behavioral sliders, the app calculates a predicted Churn Risk % and Customer Lifetime Value (CLV), providing a direct roadmap for business intervention.</span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4.7 Churn &amp; CLV Risk Simulator</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Project Objectives</span></span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>We will train a Multiple Linear Regression (<span class="in">`lm`</span>) model to predict the probability of churn. A dynamic UI simulator will allow users to adjust hypothetical customer parameters (e.g., simulating a reduction in support tickets) to see real-time shifts in risk metrics, visually forecasting a "saved" customer.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>Our primary goal is to build an interactive R Shiny application that transforms raw transactional and demographic data into actionable business intelligence. Specifically, this project aims to transition from descriptive reporting to proactive forecasting through:</span>
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Proposed Deliverables</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Behavioral Exploration:** Provide interactive visual tools to understand user demographic profiles and identify friction points in the user experience.</span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**R Shiny Application:** A fully deployed, interactive web application hosted on shinyapps.io featuring a low-cognitive-load UI designed with <span class="in">`bslib`</span>.</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Project Report/Website:** A comprehensive Quarto document detailing the technical architecture, methodology, business findings, and user guide.</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Source Code Repository:** A clean, well-commented GitHub repository containing the ETL data pipeline (<span class="in">`app_data.rds`</span>) and application logic (<span class="in">`app.R`</span>).</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Algorithmic Profiling (K-Means):** Autonomously group users into distinct behavioral personas based on transaction frequency and monetary volume.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Advanced Segmentation (RFM):** Classify the customer base into actionable business segments based on Recency, Frequency, and Monetary metrics.</span>
 <span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6. Project Timeline</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Time-to-Event Analysis:** Utilize Survival Analysis to determine the exact tenure timeline where specific customer groups are at the highest risk of dropping off.</span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Phase <span class="pp">|</span> Task <span class="pp">|</span> Expected Completion <span class="pp">|</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>:--:<span class="pp">|:---|:---|</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1 <span class="pp">|</span> Data Extraction, ETL Pipeline &amp; Feature Engineering <span class="pp">|</span> 21/02/2026 <span class="pp">|</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2 <span class="pp">|</span> Core UI/UX Dashboard Layout Design <span class="pp">|</span> 25/02/2026 <span class="pp">|</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3 <span class="pp">|</span> Implementation of EDA, CDA &amp; Clustering Modules <span class="pp">|</span> 01/03/2026 <span class="pp">|</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 4 <span class="pp">|</span> Advanced Analytics Integration (Survival, RFM, Sankey) <span class="pp">|</span> 15/03/2026 <span class="pp">|</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 5 <span class="pp">|</span> Predictive Simulator Implementation &amp; Final Testing <span class="pp">|</span> 29/03/2026 <span class="pp">|</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 6 <span class="pp">|</span> Final Quarto Report Submission &amp; ShinyApps Deployment <span class="pp">|</span> 04/04/2026 <span class="pp">|</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Macro Cash Flow Mapping:** Visualize the holistic ecosystem of liquidity entering and exiting the platform.</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Predictive Risk Assessment:** Implement a dynamic simulator to forecast churn probability and estimate Customer Lifetime Value (CLV) based on adjustable inputs.</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Description</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>The dataset powering FinRetain contains historical records of customer accounts and transactional logs, encompassing:</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Demographics:** Age, Gender, Education Level, Income Bracket.</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Engagement Metrics:** App Logins, Support Tickets Logged, Satisfaction Score (1-5).</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Transactional Data:** Transaction counts, average transaction values, and aggregated volumes across various types (Deposits, Payments, Transfers, Withdrawals).</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Target Variables:** Customer Tenure (months), Churn Probability, and Customer Lifetime Value (CLV).</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## Proposed Methodology &amp; Analytical Approach</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>To achieve our objectives, the FinRetain platform will be engineered using R Shiny and segmented into six distinct analytical modules:</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exploratory Data Analysis (EDA)</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`ggplot2`</span> and <span class="in">`plotly`</span>, we will analyze the demographic distribution of our user base. This module will allow stakeholders to filter by Gender and Customer Segments to uncover baseline trends in Income and Education.</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Confirmatory Data Analysis (CDA)</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>We will implement interactive scatter plots with statistical trendlines to investigate behavioral hypotheses, specifically assessing the negative correlation between Support Tickets and overall App Satisfaction for high-volume users. We will also implement Statistical Correlation Heatmaps using ggcorrplot to identify the most significant drivers of customer behavior. This will be followed by interactive scatter plots with linear trendlines to investigate specific high-impact relationships (e.g., Support Tickets vs. Satisfaction Scores).</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="fu">### Behavioral Clustering</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>Using the K-Means clustering algorithm, we will identify hidden user personas. By plotting transaction frequency against total transaction volume, the platform will autonomously categorize users into distinct operational groups (e.g., High-Volume vs. High-Frequency users).</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### RFM Value Segmentation</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>Customers will be scored and categorized into segments (e.g., "Champions", "Loyal Customers", "At Risk") based on Recency, Frequency, and Monetary metrics. A dynamic <span class="in">`plotly`</span> Treemap will visualize the size and hierarchy of each segment to prioritize marketing efforts.</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="fu">### Time-to-Event Survival Analysis</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`survival`</span> package, we will plot Kaplan-Meier Churn Probability Curves. This module will act as a "ticking clock," allowing stakeholders to identify the critical 90-day drop-off window and compare survival rates across different user demographics.</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="fu">### Macro Cash Flow (Sankey Diagram)</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`networkD3`</span> library, we will map the directional flow of capital. The Sankey diagram will visualize how external funds (Direct Deposits) pool into the app wallet and disperse into out-flows, quantifying the exact dollar amounts retained versus lost.</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="fu">### Churn &amp; CLV Risk Simulator</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>We will train a Multiple Linear Regression (<span class="in">`lm`</span>) model to predict the probability of churn. A dynamic UI simulator will allow users to adjust hypothetical customer parameters (e.g., simulating a reduction in support tickets) to see real-time shifts in risk metrics, visually forecasting a "saved" customer.</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## Proposed Deliverables</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**R Shiny Application:** A fully deployed, interactive web application hosted on shinyapps.io featuring a low-cognitive-load UI designed with <span class="in">`bslib`</span>.</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Project Report/Website:** A comprehensive Quarto document detailing the technical architecture, methodology, business findings, and user guide.</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Source Code Repository:** A clean, well-commented GitHub repository containing the ETL data pipeline (<span class="in">`app_data.rds`</span>) and application logic (<span class="in">`app.R`</span>).</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="fu">## Project Timeline</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Phase <span class="pp">|</span> Task <span class="pp">|</span> Expected Completion <span class="pp">|</span></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="pp">|:----------------------:|:-----------------------|:-----------------------|</span></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1 <span class="pp">|</span> Data Extraction, ETL Pipeline &amp; Feature Engineering <span class="pp">|</span> 21/02/2026 <span class="pp">|</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2 <span class="pp">|</span> Core UI/UX Dashboard Layout Design <span class="pp">|</span> 25/02/2026 <span class="pp">|</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3 <span class="pp">|</span> Implementation of EDA, CDA &amp; Clustering Modules <span class="pp">|</span> 01/03/2026 <span class="pp">|</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 4 <span class="pp">|</span> Advanced Analytics Integration (Survival, RFM, Sankey) <span class="pp">|</span> 15/03/2026 <span class="pp">|</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 5 <span class="pp">|</span> Predictive Simulator Implementation &amp; Final Testing <span class="pp">|</span> 29/03/2026 <span class="pp">|</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 6 <span class="pp">|</span> Final Quarto Report Submission &amp; ShinyApps Deployment <span class="pp">|</span> 04/04/2026 <span class="pp">|</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>For more specific timeline details, please refer to the section of **Minutes of Meeting - Project Gantt Chart** and the followings</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

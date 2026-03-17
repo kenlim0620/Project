@@ -1,6 +1,6 @@
 ---
 title: "Exploratory & Confirmatory Analysis"
-author: "LIN XIANWEI"
+author: "LIN XIANWEI, ZUO SU HUI"
 date: today
 format: 
   html:

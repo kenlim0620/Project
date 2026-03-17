@@ -36,7 +36,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 **Date:** 21/02/2026\
 **Time:** 16:00 - 18:00\
 **Location:** Campus Library\
-**Attendees:** LIN XIANWEI, SU HUI
+**Attendees:** LIN XIANWEI, ZUO SU HUI
 
 ### 🎯 Agenda
 
@@ -65,7 +65,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 **Date:** 01/03/2026\
 **Time:** 15:00 - 18:00\
 **Location:** Via Zoom\
-**Attendees:** LIN XIANWEI, SU HUI
+**Attendees:** LIN XIANWEI, ZUO SU HUI
 
 ### 🎯 Agenda
 
@@ -94,7 +94,7 @@ Below is the official record of team meetings, key decisions, and technical trou
 **Date:** 15/03/2026\
 **Time:** 14:00 - 17:00\
 **Location:** Via Zoom\
-**Attendees:** LIN XIANWEI, SU HUI
+**Attendees:** LIN XIANWEI, ZUO SU HUI
 
 ### 🎯 Agenda
 
@@ -262,4 +262,6 @@ task_matrix %>%
   column_spec(1, bold = TRUE)
 ```
 
-*Prepared by: TEAM 15 - LIN XIANWEI, ZUO SU HUI*
+::: callout-important
+***Prepared by: TEAM 15 - LIN XIANWEI, ZUO SU HUI***
+:::

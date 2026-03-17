@@ -8,8 +8,6 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: ui_design.qmd           
-        text: "Prototype of Storyboard"
       - href: proposal.qmd
         text: "Proposal"
       - href: meeting.qmd
@@ -24,7 +22,7 @@ website:
         text: "Findings & Discussion"
       - href: poster.qmd
         text: "Poster"
-      - href: user-guide.qmd
+      - href: user-guides.qmd
         text: "User Guide"
     right:
       - icon: github

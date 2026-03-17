@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="LIN XIANWEI">
-<meta name="dcterms.date" content="2026-03-15">
+<meta name="author" content="LIN XIANWEI, ZUO SU HUI">
+<meta name="dcterms.date" content="2026-03-17">
 
-<title>Prototype of Proposed UI Design &amp; Storyboard – FinRetain App</title>
+<title>User Guide – FinRetain App</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,35 +107,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -160,10 +131,6 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./ui_design.html" aria-current="page"> 
-<span class="menu-text">Prototype of Storyboard</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./proposal.html"> 
@@ -197,7 +164,7 @@ window.Quarto = {
 <span class="menu-text">Poster</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./user-guide.html"> 
+    <a class="nav-link active" href="./user-guides.html" aria-current="page"> 
 <span class="menu-text">User Guide</span></a>
   </li>  
 </ul>
@@ -227,10 +194,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#the-finretain-narrative" id="toc-the-finretain-narrative" class="nav-link active" data-scroll-target="#the-finretain-narrative">The FinRetain Narrative</a></li>
-  <li><a href="#motivation---the-why" id="toc-motivation---the-why" class="nav-link" data-scroll-target="#motivation---the-why">Motivation - The “Why”</a></li>
-  <li><a href="#methodology---the-how" id="toc-methodology---the-how" class="nav-link" data-scroll-target="#methodology---the-how">Methodology - The “How”</a></li>
-  <li><a href="#the-storyboard" id="toc-the-storyboard" class="nav-link" data-scroll-target="#the-storyboard">The Storyboard</a></li>
+  <li><a href="#getting-started-with-finretain" id="toc-getting-started-with-finretain" class="nav-link active" data-scroll-target="#getting-started-with-finretain">Getting Started with FinRetain</a></li>
+  <li><a href="#overview-the-navigation-menu" id="toc-overview-the-navigation-menu" class="nav-link" data-scroll-target="#overview-the-navigation-menu">Overview: The Navigation Menu</a></li>
+  <li><a href="#module-1-exploratory-data-eda" id="toc-module-1-exploratory-data-eda" class="nav-link" data-scroll-target="#module-1-exploratory-data-eda">Module 1: Exploratory Data (EDA)</a></li>
   <li><a href="#module-2-confirmatory-data-cda" id="toc-module-2-confirmatory-data-cda" class="nav-link" data-scroll-target="#module-2-confirmatory-data-cda">Module 2: Confirmatory Data (CDA)</a></li>
   <li><a href="#module-3-customer-segmentation" id="toc-module-3-customer-segmentation" class="nav-link" data-scroll-target="#module-3-customer-segmentation">Module 3: Customer Segmentation</a></li>
   <li><a href="#module-4-survival-timeline" id="toc-module-4-survival-timeline" class="nav-link" data-scroll-target="#module-4-survival-timeline">Module 4: Survival Timeline</a></li>
@@ -245,7 +211,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Prototype of Proposed UI Design &amp; Storyboard</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">User Guide</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -255,14 +221,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>LIN XIANWEI </p>
+             <p>LIN XIANWEI, ZUO SU HUI </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 15, 2026</p>
+      <p class="date">March 17, 2026</p>
     </div>
   </div>
   
@@ -274,46 +240,15 @@ window.Quarto = {
 </header>
 
 
-<section id="the-finretain-narrative" class="level2">
-<h2 class="anchored" data-anchor-id="the-finretain-narrative">The FinRetain Narrative</h2>
-<p>Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.</p>
+<section id="getting-started-with-finretain" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started-with-finretain">Getting Started with FinRetain</h2>
+<p>Welcome to the FinRetain Visual Analytics Dashboard! This application empowers stakeholders to explore customer demographics, statistically confirm behavioral trends, and actively simulate future churn risk.</p>
+<p><strong>Access the Live Dashboard Here:</strong> <a href="https://lin-xianwei.shinyapps.io/New-Shiny/">FinRetain Shiny App</a></p>
+<p>This guide will walk you through the six primary modules of the dashboard and how to extract maximum value from them.</p>
+<hr>
 </section>
-<section id="motivation---the-why" class="level2">
-<h2 class="anchored" data-anchor-id="motivation---the-why">Motivation - The “Why”</h2>
-<p>The motivation for <strong>FinRetain</strong> stems from the “Churn Blindness” often faced by growing FinTech platforms. While transaction volumes are high, user loyalty is fragile.</p>
-<ul>
-<li><p><strong>The Proactive Gap:</strong> Most financial dashboards are descriptive—they show who has already left. FinRetain was created to move the needle toward predictive and prescriptive analytics, allowing managers to intervene before the customer walks away.</p></li>
-<li><p><strong>The 90-Day Cliff:</strong> Preliminary data suggests a critical drop-off in user retention within the first three months. Our motivation is to pinpoint exactly why this “cliff” exists and which specific user behaviors (like high support ticket counts or low engagement) trigger it.</p></li>
-<li><p><strong>Actionable Intelligence:</strong> We aim to bridge the gap between complex data science models and non-technical decision-makers. By turning abstract statistical correlations into a “What-If” simulator, we empower managers to see the immediate ROI of improving customer satisfaction.</p></li>
-</ul>
-</section>
-<section id="methodology---the-how" class="level2">
-<h2 class="anchored" data-anchor-id="methodology---the-how">Methodology - The “How”</h2>
-<p>Our methodology follows a rigorous 5-stage Data Science Lifecycle, ensuring that every visual in the app is backed by mathematical validity.</p>
-<p><strong>Phase I: Data Engineering &amp; Wrangling</strong></p>
-<p>We processed raw transactional and demographic data into a consolidated customer-level dataset. This involved:</p>
-<ul>
-<li><p>Feature engineering for RFM (Recency, Frequency, Monetary) scores.</p></li>
-<li><p>Calculating “Tenure” and “Churn Event” flags for longitudinal analysis.</p></li>
-</ul>
-<p><strong>Phase II: Descriptive &amp; Diagnostic Analytics (EDA/CDA)</strong></p>
-<ul>
-<li><p>EDA: We use distribution plots to identify baseline user characteristics (Income, Age, Region).</p></li>
-<li><p>CDA: We apply Spearman Correlation and statistical tests to prove the relationship between “Friction Points” (e.g., Support Tickets) and “Outcome Metrics” (e.g., Satisfaction Score).</p></li>
-</ul>
-<p><strong>Phase III: Behavioral Segmentation (Clustering)</strong></p>
-<p>To move beyond generic averages, we implemented K-Means Clustering. This allows the tool to automatically group users into distinct “Personas” (like “High-Value Loyalists” vs.&nbsp;“At-Risk Casuals”) based on their actual usage patterns.</p>
-<p><strong>Phase IV: Predictive Modeling (Survival Analysis)</strong></p>
-<p>We employ Kaplan-Meier Survival Analysis to calculate the probability of a customer remaining with the platform over time. The survival function is defined as:</p>
-<p><img src="images/Screenshot 2026-03-14 170535.jpg" width="196" height="40"></p>
-<p>Where <span class="math inline">\(T\)</span> is the time of churn. This identifies the specific “danger zones” in the customer lifecycle.</p>
-<p><strong>Phase V: Prescriptive Analytics (The Simulator)</strong></p>
-<p>The final stage of our methodology involves a Linear Regression/Predictive Model integrated into a UI. This allows for real-time simulation: by adjusting behavioral sliders, the app calculates a predicted Churn Risk % and Customer Lifetime Value (CLV), providing a direct roadmap for business intervention.</p>
-</section>
-<section id="the-storyboard" class="level2">
-<h2 class="anchored" data-anchor-id="the-storyboard">The Storyboard</h2>
-<section id="overview-the-navigation-menu" class="level3">
-<h3 class="anchored" data-anchor-id="overview-the-navigation-menu">Overview: The Navigation Menu</h3>
+<section id="overview-the-navigation-menu" class="level2">
+<h2 class="anchored" data-anchor-id="overview-the-navigation-menu">Overview: The Navigation Menu</h2>
 <p>The FinRetain app is divided into distinct analytical modules, accessible via the top navigation bar. Move sequentially from left to right to follow our data science pipeline, or jump directly to the predictive simulator if you want to test interventions.</p>
 <ol type="1">
 <li><strong>Exploratory Data (EDA):</strong> Understand the demographic shape and tenure of the customer base.</li>
@@ -325,8 +260,8 @@ window.Quarto = {
 </ol>
 <hr>
 </section>
-<section id="module-1-exploratory-data-eda" class="level3">
-<h3 class="anchored" data-anchor-id="module-1-exploratory-data-eda">Module 1: Exploratory Data (EDA)</h3>
+<section id="module-1-exploratory-data-eda" class="level2">
+<h2 class="anchored" data-anchor-id="module-1-exploratory-data-eda">Module 1: Exploratory Data (EDA)</h2>
 <p><img src="images/clipboard-911759235.jpeg" class="img-fluid"></p>
 <p><img src="images/Screenshot 2026-03-14 173309.jpg" class="img-fluid"></p>
 <p>This tab allows you to view the foundational demographics of our user base.</p>
@@ -339,7 +274,6 @@ window.Quarto = {
 <p><strong>💡 Try this!</strong> Filter the Customer Segment to “Premium” and see how the density of their tenure shifts compared to the “Standard” segment.</p>
 </blockquote>
 <hr>
-</section>
 </section>
 <section id="module-2-confirmatory-data-cda" class="level2">
 <h2 class="anchored" data-anchor-id="module-2-confirmatory-data-cda">Module 2: Confirmatory Data (CDA)</h2>
@@ -870,8 +804,8 @@ window.Quarto = {
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Prototype of Proposed UI Design &amp; Storyboard"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "LIN XIANWEI"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "User Guide"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "LIN XIANWEI, ZUO SU HUI"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
@@ -881,160 +815,120 @@ window.Quarto = {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## The FinRetain Narrative</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Getting Started with FinRetain</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Welcome to the FinRetain Visual Analytics Dashboard! This application empowers stakeholders to explore customer demographics, statistically confirm behavioral trends, and actively simulate future churn risk.</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Motivation - The "Why"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>**Access the Live Dashboard Here:** <span class="co">[</span><span class="ot">FinRetain Shiny App</span><span class="co">](https://lin-xianwei.shinyapps.io/New-Shiny/)</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>The motivation for **FinRetain** stems from the "Churn Blindness" often faced by growing FinTech platforms. While transaction volumes are high, user loyalty is fragile.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>This guide will walk you through the six primary modules of the dashboard and how to extract maximum value from them.</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**The Proactive Gap:** Most financial dashboards are descriptive—they show who has already left. FinRetain was created to move the needle toward predictive and prescriptive analytics, allowing managers to intervene before the customer walks away.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**The 90-Day Cliff:** Preliminary data suggests a critical drop-off in user retention within the first three months. Our motivation is to pinpoint exactly why this "cliff" exists and which specific user behaviors (like high support ticket counts or low engagement) trigger it.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview: The Navigation Menu</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Actionable Intelligence:** We aim to bridge the gap between complex data science models and non-technical decision-makers. By turning abstract statistical correlations into a "What-If" simulator, we empower managers to see the immediate ROI of improving customer satisfaction.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>The FinRetain app is divided into distinct analytical modules, accessible via the top navigation bar. Move sequentially from left to right to follow our data science pipeline, or jump directly to the predictive simulator if you want to test interventions.</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methodology - The "How"</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Our methodology follows a rigorous 5-stage Data Science Lifecycle, ensuring that every visual in the app is backed by mathematical validity.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>**Phase I: Data Engineering &amp; Wrangling**</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>We processed raw transactional and demographic data into a consolidated customer-level dataset. This involved:</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Feature engineering for RFM (Recency, Frequency, Monetary) scores.</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Calculating "Tenure" and "Churn Event" flags for longitudinal analysis.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>**Phase II: Descriptive &amp; Diagnostic Analytics (EDA/CDA)**</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>EDA: We use distribution plots to identify baseline user characteristics (Income, Age, Region).</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>CDA: We apply Spearman Correlation and statistical tests to prove the relationship between "Friction Points" (e.g., Support Tickets) and "Outcome Metrics" (e.g., Satisfaction Score).</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>**Phase III: Behavioral Segmentation (Clustering)**</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>To move beyond generic averages, we implemented K-Means Clustering. This allows the tool to automatically group users into distinct "Personas" (like "High-Value Loyalists" vs. "At-Risk Casuals") based on their actual usage patterns.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>**Phase IV: Predictive Modeling (Survival Analysis)**</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>We employ Kaplan-Meier Survival Analysis to calculate the probability of a customer remaining with the platform over time. The survival function is defined as:</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20170535.jpg)</span>{width="196" height="40"}</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>Where $T$ is the time of churn. This identifies the specific "danger zones" in the customer lifecycle.</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>**Phase V: Prescriptive Analytics (The Simulator)**</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>The final stage of our methodology involves a Linear Regression/Predictive Model integrated into a UI. This allows for real-time simulation: by adjusting behavioral sliders, the app calculates a predicted Churn Risk % and Customer Lifetime Value (CLV), providing a direct roadmap for business intervention.</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Storyboard</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Exploratory Data (EDA):** Understand the demographic shape and tenure of the customer base.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Confirmatory Data (CDA):** View mathematical correlations and statistical proofs.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Customer Segmentation:** Explore algorithmic (K-Means) and rule-based (RFM) customer groups.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Survival Timeline:** Track the exact months where churn risk spikes.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Ecosystem Cash Flow:** Trace macro-liquidity through the platform.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Predictive Risk Simulator:** Use machine learning to forecast a specific user's future value.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 1: Exploratory Data (EDA)</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-911759235.jpeg)</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20173309.jpg)</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>This tab allows you to view the foundational demographics of our user base.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 1:** Use the sidebar on the left to filter the entire dashboard by **Gender** or **Customer Segment**.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 2:** Observe how the "Income Distribution" bar chart and "Age by Education" box plots dynamically update.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 3:** Review the Ridgeline plot at the bottom to see how customer tenure density varies across different RFM segments.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 Try this!** Filter the Customer Segment to "Premium" and see how the density of their tenure shifts compared to the "Standard" segment.</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 2: Confirmatory Data (CDA)</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2164382330.jpeg)</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-949135387.jpeg)</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>Move beyond visual assumptions and interact with our statistical models.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Macro Correlation Matrix:** This heatmap identifies strong positive (blue) or negative (red) relationships across all numerical features.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hypothesis Testing:** Use the dropdown menu to facet the <span class="in">`ggscatterstats`</span> plot by either *Income Bracket* or *Education Level*. This proves the statistical significance of the relationship between Transaction Count and Satisfaction.</span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">### Overview: The Navigation Menu</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>The FinRetain app is divided into distinct analytical modules, accessible via the top navigation bar. Move sequentially from left to right to follow our data science pipeline, or jump directly to the predictive simulator if you want to test interventions.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 3: Customer Segmentation</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Exploratory Data (EDA):** Understand the demographic shape and tenure of the customer base.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Confirmatory Data (CDA):** View mathematical correlations and statistical proofs.</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Customer Segmentation:** Explore algorithmic (K-Means) and rule-based (RFM) customer groups.</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Survival Timeline:** Track the exact months where churn risk spikes.</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Ecosystem Cash Flow:** Trace macro-liquidity through the platform.</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Predictive Risk Simulator:** Use machine learning to forecast a specific user's future value.</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Module 1: Exploratory Data (EDA)</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1600580532.jpeg)</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20173726.jpg)</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>This module groups users using two distinct methodologies: Machine Learning and Value Stratification.</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Algorithmic Personas (K-Means):** Hover over the scatter plot to see how our unsupervised machine learning algorithm automatically grouped users into three behavioral clusters based purely on transaction volume and count.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Value Stratification (RFM Treemap):** This chart categorizes the database into actionable blocks (e.g., "Champions", "Recent Users").</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Size** = Number of users in that segment.</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Color** = The Average Customer Lifetime Value (CLV).</span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-911759235.jpeg)</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 Try this!** Hover over the smallest boxes in the Treemap. Notice how some visually small segments actually possess the darkest colors, indicating highly concentrated wealth.</span></span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20173309.jpg)</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>This tab allows you to view the foundational demographics of our user base.</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 4: Survival Timeline</span></span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 1:** Use the sidebar on the left to filter the entire dashboard by **Gender** or **Customer Segment**.</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 2:** Observe how the "Income Distribution" bar chart and "Age by Education" box plots dynamically update.</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 3:** Review the Ridgeline plot at the bottom to see how customer tenure density varies across different RFM segments.</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1606010195.jpeg)</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20173951.jpg)</span></span>
 <span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 Try this!** Filter the Customer Segment to "Premium" and see how the density of their tenure shifts compared to the "Standard" segment.</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-4259787774.jpeg)</span></span>
 <span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>This module answers the critical question: *When do users leave?*</span>
 <span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 2: Confirmatory Data (CDA)</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2164382330.jpeg)</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 1:** Go to the "Survival Parameters" sidebar.</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 2:** Select a variable to group the customers by (Acquisition Channel, Income Bracket, or Customer Segment).</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 3:** The Kaplan-Meier curve will generate a timeline. Look for the steepest drops in the line—this indicates the exact tenure month where drop-off risk is highest.</span>
 <span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-949135387.jpeg)</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>Move beyond visual assumptions and interact with our statistical models.</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 5: Ecosystem Cash Flow</span></span>
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Macro Correlation Matrix:** This heatmap identifies strong positive (blue) or negative (red) relationships across all numerical features.</span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hypothesis Testing:** Use the dropdown menu to facet the <span class="in">`ggscatterstats`</span> plot by either *Income Bracket* or *Education Level*. This proves the statistical significance of the relationship between Transaction Count and Satisfaction.</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 3: Customer Segmentation</span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1600580532.jpeg)</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-4054311379.jpeg)</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-495218001.jpeg)</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>A macro-view of the platform's liquidity.</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Visualizing the Flow:** This Sankey network traces capital from the moment it enters the platform (Incoming Transfers, Direct Deposits) to the moment it leaves (App Payments, Outgoing Transfers, Cash Withdrawals).</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Interaction:** You can click and drag the nodes (the vertical bars) to rearrange the network for a clearer view of specific money pipelines.</span>
 <span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20173726.jpg)</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>This module groups users using two distinct methodologies: Machine Learning and Value Stratification.</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 6: Predictive Risk Simulator</span></span>
 <span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Algorithmic Personas (K-Means):** Hover over the scatter plot to see how our unsupervised machine learning algorithm automatically grouped users into three behavioral clusters based purely on transaction volume and count.</span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Value Stratification (RFM Treemap):** This chart categorizes the database into actionable blocks (e.g., "Champions", "Recent Users").</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Size** = Number of users in that segment.</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Color** = The Average Customer Lifetime Value (CLV).</span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 Try this!** Hover over the smallest boxes in the Treemap. Notice how some visually small segments actually possess the darkest colors, indicating highly concentrated wealth.</span></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2617181331.jpeg)</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>This is the most powerful tool in the application, allowing you to simulate interventions to save at-risk customers.</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 1:** Use the sliders on the left to build a custom user profile (adjusting Age, Total Transactions, Support Tickets, and Satisfaction Score).</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 2:** Click the **"Simulate Future Value"** button.</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 3:** The dashboard will use our Multiple Linear Regression models to instantly predict this user's **Churn Risk** (Probability of leaving in 30 days) and **Predicted CLV** (Estimated lifetime revenue).</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 4:** Scroll down to the Data Table to instantly view the top 5 real customers in the database who most closely match the exact profile you just simulated.</span>
 <span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 4: Survival Timeline</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 Try this!** Set the "Support Tickets Logged" slider to 0 and hit simulate. Then, slide it up to 15 and hit simulate again. Watch how drastically the red "Predicted Churn Risk" box spikes!</span></span>
 <span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1606010195.jpeg)</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
 <span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/Screenshot%202026-03-14%20173951.jpg)</span></span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-4259787774.jpeg)</span></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>This module answers the critical question: *When do users leave?*</span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 1:** Go to the "Survival Parameters" sidebar.</span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 2:** Select a variable to group the customers by (Acquisition Channel, Income Bracket, or Customer Segment).</span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 3:** The Kaplan-Meier curve will generate a timeline. Look for the steepest drops in the line—this indicates the exact tenure month where drop-off risk is highest.</span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 5: Ecosystem Cash Flow</span></span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-4054311379.jpeg)</span></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-495218001.jpeg)</span></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>A macro-view of the platform's liquidity.</span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Visualizing the Flow:** This Sankey network traces capital from the moment it enters the platform (Incoming Transfers, Direct Deposits) to the moment it leaves (App Payments, Outgoing Transfers, Cash Withdrawals).</span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Interaction:** You can click and drag the nodes (the vertical bars) to rearrange the network for a clearer view of specific money pipelines.</span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## Module 6: Predictive Risk Simulator</span></span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2617181331.jpeg)</span></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>This is the most powerful tool in the application, allowing you to simulate interventions to save at-risk customers.</span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 1:** Use the sliders on the left to build a custom user profile (adjusting Age, Total Transactions, Support Tickets, and Satisfaction Score).</span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 2:** Click the **"Simulate Future Value"** button.</span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 3:** The dashboard will use our Multiple Linear Regression models to instantly predict this user's **Churn Risk** (Probability of leaving in 30 days) and **Predicted CLV** (Estimated lifetime revenue).</span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Step 4:** Scroll down to the Data Table to instantly view the top 5 real customers in the database who most closely match the exact profile you just simulated.</span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 Try this!** Set the "Support Tickets Logged" slider to 0 and hit simulate. Then, slide it up to 15 and hit simulate again. Watch how drastically the red "Predicted Churn Risk" box spikes!</span></span>
-<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>The FinRetain dashboard proves that Visual Analytics is more than just plotting charts; it is about building a decision-making engine. By combining exploratory data analysis, algorithmic clustering, and predictive forecasting into a single, cohesive storyboard, we empower FinTech platforms to protect their most valuable asset: their users.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>The FinRetain dashboard proves that Visual Analytics is more than just plotting charts; it is about building a decision-making engine. By combining exploratory data analysis, algorithmic clustering, and predictive forecasting into a single, cohesive storyboard, we empower FinTech platforms to protect their most valuable asset: their users.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

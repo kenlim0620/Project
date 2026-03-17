@@ -1,6 +1,6 @@
 ---
-title: "Prototype of Proposed UI Design & Storyboard"
-author: "LIN XIANWEI"
+title: "User Guide"
+author: "LIN XIANWEI, ZUO SU HUI"
 date: today
 format: 
   html:
@@ -10,57 +10,17 @@ format:
 editor: visual
 ---
 
-## The FinRetain Narrative
+## Getting Started with FinRetain
 
-Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.
+Welcome to the FinRetain Visual Analytics Dashboard! This application empowers stakeholders to explore customer demographics, statistically confirm behavioral trends, and actively simulate future churn risk.
 
-## Motivation - The "Why"
+**Access the Live Dashboard Here:** [FinRetain Shiny App](https://lin-xianwei.shinyapps.io/New-Shiny/)
 
-The motivation for **FinRetain** stems from the "Churn Blindness" often faced by growing FinTech platforms. While transaction volumes are high, user loyalty is fragile.
+This guide will walk you through the six primary modules of the dashboard and how to extract maximum value from them.
 
--   **The Proactive Gap:** Most financial dashboards are descriptive—they show who has already left. FinRetain was created to move the needle toward predictive and prescriptive analytics, allowing managers to intervene before the customer walks away.
+------------------------------------------------------------------------
 
--   **The 90-Day Cliff:** Preliminary data suggests a critical drop-off in user retention within the first three months. Our motivation is to pinpoint exactly why this "cliff" exists and which specific user behaviors (like high support ticket counts or low engagement) trigger it.
-
--   **Actionable Intelligence:** We aim to bridge the gap between complex data science models and non-technical decision-makers. By turning abstract statistical correlations into a "What-If" simulator, we empower managers to see the immediate ROI of improving customer satisfaction.
-
-## Methodology - The "How"
-
-Our methodology follows a rigorous 5-stage Data Science Lifecycle, ensuring that every visual in the app is backed by mathematical validity.
-
-**Phase I: Data Engineering & Wrangling**
-
-We processed raw transactional and demographic data into a consolidated customer-level dataset. This involved:
-
--   Feature engineering for RFM (Recency, Frequency, Monetary) scores.
-
--   Calculating "Tenure" and "Churn Event" flags for longitudinal analysis.
-
-**Phase II: Descriptive & Diagnostic Analytics (EDA/CDA)**
-
--   EDA: We use distribution plots to identify baseline user characteristics (Income, Age, Region).
-
--   CDA: We apply Spearman Correlation and statistical tests to prove the relationship between "Friction Points" (e.g., Support Tickets) and "Outcome Metrics" (e.g., Satisfaction Score).
-
-**Phase III: Behavioral Segmentation (Clustering)**
-
-To move beyond generic averages, we implemented K-Means Clustering. This allows the tool to automatically group users into distinct "Personas" (like "High-Value Loyalists" vs. "At-Risk Casuals") based on their actual usage patterns.
-
-**Phase IV: Predictive Modeling (Survival Analysis)**
-
-We employ Kaplan-Meier Survival Analysis to calculate the probability of a customer remaining with the platform over time. The survival function is defined as:
-
-![](images/Screenshot%202026-03-14%20170535.jpg){width="196" height="40"}
-
-Where $T$ is the time of churn. This identifies the specific "danger zones" in the customer lifecycle.
-
-**Phase V: Prescriptive Analytics (The Simulator)**
-
-The final stage of our methodology involves a Linear Regression/Predictive Model integrated into a UI. This allows for real-time simulation: by adjusting behavioral sliders, the app calculates a predicted Churn Risk % and Customer Lifetime Value (CLV), providing a direct roadmap for business intervention.
-
-## The Storyboard
-
-### Overview: The Navigation Menu
+## Overview: The Navigation Menu
 
 The FinRetain app is divided into distinct analytical modules, accessible via the top navigation bar. Move sequentially from left to right to follow our data science pipeline, or jump directly to the predictive simulator if you want to test interventions.
 
@@ -73,7 +33,7 @@ The FinRetain app is divided into distinct analytical modules, accessible via th
 
 ------------------------------------------------------------------------
 
-### Module 1: Exploratory Data (EDA)
+## Module 1: Exploratory Data (EDA)
 
 ![](images/clipboard-911759235.jpeg)
 
