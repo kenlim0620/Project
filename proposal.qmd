@@ -21,10 +21,6 @@ In the highly competitive financial technology (FinTech) and banking sector, cus
 
 **FinRetain** is designed to address this critical blind spot. It is an interactive visual analytics platform built to help financial analysts and product stakeholders dynamically explore customer demographics, track behavioral friction points, and proactively predict churn using advanced statistical modeling.
 
-## The FinRetain Narrative
-
-Data without a narrative is just noise. Our storyboard maps out the complete journey of a FinTech customer—from their first deposit to their potential departure—and demonstrates how our Visual Analytics dashboard empowers stakeholders to intervene at the right moments.
-
 ## Motivation - The "Why"
 
 The motivation for **FinRetain** stems from the "Churn Blindness" often faced by growing FinTech platforms. While transaction volumes are high, user loyalty is fragile.
@@ -38,6 +34,8 @@ The motivation for **FinRetain** stems from the "Churn Blindness" often faced by
 ## Methodology - The "How"
 
 Our methodology follows a rigorous 5-stage Data Science Lifecycle, ensuring that every visual in the app is backed by mathematical validity.
+
+![](images/Gemini_Generated_Image_3eer7t3eer7t3eer.png)
 
 **Phase I: Data Engineering & Wrangling**
 
@@ -69,6 +67,10 @@ Where $T$ is the time of churn. This identifies the specific "danger zones" in t
 
 The final stage of our methodology involves a Linear Regression/Predictive Model integrated into a UI. This allows for real-time simulation: by adjusting behavioral sliders, the app calculates a predicted Churn Risk % and Customer Lifetime Value (CLV), providing a direct roadmap for business intervention.
 
+## Prototype Sketches of the Proposed UI
+
+![](images/Gemini_Generated_Image_7ru2da7ru2da7ru2-01.png)
+
 ## Project Objectives
 
 Our primary goal is to build an interactive R Shiny application that transforms raw transactional and demographic data into actionable business intelligence. Specifically, this project aims to transition from descriptive reporting to proactive forecasting through:
@@ -87,44 +89,68 @@ Our primary goal is to build an interactive R Shiny application that transforms 
 
 ## Data Description
 
-The dataset powering FinRetain contains historical records of customer accounts and transactional logs, encompassing:
+Our data preparation pipeline cleans raw demographic and transactional data from **COFINFAD: Colombian Fintech Financial Analytics Dataset.** The dataset powering FinRetain contains historical records of customer accounts and transactional logs, encompassing:
 
 -   **Demographics:** Age, Gender, Education Level, Income Bracket.
 -   **Engagement Metrics:** App Logins, Support Tickets Logged, Satisfaction Score (1-5).
 -   **Transactional Data:** Transaction counts, average transaction values, and aggregated volumes across various types (Deposits, Payments, Transfers, Withdrawals).
 -   **Target Variables:** Customer Tenure (months), Churn Probability, and Customer Lifetime Value (CLV).
 
-## Proposed Methodology & Analytical Approach
+## Interactive Analytical Modules
 
-To achieve our objectives, the FinRetain platform will be engineered using R Shiny and segmented into six distinct analytical modules:
+To transition from static reporting to proactive forecasting, FinRetain is segmented into six distinct interactive modules:
 
-### Exploratory Data Analysis (EDA)
+### 1. Exploratory Data Analysis (EDA)
 
-Using `ggplot2` and `plotly`, we will analyze the demographic distribution of our user base. This module will allow stakeholders to filter by Gender and Customer Segments to uncover baseline trends in Income and Education.
+Using `ggplot2` and `plotly`, this module allows stakeholders to interactively explore the demographic shape of the user base. Users will utilize sidebar dropdowns (`selectInput`) to dynamically filter charts by Gender and Customer Segments, allowing them to isolate and investigate specific high-value demographics.
 
-### Confirmatory Data Analysis (CDA)
+### 2. Confirmatory Data Analysis (CDA)
 
-We will implement interactive scatter plots with statistical trendlines to investigate behavioral hypotheses, specifically assessing the negative correlation between Support Tickets and overall App Satisfaction for high-volume users. We will also implement Statistical Correlation Heatmaps using ggcorrplot to identify the most significant drivers of customer behavior. This will be followed by interactive scatter plots with linear trendlines to investigate specific high-impact relationships (e.g., Support Tickets vs. Satisfaction Scores).
+Analysts will use this module to investigate statistical hypotheses. Users can dynamically facet statistical scatter plots (`ggstatsplot`) by different demographic parameters (e.g., Income vs. Education) to drill down into the negative correlation between Support Tickets and overall App Satisfaction for specific user subsets.
 
-### Behavioral Clustering
+### 3. Customer Segmentation (K-Means & RFM)
 
-Using the K-Means clustering algorithm, we will identify hidden user personas. By plotting transaction frequency against total transaction volume, the platform will autonomously categorize users into distinct operational groups (e.g., High-Volume vs. High-Frequency users).
+Moving beyond basic demographics, this module empowers users to explore algorithmic personas. Interactive Plotly scatter plots and RFM Treemaps will allow analysts to hover over individual data points to view specific user risk metrics, visually revealing the difference in value between "High-Volume" and "High-Frequency" customer clusters.
 
-### RFM Value Segmentation
+### 4. Time-to-Event Survival Analysis
 
-Customers will be scored and categorized into segments (e.g., "Champions", "Loyal Customers", "At Risk") based on Recency, Frequency, and Monetary metrics. A dynamic `plotly` Treemap will visualize the size and hierarchy of each segment to prioritize marketing efforts.
+Using the `survival` and `survminer` packages, this module acts as a dynamic "ticking clock." Instead of viewing a static chart, users will select different grouping parameters from the UI to instantly recalculate and redraw Kaplan-Meier Churn Probability Curves. This allows the analyst to actively hunt for the specific demographics suffering the worst 90-day drop-off rates.
 
-### Time-to-Event Survival Analysis
+### 5. Ecosystem Cash Flow (Sankey Diagram)
 
-Using the `survival` package, we will plot Kaplan-Meier Churn Probability Curves. This module will act as a "ticking clock," allowing stakeholders to identify the critical 90-day drop-off window and compare survival rates across different user demographics.
+Using the `networkD3` library, this interactive module maps the directional flow of capital. Users can trace how external funds pool into the app wallet and disperse into out-flows, visually investigating liquidity bottlenecks.
 
-### Macro Cash Flow (Sankey Diagram)
+### 6. Predictive Risk Simulator
 
-Using the `networkD3` library, we will map the directional flow of capital. The Sankey diagram will visualize how external funds (Direct Deposits) pool into the app wallet and disperse into out-flows, quantifying the exact dollar amounts retained versus lost.
+The pinnacle of the app's prescriptive analytics. Powered by Multiple Linear Regression models (`lm`), this interactive sandbox features multiple `sliderInput` controls. Managers can adjust a hypothetical customer's parameters (Age, Transaction Count, Support Tickets) to observe real-time, simulated shifts in predicted Churn Probability and Customer Lifetime Value (CLV).
 
-### Churn & CLV Risk Simulator
+## Proposed UI Architecture & Shiny Components
 
-We will train a Multiple Linear Regression (`lm`) model to predict the probability of churn. A dynamic UI simulator will allow users to adjust hypothetical customer parameters (e.g., simulating a reduction in support tickets) to see real-time shifts in risk metrics, visually forecasting a "saved" customer.
+To build a highly interactive visual analytics tool, **FinRetain** will utilize the `shiny` framework combined with `bslib` for a modern, responsive layout.
+
+**1. Application Layout (bslib):**
+
+-   **`page_navbar()`:** Will be used as the top-level navigation, allowing analysts to switch between analytical modules (EDA, Clustering, Survival, Simulator).
+
+-   **`page_sidebar()` & `sidebar()`:** Will be implemented within each tab to house the interactive control panels on the left side of the screen, ensuring parameters are always visible.
+
+-   **`card()` & `card_header()`:** Will be used in the main panel to neatly organize multiple plots and key performance indicators (KPIs) into distinct, elevated containers.
+
+**2. Interactive Input Components (Widgets):**
+
+-   **`selectInput()` / `radioButtons()`:** To allow analysts to dynamically select grouping variables (e.g., changing the Survival Curve from "Income Bracket" to "Acquisition Channel").
+
+-   **`sliderInput()` / `numericInput()`:** For the Predictive Risk Simulator, allowing managers to adjust quantitative behaviors (e.g., reducing support tickets from 5 to 2) to see real-time changes in predicted churn.
+
+-   **`dateRangeInput()`:** To filter transactional data by specific timeframes.
+
+**3. Dynamic Output Components:**
+
+-   **`plotlyOutput()` / `renderPlotly()`:** We will wrap our `ggplot2` charts in `plotly` to support deep analysis via tooltips (hover information), zooming, and panning.
+
+-   **`plotOutput()` / `renderPlot()`:** Used for specialized statistical plots (like `ggsurvplot` and `ggcorrplot`).
+
+-   **`DTOutput()` / `renderDT()`:** To display interactive, searchable data tables of "At-Risk Customers" that dynamically update based on the visual selections made above them.
 
 ## Proposed Deliverables
 
@@ -135,7 +161,7 @@ We will train a Multiple Linear Regression (`lm`) model to predict the probabili
 ## Project Timeline
 
 | Phase | Task | Expected Completion |
-|:----------------------:|:-----------------------|:-----------------------|
+|:--:|:---|:---|
 | 1 | Data Extraction, ETL Pipeline & Feature Engineering | 21/02/2026 |
 | 2 | Core UI/UX Dashboard Layout Design | 25/02/2026 |
 | 3 | Implementation of EDA, CDA & Clustering Modules | 01/03/2026 |
@@ -144,5 +170,5 @@ We will train a Multiple Linear Regression (`lm`) model to predict the probabili
 | 6 | Final Quarto Report Submission & ShinyApps Deployment | 04/04/2026 |
 
 ::: callout-tip
-For more specific timeline details, please refer to the section of **Minutes of Meeting - Project Gantt Chart** and the followings
+For more specific timeline details, please refer to the section of **Minutes of Meeting - Project Gantt Chart** and the followings.
 :::

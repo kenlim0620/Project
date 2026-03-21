@@ -35,11 +35,13 @@ The FinRetain app is divided into distinct analytical modules, accessible via th
 
 ## Module 1: Exploratory Data (EDA)
 
-![](images/clipboard-911759235.jpeg)
-
 ![](images/Screenshot%202026-03-14%20173309.jpg)
 
-This tab allows you to view the foundational demographics of our user base.
+![](images/WhatsApp%20Image%202026-03-21%20at%2021.38.03.jpeg){fig-align="center" width="348"}
+
+![](images/WhatsApp%20Image%202026-03-21%20at%2021.38.03%20(2).jpeg){fig-align="center" width="333"}
+
+The following tabs/steps allow you to view the foundational demographics of our user base.
 
 -   **Step 1:** Use the sidebar on the left to filter the entire dashboard by **Gender** or **Customer Segment**.
 -   **Step 2:** Observe how the "Income Distribution" bar chart and "Age by Education" box plots dynamically update.
@@ -51,9 +53,9 @@ This tab allows you to view the foundational demographics of our user base.
 
 ## Module 2: Confirmatory Data (CDA)
 
-![](images/clipboard-2164382330.jpeg)
-
 ![](images/clipboard-949135387.jpeg)
+
+![](images/WhatsApp%20Image%202026-03-21%20at%2021.38.03%20(1)-01.jpeg){fig-align="center" width="322"}
 
 Move beyond visual assumptions and interact with our statistical models.
 
@@ -63,8 +65,6 @@ Move beyond visual assumptions and interact with our statistical models.
 ------------------------------------------------------------------------
 
 ## Module 3: Customer Segmentation
-
-![](images/clipboard-1600580532.jpeg)
 
 ![](images/Screenshot%202026-03-14%20173726.jpg)
 
@@ -81,11 +81,11 @@ This module groups users using two distinct methodologies: Machine Learning and 
 
 ## Module 4: Survival Timeline
 
-![](images/clipboard-1606010195.jpeg)
-
 ![](images/Screenshot%202026-03-14%20173951.jpg)
 
-![](images/clipboard-4259787774.jpeg)
+![](images/WhatsApp%20Image%202026-03-21%20at%2021.38.04.jpeg){fig-align="center" width="419"}
+
+![](images/clipboard-4259787774.jpeg){fig-align="center" width="468"}
 
 This module answers the critical question: *When do users leave?*
 
@@ -96,8 +96,6 @@ This module answers the critical question: *When do users leave?*
 ------------------------------------------------------------------------
 
 ## Module 5: Ecosystem Cash Flow
-
-![](images/clipboard-4054311379.jpeg)
 
 ![](images/clipboard-495218001.jpeg)
 

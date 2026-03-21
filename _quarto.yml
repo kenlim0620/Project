@@ -18,8 +18,6 @@ website:
             text: "Data Preparation"
           - href: analysis.qmd
             text: "Exploratory Analysis"
-      - href: findings.qmd
-        text: "Findings & Discussion"
       - href: poster.qmd
         text: "Poster"
       - href: user-guides.qmd
@@ -28,11 +26,11 @@ website:
       - icon: github
         href: https://github.com/kenlim0620/ISSS608-Team-15-Project
       - text: "Launch App 🚀"
-        href: https://lin-xianwei.shinyapps.io/New-Shiny/ # Link to your separate Shiny App
+        href: https://lin-xianwei.shinyapps.io/New-Shiny/
 
 page-footer:
     background: dark
-    left: "LIN XIANWEI - Project Prototype"
+    left: "Team 15 - Project Prototype"
     right: "Singapore Management University"
     
 format:
